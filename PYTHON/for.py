@@ -9,15 +9,15 @@ for x in credit_card_no:#1 is the start #11 is the end but exclusive(is not incl
     print(x)
 
 #continue keyword is used to skip a certain part of an iteration
-for count in range(1, 21):
+for count in range(1, 21): #the last part of the iteration is always exclusive(not included)
     if count == 13:
         continue
     else:
-       print(count)
+       print(count)#13 will be skipped
 
 #break keyword is used to break out of the loop entirely
 for x in range(1,21):
     if x == 13:
         break
     else:
-        print(x)
+        print(x)#13 will not be part of the output
