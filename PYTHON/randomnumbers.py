@@ -78,4 +78,3 @@ while running:
         running = False
 print("Thanks for playing!")
 
-#3. ROLLER DICE PROGRAM
