@@ -31,3 +31,11 @@ def count(end, start=0):
     print("The count is done")
 
 count(30, 20)
+
+def count(end, start=0):
+    for x in range(start, end+1):
+        print(x)
+        time.sleep(1)
+    print("The count is over!")
+
+count(15)
