@@ -2,6 +2,7 @@
 #                   Executes some code if a value matches a 'case'
 #                   Benefits: Cleaner syntax that is more readable
 
+#1. Using many elif statements
 # def day_of_week(day):
 #     if day == 1:
 #         return "It is Sunday"
@@ -22,7 +23,7 @@
     
 # print(day_of_week(1))
     
-
+#2. Using match-case(switch) statements
 def day_of_week(day):
     match day:
         case 1:
@@ -42,3 +43,34 @@ def day_of_week(day):
         case _:
             return "Not a valid day"
 
+def is_weekend(day):
+    match day:
+        case "Sunday":
+            return True
+        case "Monday":
+            return False
+        case "Tuesday":
+            return False
+        case "Wednesday":
+            return False
+        case "Thursday":
+            return False
+        case "Friday":
+            return False
+        case "Saturday":
+            return True
+        case _: 
+            return False
+        
+print(day_of_week("Monday"))
+
+#3. Using match case statements with | (or) logical operator
+def is_weekend(day):
+    match day:
+        case "Saturday" | "Sunday":
+            return True
+        case "Monday" | "Tuesday" | "Wednesday" | "Thursday" | "Friday":
+            return False
+        case _:
+            return False
+print(day_of_week("Sunday"))
