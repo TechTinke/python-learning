@@ -1,29 +1,30 @@
-# #module = a file containing code you want to include  in your program
-# #         use 'import' to include a module  (built-in or your own)
-# #         useful to break up a large program into reusable separate files
-# #print(help("math")) #Functions under the math module
-# #print(help("modules"))#Listing the different types of modules
+#module = a file containing code you want to include  in your program
+#         use 'import' to include a module  (built-in or your own)
+#         useful to break up a large program into reusable separate files
+#print(help("math")) #Functions under the math module
+#print(help("modules"))#Listing the different types of modules
 
-# #You can import a module by calling its name
-# import math
-# print(math.pi)
+#You can import a module by calling its name
+import math
+print(math.pi)
 
-# #You can also declare a name(alias) for the module that you are importing
-# import math as m
-# print(m.pi)
+#You can also declare a name(alias) for the module that you are importing
+import math as m
+print(m.pi)
 
-# #You can also use from to import a certain function in a module
-# #However, this can cause naming conflicts
-# from math import pi
-# print(pi)
+#You can also use from to import a certain function in a module
+#However, this can cause naming conflicts
+from math import pi
+print(pi)
 
 import example
 
 result = example.pi
-area = example.area(12)
-circumfrence = example.circumfrence(7)
-square = example.square(3)
-cube = example.cube(3)
+area = example.area(12) #Importing the area function from the module example
+circumfrence = example.circumfrence(7) #Importing the function circumfrence from the module example
+square = example.square(3) #Importing the function square frim the module example
+cube = example.cube(3) #Importing the function cube from the module example
+
 print(result)
 print(area)
 print(circumfrence)
