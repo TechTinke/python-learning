@@ -1,11 +1,11 @@
 # print(__name__)
 
 #Structure of __name__ = '__main__':
-# if __name__ == '__main__':
-#     main()
+if __name__ == '__main__':
+    main()
 
-# from script2 import * # * means everything
-# print(__name__)
+from script2 import * # * means everything
+print(__name__)
 
 
 def favorite_food(food):
