@@ -48,3 +48,13 @@ fish.eat()
 fish.sleep()
 hawk.eat()
 hawk.sleep()
+
+#WORK TO BE DONE
+
+# 1. GUI Widget System (inspired by Tkinter or PyQt)
+# Create two parent classes:
+# Clickable: method on_click() → prints "Element clicked!"
+# Draggable: method on_drag() → prints "Element dragged to new position"
+# Create a child class Button(Clickable, Draggable) that inherits both.
+# Add its own method render() → prints "Rendering button".
+# Show: create a Button, call on_click(), on_drag(), render().
