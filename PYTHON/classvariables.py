@@ -29,3 +29,13 @@ print(student1.name)
 print(student2.name)
 print(student3.name)
 print(student4.name)
+
+#WORK TO BE DONE
+# Configuration Manager for a Web App
+# Many web applications share the same global settings (e.g., API version, default timeout).
+# Create a AppConfig class with:
+# Class variable: api_version = "v2.0"
+# Class variable: default_timeout_seconds = 30
+# Instance variables in __init__: user_id (str)
+# Add a method get_full_config() that returns a dictionary with the user_id + the two class variables.
+# Show usage: create two instances with different user_ids, change the class variable default_timeout_seconds to 60 via the class name, then print both configs to show the change affects everyone.
