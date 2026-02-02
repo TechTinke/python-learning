@@ -13,7 +13,7 @@ class Circle(Shape):
     def __init__(self, color, is_filled, radius):
         super().__init__(color, is_filled)
         self.radius = radius
-        
+
     # METHOD OVERWRITING
     def describe(self):
         print(f"It is a circle with an area of {3.14 * self.radius *self.radius}squarecm")
@@ -56,3 +56,13 @@ circle.describe()
 square.describe()
 triangle.describe()
 
+#WORK TO BE DONE
+# 1. Bank Account Hierarchy
+# Create base class BankAccount:
+# __init__(self, account_number, holder, balance=0)
+# deposit(self, amount) → adds to balance, prints confirmation
+# withdraw(self, amount) → subtracts if possible
+# Create SavingsAccount(BankAccount):
+# __init__: use super() to set account details + add interest_rate
+# Override deposit: call parent deposit + print "Interest will apply at {interest_rate}%"
+# Show: create a savings account, deposit money, observe both messages.
