@@ -1,6 +1,10 @@
 #Inheritance = Allows a class to inherit attributess(variables) and methods(functions) from another class
 #              Helps with code reusability and extensibility
 #              class Child(Parent)
+#              You write code once and then you re-use it rather than make that change MANUALLY multiple times
+
+#The child classes can have different attributes(variables) 
+# and methods(functions) from the parent class 
 
 class Animal:
     def __init__(self, name):
