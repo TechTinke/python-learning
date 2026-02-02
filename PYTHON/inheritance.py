@@ -45,3 +45,15 @@ mouse.sleep()
 dog.speak()
 cat.speak()
 mouse.speak()
+
+#WORK TO BE DONE
+# Banking System – Account Types
+# Create a base class BankAccount with:
+# __init__(self, account_number, holder, balance=0)
+# deposit(amount)
+# withdraw(amount) (check sufficient balance)
+# get_balance()
+# Create two child classes:
+# SavingsAccount(BankAccount) → adds interest_rate attribute, method add_yearly_interest()
+# CheckingAccount(BankAccount) → adds overdraft_limit, override withdraw() to allow overdraft up to limit
+# Show creation of one savings and one checking account, do deposits/withdrawals/interest.
