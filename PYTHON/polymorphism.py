@@ -50,4 +50,13 @@ shapes = [Circle(4), Square(5), Triangle(6, 7), Pizza("Pepperoni", 15)]
 for shape in shapes:
     print(f"{shape.area()} square centimetres")
 
-                
+
+#WORK TO BE DONE
+# 1. Payment Processor (inheritance + overriding)
+# Create an abstract base class PaymentMethod with:
+# @abstractmethod def process(amount: float) -> str
+# Create three child classes:
+# Mpesa(PaymentMethod) → returns f"M-Pesa payment of KES {amount} successful"
+# Card(PaymentMethod) → returns f"Card payment of KES {amount} processed (Visa/Mastercard)"
+# PayPal(PaymentMethod) → returns f"PayPal payment of USD {amount} completed"
+# Then create a list of different payment objects and loop through them calling process(1500.50) on each — demonstrate polymorphism.
