@@ -26,3 +26,10 @@ for animal in animals:
     animal.speak()
     print(animal.alive)
 
+# WORK TO BE DONE
+# 1. Notification Sender (classic duck typing)
+# Create three completely unrelated classes (no inheritance):
+# EmailSender: method send(message: str) → prints "Email: {message}"
+# SMSSender: method send(message: str) → prints "SMS: {message}"
+# SlackSender: method send(message: str) → prints "Slack: {message}"
+# Write a function broadcast(notifiers: list, message: str) that loops through the list and calls .send(message) on each — show duck typing works without any common base class.
