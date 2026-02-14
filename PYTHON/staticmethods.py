@@ -25,3 +25,10 @@ print(Employee.is_valid_position("Roxket"))
 print(employee1.get_info())
 print(employee2.get_info())
 print(employee3.get_info())
+
+# WORK TO BE DONE
+# 1. User Authentication Utility
+# Create a User class with:
+# Instance method login(self, password) → prints f"{self.username} logged in successfully"
+# Static method is_valid_email(email: str) -> bool → checks if email contains "@" and "."
+# Show: create a user, call instance method on the object, call static method on the class.
