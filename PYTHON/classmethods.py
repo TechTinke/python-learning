@@ -1,5 +1,6 @@
 # Class Methods = Allow operations related to the class itself
 #                 Take (cls) as the first parameter, which represents the class itself
+#                 Best for class level data or require access to the class itself
 
 class Student:
 
