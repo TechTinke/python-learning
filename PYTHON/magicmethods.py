@@ -53,3 +53,12 @@ print(book2 > book3)
 print(book2 + book3)
 print("Lion" in book3)
 print(book3['audio'])
+
+# WORK TO BE DONE
+# 1. Custom Vector Class
+# Create a Vector2D class with:
+# __init__(self, x, y)
+# __str__(self) → returns "(x, y)"
+# __add__(self, other) → returns new Vector2D with summed components
+# __eq__(self, other) → True if both x and y match
+# Show: create two vectors, add them, compare equality, print them.
