@@ -55,4 +55,14 @@ del rectangle.height
 # print(rectangle.width)
 # print(rectangle.height)
 
+# WORK TO BE DONE
+# 1. Temperature Class with Conversion
+# Create a Temperature class:
+# Internal: self._celsius
+# @property def celsius(self) → return formatted "25.0°C"
+# @property def fahrenheit(self) → computed: (celsius × 9/5) + 32
+# @celsius.setter → validate > -273.15, convert input if needed
+# @fahrenheit.setter → convert back to celsius
+# Show: set in Fahrenheit, read in Celsius (and vice versa).
+
 
