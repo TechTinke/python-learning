@@ -37,3 +37,11 @@ student3 = Student("Sandy", 4.0)
 
 print(Student.get_count())
 print(Student.get_average_gpa())
+
+# WORK TO BE DONE
+# 1. Library Book Tracker
+# Create a Book class with:
+# Class variables: total_books = 0, borrowed_count = 0
+# __init__(self, title, author) → increment total_books
+# Instance method borrow(self) → increment borrowed_count if not already borrowed
+# Class method @classmethod def get_availability(cls) -> str → returns f"{cls.total_books - cls.borrowed_count} books available"
