@@ -229,3 +229,14 @@ class Employee:
 # Instance attributes: user_name, plan_name
 # Instance method get_monthly_cost(self) → return cls.plans[self.plan_name]
 # Show adding a new plan via class method, creating users, calculating costs.
+
+# 10. Task Priority Queue (longer design)
+# Create Task:
+# Class variable priority_levels = {1: "Low", 2: "Medium", 3: "High"}
+# Class method @classmethod def get_priority_name(cls, level: int) → return label
+# Instance attributes: description, priority (1–3)
+# Instance method get_display(self) → f"{self.description} ({cls.get_priority_name(self.priority)})"
+# Class variable all_tasks = []
+# Class method @classmethod def add_task(cls, desc, prio) → create and append
+# Class method @classmethod def get_high_priority(cls) → list tasks with priority 3
+# Build a small task manager: add tasks, print high-priority ones using class method.
