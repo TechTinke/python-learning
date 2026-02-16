@@ -221,3 +221,11 @@ class Employee:
 # Class method @classmethod def get_highest_grade(cls) → max grade + student name
 # Create multiple students with different subjects/grades, print stats.
 
+# 9. Subscription Plan Manager
+# Create Subscription:
+# Class variables: plans = {"Basic": 499, "Pro": 999, "Enterprise": 4999}
+# Class method @classmethod def add_plan(cls, name, price) → add to plans
+# Class method @classmethod def get_all_plans(cls) → return formatted list
+# Instance attributes: user_name, plan_name
+# Instance method get_monthly_cost(self) → return cls.plans[self.plan_name]
+# Show adding a new plan via class method, creating users, calculating costs.
