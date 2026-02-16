@@ -178,3 +178,15 @@ class Employee:
 # Class method @classmethod def get_low_stock_items(cls) → return list of names where stock < threshold
 # Class method @classmethod def total_products(cls) → sum of all quantities
 # Show: create products, sell/restock, get low-stock report using class method.
+
+
+# 5. Bank Branch Statistics
+# Create BankAccount:
+# Class variables: branch_total = 0.0, branch_accounts = 0
+# __init__(self, holder, initial_balance) → update class totals
+# Instance method deposit(self, amount)
+# Instance method withdraw(self, amount)
+# Class method @classmethod def get_branch_balance(cls) → return total
+# Class method @classmethod def get_average_balance(cls) → return average
+# Class method @classmethod def reset_branch(cls) → clear totals (for new day)
+# Create multiple accounts, do transactions, print branch stats.
