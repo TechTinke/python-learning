@@ -210,3 +210,14 @@ class Employee:
 # Instance method complete_order(self) → add total to cls.total_revenue
 # Class method @classmethod def get_total_revenue(cls) → formatted string
 # Create 5 orders, complete them, print total revenue and last order ID.
+
+# 8. Student Grade Analyzer (mini-project)
+# Create StudentGrade:
+# Class variables: all_grades = [], subject_count = {} (subject → count)
+# __init__(self, name, subject, grade) → append grade to all_grades, update subject_count
+# Instance method get_letter_grade(self) → A/B/C/D/F based on grade
+# Class method @classmethod def get_average_grade(cls) → overall average
+# Class method @classmethod def get_subject_average(cls, subject) → average for one subject
+# Class method @classmethod def get_highest_grade(cls) → max grade + student name
+# Create multiple students with different subjects/grades, print stats.
+
