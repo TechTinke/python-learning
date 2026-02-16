@@ -199,3 +199,14 @@ class Employee:
 # Class method @classmethod def get_leaderboard(cls) → return formatted top 5
 # Class method @classmethod def clear_scores(cls) → reset list
 # Show submitting scores from different players, printing leaderboard via class method.
+
+# 7. Order ID Generator & Statistics
+# Create Order:
+# Class variable order_counter = 0
+# Class method @classmethod def generate_id(cls) -> str → return f"ORD-{cls.order_counter:04d}" and increment counter
+# Instance attributes: order_id, customer, total
+# __init__(self, customer, total) → self.order_id = cls.generate_id()
+# Class variable total_revenue = 0.0
+# Instance method complete_order(self) → add total to cls.total_revenue
+# Class method @classmethod def get_total_revenue(cls) → formatted string
+# Create 5 orders, complete them, print total revenue and last order ID.
