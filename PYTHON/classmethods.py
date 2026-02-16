@@ -76,9 +76,9 @@ book3 = Book("Rich Dad Poor Dad", "Robert Kiyosaki")
 
 # print(Book.get_availability())
 
-book1.borrow()
-book2.borrow()
-book2.borrow()
+# book1.borrow()
+# book2.borrow()
+# book2.borrow()
 # print(Book.get_availability())
 
 # 2. Configuration Manager
@@ -89,51 +89,82 @@ book2.borrow()
 # No __init__ needed (pure class usage)
 # Demonstrate setting/getting values using only class methods (no instances).
 
-class AppConfig:
-    # Class variable: shared across all "usage" of the class (no instances needed)
-    settings = {}
+# class AppConfig:
+#     # Class variable: shared across all "usage" of the class (no instances needed)
+#     settings = {}
+
+#     @classmethod
+#     def set_setting(cls, key: str, value) -> None:
+#         """
+#         Sets a configuration value in the shared settings dictionary.
+#         """
+#         cls.settings[key] = value
+#         print(f"Set '{key}' = {value!r}")
+
+#     @classmethod
+#     def get_setting(cls, key: str, default=None):
+#         """
+#         Retrieves a configuration value.
+#         Returns the value if key exists, otherwise returns default.
+#         """
+#         value = cls.settings.get(key, default)
+#         print(f"Getting '{key}' → {value!r}")
+#         return value
+
+
+# # Demonstration: pure class usage (no instances created)
+# if __name__ == "__main__":
+#     # Set some settings
+#     AppConfig.set_setting("theme", "dark")
+#     AppConfig.set_setting("api_key", "sk-abc123xyz")
+#     AppConfig.set_setting("debug_mode", True)
+#     AppConfig.set_setting("max_retries", 5)
+
+#     # # Get existing values
+#     # theme = AppConfig.get_setting("theme")              # → "dark"
+#     # api_key = AppConfig.get_setting("api_key")          # → "sk-abc123xyz"
+#     # debug = AppConfig.get_setting("debug_mode")         # → True
+
+#     # # Get non-existing value with default
+#     # timeout = AppConfig.get_setting("timeout", 30)      # → 30 (default)
+#     # language = AppConfig.get_setting("language", "en")  # → "en" (default)
+
+#     # # Show current full settings
+#     # print("\nCurrent configuration:")
+#     # for k, v in AppConfig.settings.items():
+#     #     print(f"  {k:12} : {v!r}")
+
+#     # # Update an existing setting
+#     # AppConfig.set_setting("theme", "light")
+#     # print(f"New theme: {AppConfig.get_setting('theme')}")
+
+# 3. Employee Database (partial code)
+# Finish this class:
+
+class Employee:
+    all_employees = []           # class-level list
+    total_salary = 0.0           # class-level sum
+
+    def __init__(self, name, salary):
+        self.name = name
+        self.salary = salary
+        # Finish: append self to all_employees
+        # Finish: add salary to total_salary
+
+    def get_info(self):
+        return f"{self.name}: KES {self.salary:,.2f}"
 
     @classmethod
-    def set_setting(cls, key: str, value) -> None:
-        """
-        Sets a configuration value in the shared settings dictionary.
-        """
-        cls.settings[key] = value
-        print(f"Set '{key}' = {value!r}")
+    def add_employee(cls, name, salary):
+        # Finish: create and add new Employee using cls
+        pass
 
     @classmethod
-    def get_setting(cls, key: str, default=None):
-        """
-        Retrieves a configuration value.
-        Returns the value if key exists, otherwise returns default.
-        """
-        value = cls.settings.get(key, default)
-        print(f"Getting '{key}' → {value!r}")
-        return value
+    def get_average_salary(cls):
+        # Finish: return average if employees exist, else 0
+        pass
 
-
-# Demonstration: pure class usage (no instances created)
-if __name__ == "__main__":
-    # Set some settings
-    AppConfig.set_setting("theme", "dark")
-    AppConfig.set_setting("api_key", "sk-abc123xyz")
-    AppConfig.set_setting("debug_mode", True)
-    AppConfig.set_setting("max_retries", 5)
-
-    # Get existing values
-    theme = AppConfig.get_setting("theme")              # → "dark"
-    api_key = AppConfig.get_setting("api_key")          # → "sk-abc123xyz"
-    debug = AppConfig.get_setting("debug_mode")         # → True
-
-    # Get non-existing value with default
-    timeout = AppConfig.get_setting("timeout", 30)      # → 30 (default)
-    language = AppConfig.get_setting("language", "en")  # → "en" (default)
-
-    # Show current full settings
-    print("\nCurrent configuration:")
-    for k, v in AppConfig.settings.items():
-        print(f"  {k:12} : {v!r}")
-
-    # Update an existing setting
-    AppConfig.set_setting("theme", "light")
-    print(f"New theme: {AppConfig.get_setting('theme')}")
+    @classmethod
+    def get_employee_count(cls):
+        return len(cls.all_employees)
+# Then: use class method to add 4 employees, print count + average salary.
