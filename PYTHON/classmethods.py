@@ -190,3 +190,12 @@ class Employee:
 # Class method @classmethod def get_average_balance(cls) → return average
 # Class method @classmethod def reset_branch(cls) → clear totals (for new day)
 # Create multiple accounts, do transactions, print branch stats.
+
+# 6. Game High Score Tracker
+# Create Player:
+# Class variables: high_scores = [] (list of dicts {name, score}), max_players = 10
+# __init__(self, name)
+# Instance method submit_score(self, score) → add to high_scores, sort descending, keep only top max_players
+# Class method @classmethod def get_leaderboard(cls) → return formatted top 5
+# Class method @classmethod def clear_scores(cls) → reset list
+# Show submitting scores from different players, printing leaderboard via class method.
