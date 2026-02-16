@@ -35,8 +35,8 @@ student1 = Student("Spongebob", 3.2)
 student2 = Student("Patrick", 2.0)
 student3 = Student("Sandy", 4.0)
 
-print(Student.get_count())
-print(Student.get_average_gpa())
+# print(Student.get_count())
+# print(Student.get_average_gpa())
 
 # WORK TO BE DONE
 # 1. Library Book Tracker
@@ -45,3 +45,38 @@ print(Student.get_average_gpa())
 # __init__(self, title, author) → increment total_books
 # Instance method borrow(self) → increment borrowed_count if not already borrowed
 # Class method @classmethod def get_availability(cls) -> str → returns f"{cls.total_books - cls.borrowed_count} books available"
+
+class Book():
+
+    total_books = 0
+    borrowed_count = 0
+
+    def __init__(self, title, author):
+        self.title = title
+        self.author = author
+        self.is_borrowed = False
+        Book.total_books += 1
+    
+    def borrow(self):
+        if self.is_borrowed:
+            print("This book is already borrowed")
+        else:
+            self.is_borrowed = True
+            Book.borrowed_count += 1
+            print(f"You borrowed '{self.title}' by {self.author}")
+    
+    @classmethod
+    def get_availability(cls):
+        available_books = cls.total_books - cls.borrowed_count
+        return f"{available_books} books available (Total: {cls.total_books}, Borrowed: {cls.borrowed_count})"
+
+book1 = Book("The Alchemist", "Paulo Coelho")
+book2 = Book("Atomic Habits", "James Clear")
+book3 = Book("Rich Dad Poor Dad", "Robert Kiyosaki")
+
+print(Book.get_availability())
+
+book1.borrow()
+book2.borrow()
+book2.borrow()
+print(Book.get_availability())
