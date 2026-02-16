@@ -74,9 +74,9 @@ book1 = Book("The Alchemist", "Paulo Coelho")
 book2 = Book("Atomic Habits", "James Clear")
 book3 = Book("Rich Dad Poor Dad", "Robert Kiyosaki")
 
-print(Book.get_availability())
+# print(Book.get_availability())
 
 book1.borrow()
 book2.borrow()
 book2.borrow()
-print(Book.get_availability())
+# print(Book.get_availability())
