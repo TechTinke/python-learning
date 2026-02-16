@@ -168,3 +168,13 @@ class Employee:
     def get_employee_count(cls):
         return len(cls.all_employees)
 # Then: use class method to add 4 employees, print count + average salary.
+
+# 4. Inventory Stock Manager
+# Create Product:
+# Class variables: inventory = {} (name → quantity), low_stock_threshold = 10
+# __init__(self, name, price, initial_stock) → add/update cls.inventory[name]
+# Instance method sell(self, quantity) → reduce stock, print warning if low
+# Class method @classmethod def restock(cls, name, amount) → increase stock
+# Class method @classmethod def get_low_stock_items(cls) → return list of names where stock < threshold
+# Class method @classmethod def total_products(cls) → sum of all quantities
+# Show: create products, sell/restock, get low-stock report using class method.
