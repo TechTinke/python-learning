@@ -80,3 +80,11 @@ book1.borrow()
 book2.borrow()
 book2.borrow()
 # print(Book.get_availability())
+
+# 2. Configuration Manager
+# Create AppConfig with:
+# Class variable settings = {} (dict)
+# Class method @classmethod def set_setting(cls, key: str, value) -> None → sets cls.settings[key] = value
+# Class method @classmethod def get_setting(cls, key: str, default=None) → returns value or default
+# No __init__ needed (pure class usage)
+# Demonstrate setting/getting values using only class methods (no instances).
