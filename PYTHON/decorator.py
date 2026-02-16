@@ -24,3 +24,10 @@ def get_ice_cream(flavor):
 
 get_ice_cream("chocolate")
 
+#   WORK TO BE DONE
+# 1. Simple Logging Decorator
+# Create a decorator log_call that prints:
+# "Calling {func_name} with args={args}, kwargs={kwargs}"
+# "Finished {func_name}"
+# Apply it to a function add(a, b) that returns a + b.
+# Show stacked with another decorator that prints the result.
