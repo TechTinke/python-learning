@@ -179,6 +179,38 @@ class Employee:
 # Class method @classmethod def total_products(cls) → sum of all quantities
 # Show: create products, sell/restock, get low-stock report using class method.
 
+class Product():
+    
+    inventory = {} # dictionary shared by all Product objects(name, quantity)
+    {"Laptop": 35}
+    low_stock_threshold = 10
+
+    def __init__(self, name, price, initial_stock):
+    # def __init__(self, name: str, price: float, initial_stock: int) #You can declare the data types of your parameters
+        self.name = name
+        self.price = price
+        Product.inventory[name]
+        self.initial_stock = initial_stock
+    
+    def sell(self, quantity):
+        if quantity < Product.low_stock_threshold:
+            print("Product stock is Low")
+        Product.quantity -= quantity
+
+    @classmethod
+    def restock(cls, name, amount):
+        Product.quantity += amount
+
+    @classmethod
+    def get_low_stock_items(cls):
+        if Product.quantity < Product.low_stock_threshold:
+            return f""
+
+    @classmethod
+    def total_products(cls):
+        pass
+
+
 
 # 5. Bank Branch Statistics
 # Create BankAccount:
