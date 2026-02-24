@@ -22,7 +22,7 @@
 # if pokemon_info:
 #     print(f"Name: {pokemon_info['name'].capitalize()}")
 #     print(f"Id: {pokemon_info['id']}")
-#     print(f"Height: {pokemon_info['height']}")
+    # print(f"Height: {pokemon_info['height']}")
 #     print(f"Weight: {pokemon_info['weight']}")
 
 # STATUS CODES
@@ -39,30 +39,25 @@
 
 import requests
 
-base_url = "https://api.open-meteo.com/v1/forecast"
+def get_weather(lat:float, lon: float):
+    url = "https://api.open-meteo.com/v1/forecast"
+    params = {"latitude": lat,
+              "longitude": lon,
+              "current_weather": "true"
+    }
+    response = requests.get(url, params=params)
 
-def get_weather(lat, lon):
-    lat_url = f"{base_url}/{lat}"
-    lon_url = f"{base_url}/{lon}"
-    lat_response = requests.get(lat_url)
-    lon_response = requests.get(lon_url)
+    if response.status_code == 200:
+        data = response.json()
+        weather = data["current_weather"]
 
-    if lat_response.status_code == 200:
-        print("Data has been retrieved successfully")
-        lat_data = lat_response.json()
-        return lat_data
+        print(f"Temperature: {weather['temperature']} degree celcius")
+        print(f"Wind Speed: {weather['windspeed']} km/hr")
+        print(f"Weather Code: {weather['weathercode']}")
     else:
-        print("Unable to retrieve latitude data {lat_response.status_code}")
-    
-    if lon_response.status_code == 200:
-        print("Data has been retrieved successfully")
-        lon_data = lon_response.json()
-        return lon_data
-    else:
-        print("Unable to retrieve longitude data {lon_response.status_code}")
+        print(f"Failed to retrieve data {response.status_code}")
 
-weather_data = get_weather(-1.286, 36.817)
-
+get_weather(-1.286, 36.817)
 
 
 # 2. GitHub User Info
