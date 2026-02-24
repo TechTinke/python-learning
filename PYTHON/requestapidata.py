@@ -60,6 +60,7 @@ def get_weather(lat:float, lon: float):
 get_weather(-1.286, 36.817)
 
 
+
 # 2. GitHub User Info
 # Create get_github_user(username: str):
 # GET https://api.github.com/users/{username}
