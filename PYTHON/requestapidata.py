@@ -37,27 +37,27 @@
 # Handles non-200 status with error message
 # Test with Nairobi coordinates (lat ≈ -1.286, lon ≈ 36.817).
 
-# import requests
+import requests
 
-# def get_weather(lat:float, lon: float):
-#     url = "https://api.open-meteo.com/v1/forecast"
-#     params = {"latitude": lat,
-#               "longitude": lon,
-#               "current_weather": "true"
-#     }
-#     response = requests.get(url, params=params)
+def get_weather(lat:float, lon: float):
+    url = "https://api.open-meteo.com/v1/forecast"
+    params = {"latitude": lat,
+              "longitude": lon,
+              "current_weather": "true"
+    }
+    response = requests.get(url, params=params)
 
-#     if response.status_code == 200:
-#         data = response.json()
-#         weather = data["current_weather"]
+    if response.status_code == 200:
+        data = response.json()
+        weather = data["current_weather"]
 
-#         print(f"Temperature: {weather['temperature']} degree celcius")
-#         print(f"Wind Speed: {weather['windspeed']} km/hr")
-#         print(f"Weather Code: {weather['weathercode']}")
-#     else:
-#         print(f"Failed to retrieve data {response.status_code}")
+        print(f"Temperature: {weather['temperature']} degree celcius")
+        print(f"Wind Speed: {weather['windspeed']} km/hr")
+        print(f"Weather Code: {weather['weathercode']}")
+    else:
+        print(f"Failed to retrieve data {response.status_code}")
 
-# get_weather(-1.286, 36.817)
+get_weather(-1.286, 36.817)
 
 
 
