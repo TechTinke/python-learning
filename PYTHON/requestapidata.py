@@ -62,7 +62,7 @@ get_weather(-1.286, 36.817)
 
 
 # 2. GitHub User Info
-# Create get_github_user(username: str):
+# Create get_github_user(username: str):    
 # GET https://api.github.com/users/{username}
 # If 200, print: name, bio, public_repos, followers
 # If 404, print "User not found"
