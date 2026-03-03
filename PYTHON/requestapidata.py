@@ -37,27 +37,27 @@
 # Handles non-200 status with error message
 # Test with Nairobi coordinates (lat ≈ -1.286, lon ≈ 36.817).
 
-import requests
+# import requests
 
-def get_weather(lat:float, lon: float):
-    url = "https://api.open-meteo.com/v1/forecast"
-    params = {"latitude": lat,
-              "longitude": lon,
-              "current_weather": "true"
-    }
-    response = requests.get(url, params=params)
+# def get_weather(lat:float, lon: float):
+#     url = "https://api.open-meteo.com/v1/forecast"
+#     params = {"latitude": lat,
+#               "longitude": lon,
+#               "current_weather": "true"
+#     }
+#     response = requests.get(url, params=params)
 
-    if response.status_code == 200:
-        data = response.json()
-        weather = data["current_weather"]
+#     if response.status_code == 200:
+#         data = response.json()
+#         weather = data["current_weather"]
 
-        print(f"Temperature: {weather['temperature']} degree celcius")
-        print(f"Wind Speed: {weather['windspeed']} km/hr")
-        print(f"Weather Code: {weather['weathercode']}")
-    else:
-        print(f"Failed to retrieve data {response.status_code}")
+#         print(f"Temperature: {weather['temperature']} degree celcius")
+#         print(f"Wind Speed: {weather['windspeed']} km/hr")
+#         print(f"Weather Code: {weather['weathercode']}")
+#     else:
+#         print(f"Failed to retrieve data {response.status_code}")
 
-get_weather(-1.286, 36.817)
+# get_weather(-1.286, 36.817)
 
 
 
@@ -69,35 +69,35 @@ get_weather(-1.286, 36.817)
 # Handle rate limit (429) with nice message
 # Test with your GitHub username or "octocat".
 
-import requests
+# import requests
 
-def get_github_user(username):
-    url = f"https://api.github.com/users/{username}"
-    response = requests.get(url)
+# def get_github_user(username):
+#     url = f"https://api.github.com/users/{username}"
+#     response = requests.get(url)
 
-    if response.status_code == 200:
-        username_info = response.json()
+#     if response.status_code == 200:
+#         username_info = response.json()
 
-        print(f"Name: {username_info['name']}")
-        print(f"Bio: {username_info['bio']}")
-        print(f"Public Repos: {username_info['public_repos']}")
-        print(f"Followers: {username_info['followers']}")
-    elif response.status_code == 404:
-        print("User not found")
-    elif response.status_code == 429:
-        print("Rate limit exceeded. Please try again later")
-    else:
-        print("The data could not be retrieved")
+#         print(f"Name: {username_info['name']}")
+#         print(f"Bio: {username_info['bio']}")
+#         print(f"Public Repos: {username_info['public_repos']}")
+#         print(f"Followers: {username_info['followers']}")
+#     elif response.status_code == 404:
+#         print("User not found")
+#     elif response.status_code == 429:
+#         print("Rate limit exceeded. Please try again later")
+#     else:
+#         print("The data could not be retrieved")
     
-username1 = "TechTinke"
-get_github_user(username1)
+# username1 = "TechTinke"
+# get_github_user(username1)
     
 
 
 #3. Crypto Price Tracker (partial code)
 # Finish this script using CoinGecko API (free, no key needed):
 
-# Pythonimport requests
+# import requests
 # import time
 
 # def get_crypto_price(coin_id: str):
@@ -108,14 +108,23 @@ get_github_user(username1)
 #         "include_24hr_change": "true"
 #     }
 #     response = requests.get(url, params=params)
-#     # Finish: check status, parse JSON, return price + 24h change %
-#     # Handle errors (e.g. 404 coin not found)
-#     pass
 
-# # Finish: loop to track Bitcoin, Ethereum, Solana every 60 seconds
-# # Print: "BTC: $XXXX (24h: +X.XX%)" etc.
-# # Run for 5 cycles or until Ctrl+C
-# Show real-time-ish price updates in terminal.
+#     if response.status_code == 200:
+#         data = response.json()
+
+#         if coin_id in data:
+#             price = data[coin_id]['usd']
+#             change = data[coin_id]['usd_24h_change']
+#             return price, change
+#         else:
+#             print(f"Coin {coin_id} not found!")
+
+#     elif response.status_code == 404:
+#         print("f{response.status_code} coin not found")
+#     else:
+#         print("Coin data could not be retrieved")
+
+# get_crypto_price("bitcoin")
 
 # 4. News Headline Fetcher
 # Use NewsAPI.org (free tier: https://newsapi.org — you’ll need an API key).
