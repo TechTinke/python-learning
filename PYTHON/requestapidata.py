@@ -1,4 +1,7 @@
 # # How to connect to an API using Python
+# Params(parameters) - key value pairs appended to a url as a query string
+# API key - usique string that identifies and authentictes you when making requests to an API.
+
 
 # import requests # Import the requests modules for requests
 
@@ -127,12 +130,79 @@
 # get_crypto_price("bitcoin")
 
 # 4. News Headline Fetcher
-# Use NewsAPI.org (free tier: https://newsapi.org — you’ll need an API key).
+# Use NewsAPI.org (free tier: https://newsapi.org (f9dcca8357714870a84147e52b4107f0)).
 # Create a function get_top_headlines(country="ke", category="technology"):
 # GET https://newsapi.org/v2/top-headlines with params
 # Print title, source, published date for top 10 articles
 # Handle missing API key (403) or no results
 # Bonus: add CLI argument for country/category.
+
+import requests # to make the HTTP GET request to NewsAPI
+from datetime import datetime # to reformat the date
+import argparse # to handle CLI arguments
+
+API_KEY = "f9dcca8357714870a84147e52b4107f0"
+
+def get_top_headlines(country="ke", category="technology"):
+    url = "https://newsapi.org/v2/top-headlines"
+    params = {"country": country,
+              "category": category,
+              "pageSize": 10,
+              "apiKey": API_KEY}
+# params(country, category, pageSize and apiKey) are what you send to the API to tell it what data you want
+# Response fields(title, source and published date) are what the API sends back to you in response to your request
+    response = requests.get(url, params=params)
+
+    if response.status_code == 200:
+        data = response.json() # Converts the raw response into a Python dictionary
+
+            #         {
+            # "status": "ok",
+            # "totalResults": 10,
+            # "articles": [
+            #     {
+            #     "title": "...",
+            #     "source": {"id": "bbc", "name": "BBC News"},
+            #     "publishedAt": "2024-01-15T09:30:00Z"
+            #     }
+            # ]
+            # }
+        articles = data.get("articles", []) # safely extracts the articles list and returns an empty list if the key("articles") is missing 
+    elif response.status_code == 401 or response.status_code == 403: # Error code 401 or 403 means authentication failed # Error code 500 means server error # Error code 429 means rate limited
+    #elif response.status_code in (401, 403):
+        print("Error: Invalid or missing API key.")
+        return
+    else:
+        print(f"Error {response.status_code}: Could not retrieve headlines.")
+        return
+    if not articles:
+        print(f"No articles founds for {country} under {category}")
+        return
+    
+    print(f"\nTop {len(articles)} {category.upper()} headlines [{country.upper()}]")
+    print("-" * 60)
+
+    for i, article in enumerate(articles, start=1):
+        title = article.get("title", "No title")
+        source = article.get("source", {}).get("name", "Unknown source")
+        published = article.get("publishedAt", "")
+        if published:
+            published = datetime.strptime(published, "%Y-%m-%dT%H:%M:%SZ")
+            published = published.strftime("%d %b %Y, %H:%M UTC")
+
+        print(f"{i}. {title}")
+        print(f"Source: {source} | Published: {published}")
+        print()
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Fetch top news headlines.")
+    parser.add_argument("--country", default="ke", help="Country code (default: ke)")
+    parser.add_argument("--category", default="technology",
+                        help="Category: business, entertainment, health, science, sports, technology (default: technology)")
+    args = parser.parse_args()
+
+    get_top_headlines(country=args.country, category=args.category)
+
+# python requestapidata.py --country us --category technology - this command is run from the terminal for calling the function from the terminal
 
 
 # 5. Pokémon Team Builder (expand your example)
