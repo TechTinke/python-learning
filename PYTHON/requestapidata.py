@@ -265,8 +265,6 @@ convert_currency(190000, "KES", "EUR")
 convert_currency(625500, "KES", "GBP")
 
 
-
-
 # 7. GitHub Repository Stats Dashboard
 # Create a script that:
 # Takes a GitHub username
