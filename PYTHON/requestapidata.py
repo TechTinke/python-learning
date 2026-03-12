@@ -137,70 +137,70 @@
 # Handle missing API key (403) or no results
 # Bonus: add CLI argument for country/category.
 
-import requests # to make the HTTP GET request to NewsAPI
-from datetime import datetime # to reformat the date
-import argparse # to handle CLI arguments
+# import requests # to make the HTTP GET request to NewsAPI
+# from datetime import datetime # to reformat the date
+# import argparse # to handle CLI arguments
 
-API_KEY = "f9dcca8357714870a84147e52b4107f0"
+# API_KEY = "f9dcca8357714870a84147e52b4107f0"
 
-def get_top_headlines(country="ke", category="technology"):
-    url = "https://newsapi.org/v2/top-headlines"
-    params = {"country": country,
-              "category": category,
-              "pageSize": 10,
-              "apiKey": API_KEY}
-# params(country, category, pageSize and apiKey) are what you send to the API to tell it what data you want
-# Response fields(title, source and published date) are what the API sends back to you in response to your request
-    response = requests.get(url, params=params)
+# def get_top_headlines(country="ke", category="technology"):
+#     url = "https://newsapi.org/v2/top-headlines"
+#     params = {"country": country,
+#               "category": category,
+#               "pageSize": 10,
+#               "apiKey": API_KEY}
+# # params(country, category, pageSize and apiKey) are what you send to the API to tell it what data you want
+# # Response fields(title, source and published date) are what the API sends back to you in response to your request
+#     response = requests.get(url, params=params)
 
-    if response.status_code == 200:
-        data = response.json() # Converts the raw response into a Python dictionary
+#     if response.status_code == 200:
+#         data = response.json() # Converts the raw response into a Python dictionary
 
-            #         {
-            # "status": "ok",
-            # "totalResults": 10,
-            # "articles": [
-            #     {
-            #     "title": "...",
-            #     "source": {"id": "bbc", "name": "BBC News"},
-            #     "publishedAt": "2024-01-15T09:30:00Z"
-            #     }
-            # ]
-            # }
-        articles = data.get("articles", []) # safely extracts the articles list and returns an empty list if the key("articles") is missing 
-    elif response.status_code == 401 or response.status_code == 403: # Error code 401 or 403 means authentication failed # Error code 500 means server error # Error code 429 means rate limited
-    #elif response.status_code in (401, 403):
-        print("Error: Invalid or missing API key.")
-        return
-    else:
-        print(f"Error {response.status_code}: Could not retrieve headlines.")
-        return
-    if not articles:
-        print(f"No articles founds for {country} under {category}")
-        return
+#             #         {
+#             # "status": "ok",
+#             # "totalResults": 10,
+#             # "articles": [
+#             #     {
+#             #     "title": "...",
+#             #     "source": {"id": "bbc", "name": "BBC News"},
+#             #     "publishedAt": "2024-01-15T09:30:00Z"
+#             #     }
+#             # ]
+#             # }
+#         articles = data.get("articles", []) # safely extracts the articles list and returns an empty list if the key("articles") is missing 
+#     elif response.status_code == 401 or response.status_code == 403: # Error code 401 or 403 means authentication failed # Error code 500 means server error # Error code 429 means rate limited
+#     #elif response.status_code in (401, 403):
+#         print("Error: Invalid or missing API key.")
+#         return
+#     else:
+#         print(f"Error {response.status_code}: Could not retrieve headlines.")
+#         return
+#     if not articles:
+#         print(f"No articles founds for {country} under {category}")
+#         return
     
-    print(f"\nTop {len(articles)} {category.upper()} headlines [{country.upper()}]")
-    print("-" * 60)
+#     print(f"\nTop {len(articles)} {category.upper()} headlines [{country.upper()}]")
+#     print("-" * 60)
 
-    for i, article in enumerate(articles, start=1):
-        title = article.get("title", "No title")
-        source = article.get("source", {}).get("name", "Unknown source")
-        published = article.get("publishedAt", "")
-        if published:
-            published = datetime.strptime(published, "%Y-%m-%dT%H:%M:%SZ")
-            published = published.strftime("%d %b %Y, %H:%M UTC")
+#     for i, article in enumerate(articles, start=1):
+#         title = article.get("title", "No title")
+#         source = article.get("source", {}).get("name", "Unknown source")
+#         published = article.get("publishedAt", "")
+#         if published:
+#             published = datetime.strptime(published, "%Y-%m-%dT%H:%M:%SZ")
+#             published = published.strftime("%d %b %Y, %H:%M UTC")
 
-        print(f"{i}. {title}")
-        print(f"Source: {source} | Published: {published}")
-        print()
-if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Fetch top news headlines.")
-    parser.add_argument("--country", default="ke", help="Country code (default: ke)")
-    parser.add_argument("--category", default="technology",
-                        help="Category: business, entertainment, health, science, sports, technology (default: technology)")
-    args = parser.parse_args()
+#         print(f"{i}. {title}")
+#         print(f"Source: {source} | Published: {published}")
+#         print()
+# if __name__ == "__main__":
+#     parser = argparse.ArgumentParser(description="Fetch top news headlines.")
+#     parser.add_argument("--country", default="ke", help="Country code (default: ke)")
+#     parser.add_argument("--category", default="technology",
+#                         help="Category: business, entertainment, health, science, sports, technology (default: technology)")
+#     args = parser.parse_args()
 
-    get_top_headlines(country=args.country, category=args.category)
+#     get_top_headlines(country=args.country, category=args.category)
 
 # python requestapidata.py --country us --category technology - this command is run from the terminal for calling the function from the terminal
 
@@ -223,6 +223,48 @@ if __name__ == "__main__":
 # Print formatted result
 # Add retry logic (3 attempts) on network errors
 # Show converting KES to USD, EUR, GBP.
+
+import requests
+
+API_KEY = "a829e4836c22d656daf84ff9"
+
+def convert_currency(amount: float, from_curr:str, to_curr:str):
+    url = f"https://v6.exchangerate-api.com/v6/a829e4836c22d656daf84ff9/latest/{from_curr}"
+    for attempt in range(3):
+        try:
+            api_response = requests.get(url)
+            break
+        except requests.exceptions.RequestException:
+            print(f"Attempt {attempt + 1} failed, retrying ...")
+            if attempt == 2:
+                print("All 3 attempts failed. Check your network connection and try again later!")
+                return
+    
+    if api_response.status_code == 200:
+        data = api_response.json()
+        conversion_rates = data.get("conversion_rates", [])
+        to_rate = conversion_rates.get(to_curr)
+
+        if to_rate:
+            converted_amount = amount * to_rate
+            print(f"{amount} {from_curr} = {converted_amount:.2f} {to_curr}")
+        else:
+            print("That currency does not exist")
+            return
+    elif api_response.status_code == 401 or api_response.status_code == 403:
+        print("Error: Missing or invalid API Key!")
+        return
+    elif api_response.status_code == 429:
+        print("Rate Limit exceeded, Please try again later")
+        return
+    else:
+        print("Could't not retrieve API data")
+
+convert_currency(709890, "KES", "USD")
+convert_currency(190000, "KES", "EUR")
+convert_currency(625500, "KES", "GBP")
+
+
 
 
 # 7. GitHub Repository Stats Dashboard
