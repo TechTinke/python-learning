@@ -224,45 +224,45 @@
 # Add retry logic (3 attempts) on network errors
 # Show converting KES to USD, EUR, GBP.
 
-# import requests
+import requests
 
-# API_KEY = "a829e4836c22d656daf84ff9"
+API_KEY = "a829e4836c22d656daf84ff9"
 
-# def convert_currency(amount: float, from_curr:str, to_curr:str):
-#     url = f"https://v6.exchangerate-api.com/v6/a829e4836c22d656daf84ff9/latest/{from_curr}"
-#     for attempt in range(3):
-#         try:
-#             api_response = requests.get(url)
-#             break
-#         except requests.exceptions.RequestException:
-#             print(f"Attempt {attempt + 1} failed, retrying ...")
-#             if attempt == 2:
-#                 print("All 3 attempts failed. Check your network connection and try again later!")
-#                 return
+def convert_currency(amount: float, from_curr:str, to_curr:str):
+    url = f"https://v6.exchangerate-api.com/v6/a829e4836c22d656daf84ff9/latest/{from_curr}"
+    for attempt in range(3):
+        try:
+            api_response = requests.get(url)
+            break
+        except requests.exceptions.RequestException:
+            print(f"Attempt {attempt + 1} failed, retrying ...")
+            if attempt == 2:
+                print("All 3 attempts failed. Check your network connection and try again later!")
+                return
     
-#     if api_response.status_code == 200:
-#         data = api_response.json()
-#         conversion_rates = data.get("conversion_rates", [])
-#         to_rate = conversion_rates.get(to_curr)
+    if api_response.status_code == 200:
+        data = api_response.json()
+        conversion_rates = data.get("conversion_rates", [])
+        to_rate = conversion_rates.get(to_curr)
 
-#         if to_rate:
-#             converted_amount = amount * to_rate
-#             print(f"{amount} {from_curr} = {converted_amount:.2f} {to_curr}")
-#         else:
-#             print("That currency does not exist")
-#             return
-#     elif api_response.status_code == 401 or api_response.status_code == 403:
-#         print("Error: Missing or invalid API Key!")
-#         return
-#     elif api_response.status_code == 429:
-#         print("Rate Limit exceeded, Please try again later")
-#         return
-#     else:
-#         print("Could't not retrieve API data")
+        if to_rate:
+            converted_amount = amount * to_rate
+            print(f"{amount} {from_curr} = {converted_amount:.2f} {to_curr}")
+        else:
+            print("That currency does not exist")
+            return
+    elif api_response.status_code == 401 or api_response.status_code == 403:
+        print("Error: Missing or invalid API Key!")
+        return
+    elif api_response.status_code == 429:
+        print("Rate Limit exceeded, Please try again later")
+        return
+    else:
+        print("Could't not retrieve API data")
 
-# convert_currency(709890, "KES", "USD")
-# convert_currency(190000, "KES", "EUR")
-# convert_currency(625500, "KES", "GBP")
+convert_currency(709890, "KES", "USD")
+convert_currency(190000, "KES", "EUR")
+convert_currency(625500, "KES", "GBP")
 
 
 # 7. GitHub Repository Stats Dashboard
