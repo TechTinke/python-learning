@@ -224,45 +224,45 @@
 # Add retry logic (3 attempts) on network errors
 # Show converting KES to USD, EUR, GBP.
 
-import requests
+# import requests
 
-API_KEY = "a829e4836c22d656daf84ff9"
+# API_KEY = "a829e4836c22d656daf84ff9"
 
-def convert_currency(amount: float, from_curr:str, to_curr:str):
-    url = f"https://v6.exchangerate-api.com/v6/a829e4836c22d656daf84ff9/latest/{from_curr}"
-    for attempt in range(3):
-        try:
-            api_response = requests.get(url)
-            break
-        except requests.exceptions.RequestException:
-            print(f"Attempt {attempt + 1} failed, retrying ...")
-            if attempt == 2:
-                print("All 3 attempts failed. Check your network connection and try again later!")
-                return
+# def convert_currency(amount: float, from_curr:str, to_curr:str):
+#     url = f"https://v6.exchangerate-api.com/v6/a829e4836c22d656daf84ff9/latest/{from_curr}"
+#     for attempt in range(3):
+#         try:
+#             api_response = requests.get(url)
+#             break
+#         except requests.exceptions.RequestException:
+#             print(f"Attempt {attempt + 1} failed, retrying ...")
+#             if attempt == 2:
+#                 print("All 3 attempts failed. Check your network connection and try again later!")
+#                 return
     
-    if api_response.status_code == 200:
-        data = api_response.json()
-        conversion_rates = data.get("conversion_rates", [])
-        to_rate = conversion_rates.get(to_curr)
+#     if api_response.status_code == 200:
+#         data = api_response.json()
+#         conversion_rates = data.get("conversion_rates", [])
+#         to_rate = conversion_rates.get(to_curr)
 
-        if to_rate:
-            converted_amount = amount * to_rate
-            print(f"{amount} {from_curr} = {converted_amount:.2f} {to_curr}")
-        else:
-            print("That currency does not exist")
-            return
-    elif api_response.status_code == 401 or api_response.status_code == 403:
-        print("Error: Missing or invalid API Key!")
-        return
-    elif api_response.status_code == 429:
-        print("Rate Limit exceeded, Please try again later")
-        return
-    else:
-        print("Could't not retrieve API data")
+#         if to_rate:
+#             converted_amount = amount * to_rate
+#             print(f"{amount} {from_curr} = {converted_amount:.2f} {to_curr}")
+#         else:
+#             print("That currency does not exist")
+#             return
+#     elif api_response.status_code == 401 or api_response.status_code == 403:
+#         print("Error: Missing or invalid API Key!")
+#         return
+#     elif api_response.status_code == 429:
+#         print("Rate Limit exceeded, Please try again later")
+#         return
+#     else:
+#         print("Could't not retrieve API data")
 
-convert_currency(709890, "KES", "USD")
-convert_currency(190000, "KES", "EUR")
-convert_currency(625500, "KES", "GBP")
+# convert_currency(709890, "KES", "USD")
+# convert_currency(190000, "KES", "EUR")
+# convert_currency(625500, "KES", "GBP")
 
 
 # 7. GitHub Repository Stats Dashboard
@@ -273,6 +273,64 @@ convert_currency(625500, "KES", "GBP")
 # Sort by stars descending
 # Print top 5 repos + total stars across all
 # Handle pagination (if >100 repos), 404 user, rate limits.
+
+import requests
+
+def repo_stats(username):
+    url = f"https://api.github.com/users/{username}/repos"
+    api_response = requests.get(url)
+
+    if api_response.status_code == 200:
+        repo_data = api_response.json()
+        repo_data = sorted(repo_data, key=lambda repo: repo["stargazers_count"], reverse=True)
+        #         # Long way
+        # def get_stars(repo):
+        #     return repo["stargazers_count"]
+
+        # # Short way (lambda)
+        # lambda repo: repo["stargazers_count"]
+        
+    elif api_response.status_code == 429:
+        print("Rate limit exceeded! Please try again later")
+        return
+    elif api_response.status_code == 404:
+        print(f"Error: {username} could not be found")
+        return
+    else:
+        print("API data could not be retrieved")
+        return
+    
+    total_stars = 0
+    for repo in repo_data:
+     total_stars = total_stars + repo["stargazers_count"]
+    
+    for i, repo in enumerate(repo_data, start=1):
+        name = repo["name"]
+        stars = repo["stargazers_count"]
+        forks = repo["forks"]
+        language = repo["language"]
+        last_updated = repo["updated_at"]
+        
+
+        print(f"{i}. {name}")
+        print(f"Stars: {stars} | Forks: {forks} | Language: {language} | Last Updated: {last_updated}")
+        print(" ")
+
+        if i == 5:
+            break
+    print(f"Total stars across all repos: {total_stars}")
+
+repo_stats("github")
+print()
+print("----------")
+print()
+repo_stats("facebook")
+print()
+print("----------")
+print()
+repo_stats("microsoft")
+
+
 
 
 # 8. IP Geolocation Lookup
