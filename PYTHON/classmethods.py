@@ -46,33 +46,33 @@ student3 = Student("Sandy", 4.0)
 # Instance method borrow(self) → increment borrowed_count if not already borrowed
 # Class method @classmethod def get_availability(cls) -> str → returns f"{cls.total_books - cls.borrowed_count} books available"
 
-class Book():
+# class Book():
 
-    total_books = 0
-    borrowed_count = 0
+#     total_books = 0
+#     borrowed_count = 0
 
-    def __init__(self, title, author):
-        self.title = title
-        self.author = author
-        self.is_borrowed = False
-        Book.total_books += 1
+#     def __init__(self, title, author):
+#         self.title = title
+#         self.author = author
+#         self.is_borrowed = False
+#         Book.total_books += 1
     
-    def borrow(self):
-        if self.is_borrowed:
-            print("This book is already borrowed")
-        else:
-            self.is_borrowed = True
-            Book.borrowed_count += 1
-            print(f"You borrowed '{self.title}' by {self.author}")
+#     def borrow(self):
+#         if self.is_borrowed:
+#             print("This book is already borrowed")
+#         else:
+#             self.is_borrowed = True
+#             Book.borrowed_count += 1
+#             print(f"You borrowed '{self.title}' by {self.author}")
     
-    @classmethod
-    def get_availability(cls):
-        available_books = cls.total_books - cls.borrowed_count
-        return f"{available_books} books available (Total: {cls.total_books}, Borrowed: {cls.borrowed_count})"
+#     @classmethod
+#     def get_availability(cls):
+#         available_books = cls.total_books - cls.borrowed_count
+#         return f"{available_books} books available (Total: {cls.total_books}, Borrowed: {cls.borrowed_count})"
 
-book1 = Book("The Alchemist", "Paulo Coelho")
-book2 = Book("Atomic Habits", "James Clear")
-book3 = Book("Rich Dad Poor Dad", "Robert Kiyosaki")
+# book1 = Book("The Alchemist", "Paulo Coelho")
+# book2 = Book("Atomic Habits", "James Clear")
+# book3 = Book("Rich Dad Poor Dad", "Robert Kiyosaki")
 
 # print(Book.get_availability())
 
@@ -80,6 +80,30 @@ book3 = Book("Rich Dad Poor Dad", "Robert Kiyosaki")
 # book2.borrow()
 # book2.borrow()
 # print(Book.get_availability())
+
+#  Bank Account Tracker
+# A bank needs to track how many accounts have been opened. 
+# Write a BankAccount class with a class variable account_count. 
+# Add a class method get_account_count() that returns the total number of accounts created. 
+# Create 3 accounts and call the method.
+
+class BankAccount():
+    total_accounts_created = 0
+
+    def __init__(self, name:str, opening_deposit:float):
+        self.name = name
+        self.opening_deposit = opening_deposit
+        BankAccount.total_accounts_created += 1
+    
+    @classmethod
+    def get_account_count(cls):
+        return f"The total accounts opened are {cls.total_accounts_created}"
+
+bank_account1 = BankAccount("Maraya", 3000)
+bank_account2 = BankAccount("Shirley", 5600)
+bank_account3 = BankAccount("Gunna", 56000)
+print(BankAccount.get_account_count())
+
 
 # 2. Configuration Manager
 # Create AppConfig with:
@@ -141,32 +165,32 @@ book3 = Book("Rich Dad Poor Dad", "Robert Kiyosaki")
 # 3. Employee Database (partial code)
 # Finish this class:
 
-class Employee:
-    all_employees = []           # class-level list
-    total_salary = 0.0           # class-level sum
+# class Employee:
+#     all_employees = []           # class-level list
+#     total_salary = 0.0           # class-level sum
 
-    def __init__(self, name, salary):
-        self.name = name
-        self.salary = salary
-        # Finish: append self to all_employees
-        # Finish: add salary to total_salary
+#     def __init__(self, name, salary):
+#         self.name = name
+#         self.salary = salary
+#         # Finish: append self to all_employees
+#         # Finish: add salary to total_salary
 
-    def get_info(self):
-        return f"{self.name}: KES {self.salary:,.2f}"
+#     def get_info(self):
+#         return f"{self.name}: KES {self.salary:,.2f}"
 
-    @classmethod
-    def add_employee(cls, name, salary):
-        # Finish: create and add new Employee using cls
-        pass
+#     @classmethod
+#     def add_employee(cls, name, salary):
+#         # Finish: create and add new Employee using cls
+#         pass
 
-    @classmethod
-    def get_average_salary(cls):
-        # Finish: return average if employees exist, else 0
-        pass
+#     @classmethod
+#     def get_average_salary(cls):
+#         # Finish: return average if employees exist, else 0
+#         pass
 
-    @classmethod
-    def get_employee_count(cls):
-        return len(cls.all_employees)
+#     @classmethod
+#     def get_employee_count(cls):
+#         return len(cls.all_employees)
 # Then: use class method to add 4 employees, print count + average salary.
 
 # 4. Inventory Stock Manager
@@ -179,36 +203,36 @@ class Employee:
 # Class method @classmethod def total_products(cls) → sum of all quantities
 # Show: create products, sell/restock, get low-stock report using class method.
 
-class Product():
+# class Product():
     
-    inventory = {} # dictionary shared by all Product objects(name, quantity)
-    {"Laptop": 35}
-    low_stock_threshold = 10
+#     inventory = {} # dictionary shared by all Product objects(name, quantity)
+#     {"Laptop": 35}
+#     low_stock_threshold = 10
 
-    def __init__(self, name, price, initial_stock):
-    # def __init__(self, name: str, price: float, initial_stock: int) #You can declare the data types of your parameters
-        self.name = name
-        self.price = price
-        Product.inventory[name]
-        self.initial_stock = initial_stock
+#     def __init__(self, name, price, initial_stock):
+#     # def __init__(self, name: str, price: float, initial_stock: int) #You can declare the data types of your parameters
+#         self.name = name
+#         self.price = price
+#         Product.inventory[name]
+#         self.initial_stock = initial_stock
     
-    def sell(self, quantity):
-        if quantity < Product.low_stock_threshold:
-            print("Product stock is Low")
-        Product.quantity -= quantity
+#     def sell(self, quantity):
+#         if quantity < Product.low_stock_threshold:
+#             print("Product stock is Low")
+#         Product.quantity -= quantity
 
-    @classmethod
-    def restock(cls, name, amount):
-        Product.quantity += amount
+#     @classmethod
+#     def restock(cls, name, amount):
+#         Product.quantity += amount
 
-    @classmethod
-    def get_low_stock_items(cls):
-        if Product.quantity < Product.low_stock_threshold:
-            return f""
+#     @classmethod
+#     def get_low_stock_items(cls):
+#         if Product.quantity < Product.low_stock_threshold:
+#             return f""
 
-    @classmethod
-    def total_products(cls):
-        pass
+#     @classmethod
+#     def total_products(cls):
+#         pass
 
 
 
