@@ -147,6 +147,64 @@
 
 # Order.get_order_count()
 
+# 5. Employee Department Roster
+# A company HR system needs to know how many employees belong to each department. 
+# Write an Employee class that tracks a class-level dictionary department_counts (e.g., {"Engineering": 3, "HR": 2}).
+# Add a class method get_department_summary() that returns the dictionary.
+# Create at least 4 employees across 2 departments.
+
+# class Employee():
+#     department_summary = {}
+
+#     def __init__(self, name, department):
+#         self.name = name
+#         self.department = department
+
+#         if self.department in Employee.department_summary:
+#             Employee.department_summary[self.department] += 1
+#         else:
+#             Employee.department_summary[self.department] = 1
+    
+#     @classmethod
+#     def get_department_summary(cls):
+#         return cls.department_summary
+
+# employee1 = Employee("Oscar", "Engineering")
+# employee2 = Employee("Erick", "HR")
+# employee3 = Employee("Diana", "Engineering")
+# employee4 = Employee("James", "HR")
+# employee5 = Employee("Brenda", "Engineering")
+
+# print(Employee.get_department_summary())
+
+# class Employee():
+#     department_summary = {}
+
+#     def __init__(self, name, department):
+#         self.name = name
+#         self.department = department
+
+#         if self.department in Employee.department_summary:
+#             Employee.department_summary[self.department] += 1
+#         else:
+#             Employee.department_summary[self.department] = 1
+        
+#     @classmethod
+#     def get_department_summary(cls):
+#         return cls.department_summary
+        
+# employee1 = Employee("Morris", "Finance")
+# employee2 = Employee("Oscar", "IT")
+# employee3 = Employee("Anne", "Content Creation")
+# employee4 = Employee("Abel", "Finance")
+# employee5 = Employee("Ian", "IT")
+# employee6 = Employee("Wahinya", "Content Creation")
+# employee7 = Employee("Erick", "Finance")
+
+# print(Employee.get_department_summary())
+
+
+
 # 2. Configuration Manager
 # Create AppConfig with:
 # Class variable settings = {} (dict)
