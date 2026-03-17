@@ -84,7 +84,7 @@
 # book2.borrow()
 # print(Book.get_availability())
 
-#  Bank Account Tracker
+# 2. Bank Account Tracker
 # A bank needs to track how many accounts have been opened. 
 # Write a BankAccount class with a class variable account_count. 
 # Add a class method get_account_count() that returns the total number of accounts created. 
@@ -107,7 +107,7 @@
 # bank_account3 = BankAccount("Gunna", 56000)
 # print(BankAccount.get_account_count())
 
-# App Config
+# 3. App Config
 # A mobile app stores a global theme setting (e.g., "dark" or "light"). 
 # Write a AppSettings class with a class variable theme = "light" 
 # and a class method set_theme(cls, new_theme) that updates the theme for the entire app. 
@@ -124,7 +124,28 @@
 # AppSettings.set_theme("dark")
 # print(AppSettings.theme)
 
+# 4. Spot the Bug
+# The following code is meant to track how many orders have been placed in an e-commerce system, 
+# but it has a bug. Identify and fix it:
 
+# class Order():
+#     order_count = 0
+
+#     def __init__(self, item:str):
+#         self.item = item
+#         Order.order_count += 1  # Bug here
+
+#     @classmethod
+#     def get_order_count(cls):
+#         print(f"Total orders: {cls.order_count}")
+
+# order1 = Order("Pants")
+# order2 = Order("Thermal")
+# order3 = Order("Sneakers")
+# order4 = Order("Jordans")
+# order5 = Order("T-shirts")
+
+# Order.get_order_count()
 
 # 2. Configuration Manager
 # Create AppConfig with:
