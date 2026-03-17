@@ -87,22 +87,40 @@ student3 = Student("Sandy", 4.0)
 # Add a class method get_account_count() that returns the total number of accounts created. 
 # Create 3 accounts and call the method.
 
-class BankAccount():
-    total_accounts_created = 0
+# class BankAccount():
+#     total_accounts_created = 0
 
-    def __init__(self, name:str, opening_deposit:float):
-        self.name = name
-        self.opening_deposit = opening_deposit
-        BankAccount.total_accounts_created += 1
+#     def __init__(self, name:str, opening_deposit:float):
+#         self.name = name
+#         self.opening_deposit = opening_deposit
+#         BankAccount.total_accounts_created += 1
     
-    @classmethod
-    def get_account_count(cls):
-        return f"The total accounts opened are {cls.total_accounts_created}"
+#     @classmethod
+#     def get_account_count(cls):
+#         return f"The total accounts opened are {cls.total_accounts_created}"
 
-bank_account1 = BankAccount("Maraya", 3000)
-bank_account2 = BankAccount("Shirley", 5600)
-bank_account3 = BankAccount("Gunna", 56000)
-print(BankAccount.get_account_count())
+# bank_account1 = BankAccount("Maraya", 3000)
+# bank_account2 = BankAccount("Shirley", 5600)
+# bank_account3 = BankAccount("Gunna", 56000)
+# print(BankAccount.get_account_count())
+
+# App Config
+# A mobile app stores a global theme setting (e.g., "dark" or "light"). 
+# Write a AppSettings class with a class variable theme = "light" 
+# and a class method set_theme(cls, new_theme) that updates the theme for the entire app. 
+# Why is a class method more appropriate here than an instance method?
+
+class AppSettings():
+    theme = "light"
+
+    @classmethod
+    def set_theme(cls, new_theme):
+        cls.theme = new_theme
+
+print(AppSettings.theme)
+AppSettings.set_theme("dark")
+print(AppSettings.theme)
+
 
 
 # 2. Configuration Manager
