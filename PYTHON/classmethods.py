@@ -203,6 +203,107 @@
 
 # print(Employee.get_department_summary())
 
+# 6. Alternative Constructors — CSV Import
+# A logistics company receives shipment data as comma-separated strings(CSV) like "PKG-001,Cairo,15.5".
+# Write a Shipment class with a regular __init__(self, tracking_id, destination, weight)
+# and a class method from_csv(cls, csv_string) that parses the string and returns a new Shipment instance. 
+# This is one of the most common real-world uses of class methods — explain why @classmethod is used instead of a static method here.
+
+# class Shipment():
+#     def __init__(self, tracking_id, destination, weight):
+#         self.tracking_id = tracking_id
+#         self.destination = destination
+#         self.weight = weight
+
+#     def get_info(self):
+#         print(f"Tracking Id: {self.tracking_id}")
+#         print(f"Destination: {self.destination}")
+#         print(f"Weight: {self.weight}kgs")
+        
+#     @classmethod
+#     def from_csv(cls, csv_string):
+#         shipment_data = csv_string.split(",")
+#         tracking_id = shipment_data[0]
+#         destination = shipment_data[1]
+#         weight = float(shipment_data[2])
+#         return cls(tracking_id, destination, weight)
+
+# print("-----SHIPMENT DETAILS-----") 
+# shipment1 = Shipment.from_csv("PKG-001,Cairo,7890.76")
+# shipment2 = Shipment.from_csv("PKG-002,Kenya,157.8")
+# shipment3 = Shipment.from_csv("DKG-001,Egypt,673.4")
+# shipment4 = Shipment.from_csv("DKG-002,South Africa,829.87")
+# shipment5 = Shipment.from_csv("SKG-001,Texas,433")
+# shipment1.get_info()
+# print()
+# shipment2.get_info()
+# print()
+# shipment3.get_info()
+# print()
+# shipment4.get_info()
+# print()
+# shipment5.get_info()
+# print()
+
+# 7. Session Manager
+# A web app needs to enforce that no more than 5 active user sessions exist at once.
+# Write a Session class that tracks active sessions using a class variable.
+# Add a class method can_create_session(cls) that returns True or False,
+# and modify __init__ to raise a ValueError with a meaningful message if the limit is exceeded.
+# Test it by trying to create 6 sessions.
+
+# class Session():
+#     active_sessions = 0
+#     limit = 5
+#     def __init__(self, user_id:int, username:str, limit=5):
+#         self.user_id = user_id
+#         self.username = username
+#         if Session.can_create_session():
+#             Session.active_sessions += 1
+#         else:
+#             raise ValueError(f"Session limit of {Session.limit} reached, cannot create new session")
+#     @classmethod
+#     def can_create_session(cls):
+#         # if Session.active_sessions >= Session.limit :
+#         #     return False
+#         # else:
+#         #     return True
+#         return Session.active_sessions < Session.limit
+    
+# try:
+#     session1 = Session(1,"Oscar")
+#     session2 = Session(2, "Morris")
+#     session3 = Session(3, "Mlewa")
+#     session4 = Session(4, "Michael")
+#     session5 = Session(5, "Catherine")
+#     # session6 = Session(6, "Winfred")
+# except ValueError as e:
+#     print(e)
+
+# 8. Inventory System with Low Stock Alerts
+# A retail store tracks products. Write a Product class that stores name, price, and stock. Use class variables to track total_products and total_inventory_value. Add class methods:
+# get_total_products() — returns the count
+# get_inventory_value() — returns the total value (sum of price × stock for all products)
+# low_stock_alert(cls, threshold) — but wait, this method needs access to all instances, not just class variables. What problem do you run into, and how would you redesign the class to solve it?
+
+# 9. Singleton Pattern — Database Connection
+# In production systems, you never want more than one database connection open at a time (this is called the Singleton pattern). Implement a DatabaseConnection class where:
+
+# A class variable _instance holds the single connection
+# A class method get_connection(cls) returns the existing instance if one exists, or creates a new one if not
+# Each instance has a connection_id (use uuid or a simple counter)
+
+# Test it by calling get_connection() 3 times and confirm all 3 return the same instance.
+
+# 10. Polymorphism with Class Methods — Multi-Format Report
+# A data analytics platform exports reports in different formats. You have a base class Report with a class method generate(cls, data). Create two subclasses: PDFReport and CSVReport, each overriding generate() to return a string simulating that format. Then write a function export_report(report_class, data) that accepts any report class and calls its generate() method. This demonstrates how class methods enable polymorphic behavior — explain what would break if generate() were a static method instead.
+
+# 11. Factory + Registry Pattern — Plugin System
+# You're building a notification system that supports multiple channels: Email, SMS, and Push. Design a Notification base class with:
+
+# A class variable _registry = {} — a dictionary mapping channel names to classes
+# A class method register(cls, channel_name) used as a decorator to register subclasses
+# A class method create(cls, channel_name, message) that looks up the registry and instantiates the right subclass
 
 
 # 2. Configuration Manager
