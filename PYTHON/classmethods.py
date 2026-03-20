@@ -255,30 +255,28 @@
 # class Session():
 #     active_sessions = 0
 #     limit = 5
-#     def __init__(self, user_id:int, username:str, limit=5):
+#     def __init__(self, user_id:int, username:str):
 #         self.user_id = user_id
 #         self.username = username
 #         if Session.can_create_session():
 #             Session.active_sessions += 1
 #         else:
-#             raise ValueError(f"Session limit of {Session.limit} reached, cannot create new session")
+#             raise ValueError(f"Session Limit of {Session.limit} exceeded, can't create a new session")
+    
 #     @classmethod
 #     def can_create_session(cls):
-#         # if Session.active_sessions >= Session.limit :
-#         #     return False
-#         # else:
-#         #     return True
 #         return Session.active_sessions < Session.limit
-    
+
 # try:
-#     session1 = Session(1,"Oscar")
-#     session2 = Session(2, "Morris")
-#     session3 = Session(3, "Mlewa")
-#     session4 = Session(4, "Michael")
-#     session5 = Session(5, "Catherine")
-#     # session6 = Session(6, "Winfred")
+#     session1 = Session(1, "Oscar")
+#     session2 = Session(2, "Rachael")
+#     session3 = Session(3, "Yula")
+#     session4 = Session(4, "Ashley")
+#     session5 = Session(5, "Claire")
+#     session6 = Session(6, "Brienna")
 # except ValueError as e:
 #     print(e)
+
 
 # 8. Inventory System with Low Stock Alerts
 # A retail store tracks products. Write a Product class that stores name, price, and stock. Use class variables to track total_products and total_inventory_value. Add class methods:
