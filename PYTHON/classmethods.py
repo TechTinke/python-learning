@@ -279,10 +279,48 @@
 
 
 # 8. Inventory System with Low Stock Alerts
-# A retail store tracks products. Write a Product class that stores name, price, and stock. Use class variables to track total_products and total_inventory_value. Add class methods:
+# A retail store tracks products.
+# Write a Product class that stores name, price, and stock.
+# Use class variables to track total_products and total_inventory_value.
+# Add class methods:
 # get_total_products() — returns the count
 # get_inventory_value() — returns the total value (sum of price × stock for all products)
 # low_stock_alert(cls, threshold) — but wait, this method needs access to all instances, not just class variables. What problem do you run into, and how would you redesign the class to solve it?
+
+class Product():
+    total_products = 0
+    total_inventory_value = 0
+    products = []
+
+    def __init__(self, name, price, stock):
+        self.name = name
+        self.price = price
+        self.stock = stock
+        Product.total_products += 1
+        Product.total_inventory_value += price * stock
+        Product.products.append(self)
+    
+    @classmethod
+    def get_total_products(cls):
+        print(f"Total Products: {cls.total_products}")
+    
+    @classmethod
+    def get_inventory_value(cls):
+        print(f"Inventory Value: {cls.total_inventory_value}")
+    @classmethod
+    def low_stock_alert(cls, threshold):
+        for each_product in Product.products:
+            if each_product.stock < threshold:
+                print(f"{each_product.name}s are low on stock! Current Stock: {each_product.stock}")
+
+product1 = Product("iPhone", 56000, 48)
+product2 = Product("Samsung", 44500, 76)
+product3 = Product("Google Pixel", 99690, 45)
+
+print("-----INVENTORY SYSTEM-----")
+Product.get_total_products()
+Product.get_inventory_value()
+Product.low_stock_alert(90)
 
 # 9. Singleton Pattern — Database Connection
 # In production systems, you never want more than one database connection open at a time (this is called the Singleton pattern). Implement a DatabaseConnection class where:
