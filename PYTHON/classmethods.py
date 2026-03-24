@@ -329,33 +329,25 @@
 # A class method get_connection(cls) returns the existing instance if one exists, or creates a new one if not
 # Each instance has a connection_id (use uuid or a simple counter)
 
-class DatabaseConnection():
-    _instance = None
-    connection_count = 0
+# class DatabaseConnection():
+#     _instance = None
+#     connection_count = 0
 
-    def __init__(self):
-        DatabaseConnection.connection_count += 1
-        self.connection_id = DatabaseConnection.connection_count
+#     def __init__(self):
+#         DatabaseConnection.connection_count += 1
+#         self.connection_id = DatabaseConnection.connection_count
     
-    @classmethod
-    def get_connection(cls):
-        if cls._instance == None:
-            cls._instance = cls()
-            return cls._instance
-        else:
-            return cls._instance
-    def get_connection(cls):
-        if cls._instance is None:
-            cls._instance = cls()
-        return cls._instance
+#     @classmethod
+#     def get_connection(cls):
+#         if cls._instance is None:
+#             cls._instance = cls()
+#         return cls._instance
 
-conn1 = DatabaseConnection.get_connection()
-conn2 = DatabaseConnection.get_connection()
-conn3 = DatabaseConnection.get_connection()
+# conn1 = DatabaseConnection.get_connection()
+# conn2 = DatabaseConnection.get_connection()
+# conn3 = DatabaseConnection.get_connection()
+# print(conn1 == conn2 == conn3)
 
-DatabaseConnection.get_connection()
-DatabaseConnection.get_connection()
-DatabaseConnection.get_connection()
 # Test it by calling get_connection() 3 times and confirm all 3 return the same instance.
 
 # 10. Polymorphism with Class Methods — Multi-Format Report
