@@ -46,14 +46,40 @@
 # cat.speak()
 # mouse.speak()
 
-# #WORK TO BE DONE
-# Banking System – Account Types
-# Create a base class BankAccount with:
-# __init__(self, account_number, holder, balance=0)
-# deposit(amount)
-# withdraw(amount) (check sufficient balance)
-# get_balance()
-# Create two child classes:
-# SavingsAccount(BankAccount) → adds interest_rate attribute, method add_yearly_interest()
-# CheckingAccount(BankAccount) → adds overdraft_limit, override withdraw() to allow overdraft up to limit
-# Show creation of one savings and one checking account, do deposits/withdrawals/interest.
+# PRACTICE
+# 1. Vehicle Fleet
+# A transport company manages different types of vehicles.
+# Write a Vehicle parent class with attributes make, model, and year,
+# and a method get_info() that returns the vehicle details.
+# Create two child classes Car and Truck 
+# Car has an additional method play_music() 
+# and Truck has an additional method load_cargo().
+# Create an instance of each and call all their methods.
+
+class Vehicle():
+    def __init__(self, make, model, year):
+        self.make = make
+        self.model = model
+        self.year = year
+    def get_info(self):
+        print(f"Year: {self.year}")
+        print(f"Model: {self.model}")
+        print(f"Make: {self.make}")
+
+class Car(Vehicle):
+    def play_music(self):
+        print("The Car is playing some music")
+
+class Truck(Vehicle):
+    def load_cargo(self):
+        print("The Truck is loading some cargo")
+
+car = Car("Lamborghini", "Urus", 2024)
+truck = Truck("Volvo", "GTS", 2027)
+print("------CAR INFO-----")
+car.get_info()
+car.play_music()
+print(" ")
+print("-----TRUCK INFO-----")
+truck.get_info()
+truck.load_cargo()    
