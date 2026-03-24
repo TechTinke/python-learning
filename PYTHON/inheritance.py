@@ -56,30 +56,53 @@
 # and Truck has an additional method load_cargo().
 # Create an instance of each and call all their methods.
 
-class Vehicle():
-    def __init__(self, make, model, year):
-        self.make = make
-        self.model = model
-        self.year = year
-    def get_info(self):
-        print(f"Year: {self.year}")
-        print(f"Model: {self.model}")
-        print(f"Make: {self.make}")
+# class Vehicle():
+#     def __init__(self, make, model, year):
+#         self.make = make
+#         self.model = model
+#         self.year = year
+#     def get_info(self):
+#         print(f"Year: {self.year}")
+#         print(f"Model: {self.model}")
+#         print(f"Make: {self.make}")
 
-class Car(Vehicle):
-    def play_music(self):
-        print("The Car is playing some music")
+# class Car(Vehicle):
+#     def play_music(self):
+#         print("The Car is playing some music")
 
-class Truck(Vehicle):
-    def load_cargo(self):
-        print("The Truck is loading some cargo")
+# class Truck(Vehicle):
+#     def load_cargo(self):
+#         print("The Truck is loading some cargo")
 
-car = Car("Lamborghini", "Urus", 2024)
-truck = Truck("Volvo", "GTS", 2027)
-print("------CAR INFO-----")
-car.get_info()
-car.play_music()
-print(" ")
-print("-----TRUCK INFO-----")
-truck.get_info()
-truck.load_cargo()    
+# car = Car("Lamborghini", "Urus", 2024)
+# truck = Truck("Volvo", "GTS", 2027)
+# print("------CAR INFO-----")
+# car.get_info()
+# car.play_music()
+# print(" ")
+# print("-----TRUCK INFO-----")
+# truck.get_info()
+# truck.load_cargo()    
+
+# 2. Spot the Bug - Banking System
+# The following code is meant to model a banking system but throws an error.
+# Identify and fix it:
+
+# class Account():
+#     def __init__(self, owner, balance):
+#         self.owner = owner
+#         self.balance = balance
+    
+#     def get_info(self):
+#         return f"{self.owner}: {self.balance}"
+
+# class SavingsAccount(Account):
+#     def __init__(self, owner, balance, interest_rate):
+#         super().__init__(owner, balance)
+#         self.interest_rate = interest_rate
+    
+#     def get_interest(self):
+#         return self.balance * self.interest_rate
+
+# savings = SavingsAccount("Oscar", 5000, 0.05)
+# print(savings.get_interest())
