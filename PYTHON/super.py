@@ -1,68 +1,66 @@
 #super() = Function used in a child class(subclass) to call methods from a parent class(super class).
 #          Allows you to extend the functionality of the inherited methods
-import math
-class Shape:
-    def __init__(self, color, is_filled):
-        self.color = color
-        self.is_filled = is_filled
+# import math
+# class Shape:
+#     def __init__(self, color, is_filled):
+#         self.color = color
+#         self.is_filled = is_filled
     
-    def describe(self):
-        print(f"It is {self.color} and {'filled' if self.is_filled else 'not filled'}")
+#     def describe(self):
+#         print(f"It is {self.color} and {'filled' if self.is_filled else 'not filled'}")
 
-class Circle(Shape):
-    def __init__(self, color, is_filled, radius):
-        super().__init__(color, is_filled)
-        self.radius = radius
+# class Circle(Shape):
+#     def __init__(self, color, is_filled, radius):
+#         super().__init__(color, is_filled)
+#         self.radius = radius
 
-    # METHOD OVERWRITING
-    def describe(self):
-        print(f"It is a circle with an area of {3.14 * self.radius *self.radius}squarecm")
-        super().describe()
+#     # METHOD OVERWRITING
+#     def describe(self):
+#         print(f"It is a circle with an area of {3.14 * self.radius *self.radius}squarecm")
+#         super().describe()
 
-class Square(Shape):
-    def __init__(self, color, is_filled, width):
-        super().__init__(color, is_filled)
-        self.width = width
+# class Square(Shape):
+#     def __init__(self, color, is_filled, width):
+#         super().__init__(color, is_filled)
+#         self.width = width
     
 
-class Triangle(Shape):
-    def __init__(self, color, is_filled, width, height):
-        super().__init__(color, is_filled)
-        self.width = width
-        self.height = height
+# class Triangle(Shape):
+#     def __init__(self, color, is_filled, width, height):
+#         super().__init__(color, is_filled)
+#         self.width = width
+#         self.height = height
 
-circle = Circle("Red", True, 5)
-square = Square("Blue", False, 6)
-triangle = Triangle("Yellow", True, 7, 8)
+# circle = Circle("Red", True, 5)
+# square = Square("Blue", False, 6)
+# triangle = Triangle("Yellow", True, 7, 8)
 
-print(circle.color)
-print(circle.is_filled)
-print(f"{circle.radius}cm")
+# print(circle.color)
+# print(circle.is_filled)
+# print(f"{circle.radius}cm")
 
-print(" ")
+# print(" ")
 
-print(square.color)
-print(square.is_filled)
-print(f"{square.width}cm")
+# print(square.color)
+# print(square.is_filled)
+# print(f"{square.width}cm")
 
-print(" ")
+# print(" ")
 
-print(triangle.color)
-print(triangle.is_filled)
-print(f"{triangle.width}cm")
-print(f"{triangle.height}cm")
+# print(triangle.color)
+# print(triangle.is_filled)
+# print(f"{triangle.width}cm")
+# print(f"{triangle.height}cm")
 
-circle.describe()
-square.describe()
-triangle.describe()
+# circle.describe()
+# square.describe()
+# triangle.describe()
 
-#WORK TO BE DONE
-# 1. Bank Account Hierarchy
-# Create base class BankAccount:
-# __init__(self, account_number, holder, balance=0)
-# deposit(self, amount) → adds to balance, prints confirmation
-# withdraw(self, amount) → subtracts if possible
-# Create SavingsAccount(BankAccount):
-# __init__: use super() to set account details + add interest_rate
-# Override deposit: call parent deposit + print "Interest will apply at {interest_rate}%"
-# Show: create a savings account, deposit money, observe both messages.
+# PRACTICE
+# 1. Online Store Product
+# An online store has a Product parent class with __init__ taking name and price,
+# and a get_info() method that prints both.
+# Create a child class DigitalProduct with an additional file_size attribute (in MB).
+# Use super().__init__() to avoid rewriting the parent's logic.
+# Create an instance and call get_info().
+# Then answer: what would break if you removed super().__init__()?
