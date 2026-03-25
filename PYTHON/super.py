@@ -94,7 +94,7 @@ class Person():
 
 class Doctor(Person):
     def __init__(self, name, age, specialization):
-        super().__init__(name)
+        super().__init__(name, age)
         self.specialization = specialization
     
     def get_info(self):
