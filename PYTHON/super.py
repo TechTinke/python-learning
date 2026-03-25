@@ -77,6 +77,10 @@ class Product():
 class DigitalProduct(Product):
     def __init__(self, name, price, file_size):
         super().__init__(name, price)
-
+        self.file_size = file_size
+    
+    def get_info(self):
+        super().get_info()
+        print(f"File Size: {self.file_size} GB")
 SamsungTv = DigitalProduct("Samsung LED TV", 890000, 56)
 SamsungTv.get_info()
