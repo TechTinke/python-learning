@@ -64,3 +64,19 @@
 # Use super().__init__() to avoid rewriting the parent's logic.
 # Create an instance and call get_info().
 # Then answer: what would break if you removed super().__init__()?
+
+class Product():
+    def __init__(self, name, price):
+        self.name = name
+        self.price = price
+    
+    def get_info(self):
+        print(f"Name: {self.name}")
+        print(f"Price: Kshs.{self.price:.2f}")
+
+class DigitalProduct(Product):
+    def __init__(self, name, price, file_size):
+        super().__init__(name, price)
+
+SamsungTv = DigitalProduct("Samsung LED TV", 890000, 56)
+SamsungTv.get_info()
