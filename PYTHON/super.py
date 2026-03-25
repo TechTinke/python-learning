@@ -110,23 +110,71 @@
 # to include "⚠️ FRAGILE — Handle with care" at the end — without rewriting the parent's logic.
 # This is the difference between overriding (replacing) and extending (adding to) a method.
 
-class Package():
-    def __init__(self, tracking_id:int):
-        self.tracking_id = tracking_id
+# class Package():
+#     def __init__(self, tracking_id:int):
+#         self.tracking_id = tracking_id
     
-    def get_label(self):
-        print(f"Package: {self.tracking_id}")
+#     def get_label(self):
+#         print(f"Package: {self.tracking_id}")
 
-class FragilePackage(Package):
+# class FragilePackage(Package):
 
-    # EXTENDING — builds on top of the parent method
-    def get_label(self):
-        super().get_label()
-        print("⚠️FRAGILE — Handle with care")
+#     # EXTENDING — builds on top of the parent method
+#     def get_label(self):
+#         super().get_label()
+#         print("⚠️FRAGILE — Handle with care")
     
-    # OVERRIDING — replaces the parent method entirely
-    # def get_label(self):
-        # print("⚠️FRAGILE — Handle with care")  # Parent output is GONE
+#     # OVERRIDING — replaces the parent method entirely
+#     # def get_label(self):
+#         # print("⚠️FRAGILE — Handle with care")  # Parent output is GONE
 
-refrigerator = FragilePackage(9)
-refrigerator.get_label()
+# refrigerator = FragilePackage(9)
+# refrigerator.get_label()
+
+# 4. Hotel Booking System
+# A hotel manages different room types.
+# Write a Room parent class with room_number, price_per_night, and a get_booking_info() method.
+# Create two child classes — StandardRoom with a has_breakfast boolean,
+# and SuiteRoom with a butler_service boolean and a floor attribute.
+# Both should use super().__init__() and override get_booking_info() using super()
+# to extend the parent's output.
+# Book one of each and print their info.
+
+class Room():
+    def __init__(self, room_number, price_per_night):
+        self.room_number = room_number
+        self.price_per_night = price_per_night
+    
+    def booking_info(self):
+        print(f"Room Number: {self.room_number}")
+        print(f"Price Per Night: {self.price_per_night}")
+
+class StandardRoom(Room):
+    def __init__(self, room_number, price_per_night, has_breakfast=True):
+        super().__init__(room_number, price_per_night)
+        self.has_breakfast = has_breakfast
+    
+    def booking_info(self):
+        super().booking_info()
+        print(f"Has Breakfast: {self.has_breakfast}")
+
+class SuiteRoom(Room):
+    def __init__(self, room_number, price_per_night, floor, butler_service=True):
+        super().__init__(room_number, price_per_night)
+        self.floor = floor
+        self.butler_service = butler_service
+    
+    def booking_info(self):
+        super().booking_info()
+        print(f"Floor: {self.floor}")
+        print(f"Butler Service: {self.butler_service}")
+
+standardroom = StandardRoom(9, 9560, True)
+suiteroom = SuiteRoom(8, 15600, 2, True)
+
+
+print("-----StandardRoom Booking Info-----")
+standardroom.booking_info()
+print(" ")
+print("-----SuiteRoom Booking Info-----")
+suiteroom.booking_info()
