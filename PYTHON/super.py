@@ -140,41 +140,51 @@
 # to extend the parent's output.
 # Book one of each and print their info.
 
-class Room():
-    def __init__(self, room_number, price_per_night):
-        self.room_number = room_number
-        self.price_per_night = price_per_night
+# class Room():
+#     def __init__(self, room_number, price_per_night):
+#         self.room_number = room_number
+#         self.price_per_night = price_per_night
     
-    def booking_info(self):
-        print(f"Room Number: {self.room_number}")
-        print(f"Price Per Night: {self.price_per_night}")
+#     def booking_info(self):
+#         print(f"Room Number: {self.room_number}")
+#         print(f"Price Per Night: {self.price_per_night}")
 
-class StandardRoom(Room):
-    def __init__(self, room_number, price_per_night, has_breakfast=True):
-        super().__init__(room_number, price_per_night)
-        self.has_breakfast = has_breakfast
+# class StandardRoom(Room):
+#     def __init__(self, room_number, price_per_night, has_breakfast=True):
+#         super().__init__(room_number, price_per_night)
+#         self.has_breakfast = has_breakfast
     
-    def booking_info(self):
-        super().booking_info()
-        print(f"Has Breakfast: {self.has_breakfast}")
+#     def booking_info(self):
+#         super().booking_info()
+#         print(f"Has Breakfast: {self.has_breakfast}")
 
-class SuiteRoom(Room):
-    def __init__(self, room_number, price_per_night, floor, butler_service=True):
-        super().__init__(room_number, price_per_night)
-        self.floor = floor
-        self.butler_service = butler_service
+# class SuiteRoom(Room):
+#     def __init__(self, room_number, price_per_night, floor, butler_service=True):
+#         super().__init__(room_number, price_per_night)
+#         self.floor = floor
+#         self.butler_service = butler_service
     
-    def booking_info(self):
-        super().booking_info()
-        print(f"Floor: {self.floor}")
-        print(f"Butler Service: {self.butler_service}")
+#     def booking_info(self):
+#         super().booking_info()
+#         print(f"Floor: {self.floor}")
+#         print(f"Butler Service: {self.butler_service}")
 
-standardroom = StandardRoom(9, 9560, True)
-suiteroom = SuiteRoom(8, 15600, 2, True)
+# standardroom = StandardRoom(9, 9560, True)
+# suiteroom = SuiteRoom(8, 15600, 2, True)
 
 
-print("-----StandardRoom Booking Info-----")
-standardroom.booking_info()
-print(" ")
-print("-----SuiteRoom Booking Info-----")
-suiteroom.booking_info()
+# print("-----StandardRoom Booking Info-----")
+# standardroom.booking_info()
+# print(" ")
+# print("-----SuiteRoom Booking Info-----")
+# suiteroom.booking_info()
+
+# 5. super() in Multiple Method Types
+# A fitness app tracks different workout types.
+# Write a Workout parent class with __init__ taking duration and calories_burned,
+# an instance method get_summary(), and a class method get_type() returning "General Workout".
+# Create a child class HIITWorkout that:
+# Uses super().__init__() in __init__ and adds rounds
+# Extends get_summary() using super() to add round info
+# Overrides the class method get_type() using super() to return "HIIT — " + super().get_type()
+# This shows super() works across all method types, not just __init__.
