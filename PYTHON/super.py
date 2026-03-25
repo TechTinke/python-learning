@@ -65,22 +65,40 @@
 # Create an instance and call get_info().
 # Then answer: what would break if you removed super().__init__()?
 
-class Product():
-    def __init__(self, name, price):
-        self.name = name
-        self.price = price
+# class Product():
+#     def __init__(self, name, price):
+#         self.name = name
+#         self.price = price
     
-    def get_info(self):
-        print(f"Name: {self.name}")
-        print(f"Price: Kshs.{self.price:.2f}")
+#     def get_info(self):
+#         print(f"Name: {self.name}")
+#         print(f"Price: Kshs.{self.price:.2f}")
 
-class DigitalProduct(Product):
-    def __init__(self, name, price, file_size):
-        super().__init__(name, price)
-        self.file_size = file_size
+# class DigitalProduct(Product):
+#     def __init__(self, name, price, file_size):
+#         super().__init__(name, price)
+#         self.file_size = file_size
+    
+#     def get_info(self):
+#         super().get_info()
+#         print(f"File Size: {self.file_size} GB")
+# SamsungTv = DigitalProduct("Samsung LED TV", 890000, 56)
+# SamsungTv.get_info()
+
+# 2. Spot the Bug
+# The following code models a hospital system but throws an error. Identify and fix it:
+class Person():
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+class Doctor(Person):
+    def __init__(self, name, age, specialization):
+        super().__init__(name)
+        self.specialization = specialization
     
     def get_info(self):
-        super().get_info()
-        print(f"File Size: {self.file_size} GB")
-SamsungTv = DigitalProduct("Samsung LED TV", 890000, 56)
-SamsungTv.get_info()
+        return f"Dr. {self.name}, Age: {self.age}, Specialization: {self.specialization}"
+
+doctor = Doctor("Ahmed", 45, "Cardiology")
+print(doctor.get_info())
