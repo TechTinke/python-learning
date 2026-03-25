@@ -87,18 +87,25 @@
 
 # 2. Spot the Bug
 # The following code models a hospital system but throws an error. Identify and fix it:
-class Person():
-    def __init__(self, name, age):
-        self.name = name
-        self.age = age
+# class Person():
+#     def __init__(self, name, age):
+#         self.name = name
+#         self.age = age
 
-class Doctor(Person):
-    def __init__(self, name, age, specialization):
-        super().__init__(name, age)
-        self.specialization = specialization
+# class Doctor(Person):
+#     def __init__(self, name, age, specialization):
+#         super().__init__(name, age)
+#         self.specialization = specialization
     
-    def get_info(self):
-        return f"Dr. {self.name}, Age: {self.age}, Specialization: {self.specialization}"
+#     def get_info(self):
+#         return f"Dr. {self.name}, Age: {self.age}, Specialization: {self.specialization}"
 
-doctor = Doctor("Ahmed", 45, "Cardiology")
-print(doctor.get_info())
+# doctor = Doctor("Ahmed", 45, "Cardiology")
+# print(doctor.get_info())
+
+# 3. Method Extension with super()
+# A logistics company has a Package parent class with
+# a get_label() method that returns "Package: {tracking_id}".
+# Create a child class FragilePackage that extends get_label() using super()
+# to include "⚠️ FRAGILE — Handle with care" at the end — without rewriting the parent's logic.
+# This is the difference between overriding (replacing) and extending (adding to) a method.
