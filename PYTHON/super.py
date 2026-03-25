@@ -109,3 +109,24 @@
 # Create a child class FragilePackage that extends get_label() using super()
 # to include "⚠️ FRAGILE — Handle with care" at the end — without rewriting the parent's logic.
 # This is the difference between overriding (replacing) and extending (adding to) a method.
+
+class Package():
+    def __init__(self, tracking_id:int):
+        self.tracking_id = tracking_id
+    
+    def get_label(self):
+        print(f"Package: {self.tracking_id}")
+
+class FragilePackage(Package):
+
+    # EXTENDING — builds on top of the parent method
+    def get_label(self):
+        super().get_label()
+        print("⚠️FRAGILE — Handle with care")
+    
+    # OVERRIDING — replaces the parent method entirely
+    # def get_label(self):
+        # print("⚠️FRAGILE — Handle with care")  # Parent output is GONE
+
+refrigerator = FragilePackage(9)
+refrigerator.get_label()
