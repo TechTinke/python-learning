@@ -275,3 +275,12 @@
 # realto.get_stats()
 # print(" ")
 # salto.get_stats()
+
+# 7. E-Commerce Discount System
+# An e-commerce platform applies different discount rules.
+# Write a BasePrice class with price and a get_final_price() returning the price as-is.
+# Create a chain of discount classes — MemberDiscount(BasePrice) applying 10% off using super().get_final_price()
+# and FlashSaleDiscount(MemberDiscount) applying an additional 20% off on top.
+# Show that the discounts stack by calling get_final_price() on a FlashSaleDiscount instance
+# and tracing exactly how super() chains through each level to produce the final price.
+
