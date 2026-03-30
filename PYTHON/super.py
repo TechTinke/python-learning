@@ -243,3 +243,35 @@
 # and super().get_stats() so the final output builds on every level.
 # Trace through exactly what happens when EliteWarrior.get_stats() is called
 # — which get_stats() runs first?
+
+class Character():
+    def __init__(self, name, health):
+        self.name = name
+        self.health = health
+    def get_stats(self):
+        print(f"Name: {self.name}")
+        print(f"Health: {self.health}")
+
+class Warrior(Character):
+    def __init__(self, name, health, weapon):
+        super().__init__(name, health)
+        self.weapon = weapon
+    def get_stats(self):
+        super().get_stats()
+        print(f"Weapon: {self.weapon}")
+class EliteWarrior(Warrior):
+    def __init__(self, name, health, weapon, armor):
+        super().__init__(name, health, weapon)
+        self.armor = armor
+    def get_stats(self):
+        super().get_stats()
+        print(f"Armor: {self.armor}")
+
+rapunzo = Character("Rapunzo", 62)
+realto = Warrior("Realto", 78, "Butcher's Knife")
+salto = EliteWarrior("Salto", 99, "Malet", "Body Armor")
+rapunzo.get_stats()
+print(" ")
+realto.get_stats()
+print(" ")
+salto.get_stats()
