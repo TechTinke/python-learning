@@ -188,3 +188,48 @@
 # Extends get_summary() using super() to add round info
 # Overrides the class method get_type() using super() to return "HIIT — " + super().get_type()
 # This shows super() works across all method types, not just __init__.
+
+
+class Workout():
+    def __init__(self, duration, calories_burned):
+        self.duration = duration
+        self.calories_burned = calories_burned
+    
+    def get_summary(self):
+        print(f"Duration: {self.duration} mins")
+        print(f"Calories Burned: {self.calories_burned} kcal")
+
+    @classmethod
+    def get_type(cls):
+        return "General Workout"
+
+class HIITWorkout(Workout):
+    def __init__(self, duration, calories_burned, rounds):
+        super().__init__(duration, calories_burned)
+        self.rounds = rounds
+
+    def get_summary(self):
+        super().get_summary()
+        print(f"Rounds: {self.rounds}")
+
+    @classmethod
+    def get_type(cls):
+        return "HIIT — " + super(HIITWorkout, cls).get_type()
+
+workout1 = Workout(67, 147)
+workout2 = Workout(89, 286)
+hiitworkout1 = HIITWorkout(90, 300, 2)
+hiitworkout2 = HIITWorkout(78, 245, 1)
+print("-----GENERAL WORKOUTS-----")
+print(workout1.get_type())
+workout1.get_summary()
+print(" ")
+print(workout2.get_type())
+workout2.get_summary()
+print(" ")
+print("-----HIIT WORKOUTS-----")
+print(hiitworkout1.get_type())
+hiitworkout1.get_summary()
+print(" ")
+print(hiitworkout2.get_type())
+hiitworkout2.get_summary()
