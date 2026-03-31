@@ -374,3 +374,9 @@
 # print("---SALARY RAISES---")
 # rachael.apply_raise(50)
 
+# 9. super() vs Direct Parent Call
+# A delivery system has three classes — Delivery, ExpressDelivery(Delivery), and SameDayDelivery(ExpressDelivery).
+# Implement the same system twice — once using super()
+# and once calling the parent class directly by name (e.g. Delivery.__init__(self, ...)).
+# Then change ExpressDelivery to inherit from a different class and observe what breaks in each version.
+# This demonstrates why super() is always preferred over hardcoding the parent class name — explain the difference in your own words.
