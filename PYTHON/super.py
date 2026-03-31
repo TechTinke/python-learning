@@ -303,10 +303,74 @@
 #         super().__init__(price)
     
 #     def get_final_price(self):
-#         discounted = super().get_final_price() * 0.80
+        # discounted = super().get_final_price() * 0.80
 #         print(f"After FlashSale Discount(20%): {discounted:.2f}")
 
 # flashsalediscount = FlashSaleDiscount(67900)
 # print("-----PRICE BREAKDOWN-----")
 # print(f"Original Price: {flashsalediscount.price}")
 # flashsalediscount.get_final_price()
+
+
+# 8. School Management System
+# A school manages different types of staff.
+# Write a StaffMember parent class with name, employee_id, and salary,
+# and methods get_info() and apply_raise(percentage).
+# Create child classes Teacher (adds subject and grade_level) and
+# Administrator (adds department and office_number).
+# Both should extend get_info() with super() and override apply_raise() — 
+# Teacher gets an additional 5% bonus on top of the standard raise,
+# Administrator gets an additional 3%.
+# Use super().apply_raise() to avoid rewriting the raise logic.
+# Test with a 10% raise for both.
+
+class StaffMember():
+    def __init__(self, name, employee_id, salary):
+        self.name = name
+        self.employee_id = employee_id
+        self.salary = salary
+    def get_info(self):
+        print(f"Name: {self.name}")
+        print(f"Employee ID: {self.employee_id}")
+        print(f"Salary: {self.salary}")
+    def apply_raise(self, percentage):
+        rise = self.salary * percentage/100
+        new_salary = self.salary + rise
+        print(f"New Salary(After Raise): {new_salary}")
+        return new_salary
+class Teacher(StaffMember):
+    def __init__(self, name, employee_id, salary, subject, grade_level):
+        super().__init__(name, employee_id, salary)
+        self.subject = subject
+        self.grade_level = grade_level
+    def get_info(self):
+        super().get_info()
+        print(f"Subject: {self.subject}")
+        print(f"Grade Level: {self.grade_level}")
+    def apply_raise(self, percentage):
+        new_base_salary = super().apply_raise(percentage)
+        bonus =  new_base_salary * 0.05
+        new_salary = new_base_salary + bonus
+        print(f"New Salary(After Bonus): {new_salary:.2f}")
+
+class Administrator(StaffMember):
+    def __init__(self, name, employee_id, salary, department, office_number):
+        super().__init__(name, employee_id, salary)
+        self.department = department
+        self.office_number = office_number
+    def get_info(self):
+        super().get_info()
+        print(f"Department: {self.department}")
+        print(f"Office No.: {self.office_number}")
+    def apply_raise(self, percentage):
+        new_base_salary = super().apply_raise(percentage)
+        new_salary = new_base_salary * 0.03
+        print(f"New Salary(After Bonus): {new_salary:.2f}")
+
+rachael = Teacher("Rachael", 373, 167000, "Physiology", "A2")
+print("-----EMPLOYEE DETAILS-----")
+rachael.get_info()
+print(" ")
+print("---SALARY RAISES---")
+rachael.apply_raise(50)
+
