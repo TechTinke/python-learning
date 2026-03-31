@@ -284,29 +284,29 @@
 # Show that the discounts stack by calling get_final_price() on a FlashSaleDiscount instance
 # and tracing exactly how super() chains through each level to produce the final price.
 
-class BasePrice():
-    def __init__(self, price):
-        self.price = price
+# class BasePrice():
+#     def __init__(self, price):
+#         self.price = price
     
-    def get_final_price(self):
-        return self.price
+#     def get_final_price(self):
+#         return self.price
 
-class MemberDiscount(BasePrice):
-    def __init__(self, price):
-        super().__init__(price)
-    def get_final_price(self):
-        discounted = super().get_final_price() * 0.90
-        print(f"After Member Discount(10%): {discounted:.2f}")
-        return discounted
-class FlashSaleDiscount(MemberDiscount):
-    def __init__(self, price):
-        super().__init__(price)
+# class MemberDiscount(BasePrice):
+#     def __init__(self, price):
+#         super().__init__(price)
+#     def get_final_price(self):
+#         discounted = super().get_final_price() * 0.90
+#         print(f"After Member Discount(10%): {discounted:.2f}")
+#         return discounted
+# class FlashSaleDiscount(MemberDiscount):
+#     def __init__(self, price):
+#         super().__init__(price)
     
-    def get_final_price(self):
-        discounted = super().get_final_price() * 0.80
-        print(f"After FlashSale Discount(20%): {discounted:.2f}")
+#     def get_final_price(self):
+#         discounted = super().get_final_price() * 0.80
+#         print(f"After FlashSale Discount(20%): {discounted:.2f}")
 
-flashsalediscount = FlashSaleDiscount(67900)
-print("-----PRICE BREAKDOWN-----")
-print(f"Original Price: {flashsalediscount.price}")
-flashsalediscount.get_final_price()
+# flashsalediscount = FlashSaleDiscount(67900)
+# print("-----PRICE BREAKDOWN-----")
+# print(f"Original Price: {flashsalediscount.price}")
+# flashsalediscount.get_final_price()
