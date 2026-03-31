@@ -278,9 +278,35 @@
 
 # 7. E-Commerce Discount System
 # An e-commerce platform applies different discount rules.
-# Write a BasePrice class with price and a get_final_price() returning the price as-is.
+# Write a BasePrice class with price and a get_final_price() returning the price as it is.
 # Create a chain of discount classes — MemberDiscount(BasePrice) applying 10% off using super().get_final_price()
 # and FlashSaleDiscount(MemberDiscount) applying an additional 20% off on top.
 # Show that the discounts stack by calling get_final_price() on a FlashSaleDiscount instance
 # and tracing exactly how super() chains through each level to produce the final price.
 
+class BasePrice():
+    def __init__(self, price):
+        self.price = price
+    
+    def get_final_price(self):
+        return self.price
+
+class MemberDiscount(BasePrice):
+    def __init__(self, price):
+        super().__init__(price)
+    def get_final_price(self):
+        discounted = super().get_final_price() * 0.90
+        print(f"After Member Discount(10%): {discounted:.2f}")
+        return discounted
+class FlashSaleDiscount(MemberDiscount):
+    def __init__(self, price):
+        super().__init__(price)
+    
+    def get_final_price(self):
+        discounted = super().get_final_price() * 0.80
+        print(f"After FlashSale Discount(20%): {discounted:.2f}")
+
+flashsalediscount = FlashSaleDiscount(67900)
+print("-----PRICE BREAKDOWN-----")
+print(f"Original Price: {flashsalediscount.price}")
+flashsalediscount.get_final_price()
