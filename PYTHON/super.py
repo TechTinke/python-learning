@@ -1,5 +1,6 @@
 #super() = Function used in a child class(subclass) to call methods from a parent class(super class).
 #          Allows you to extend the functionality of the inherited methods
+# super() automatically finds the parent
 # import math
 # class Shape:
 #     def __init__(self, color, is_filled):
@@ -380,3 +381,60 @@
 # and once calling the parent class directly by name (e.g. Delivery.__init__(self, ...)).
 # Then change ExpressDelivery to inherit from a different class and observe what breaks in each version.
 # This demonstrates why super() is always preferred over hardcoding the parent class name — explain the difference in your own words.
+
+class Delivery():
+    def __init__(self, tracking_id):
+        self.tracking_id = tracking_id
+    def get_info(self):
+        print(f"Tracking Id: {self.tracking_id}")
+
+class ExpressDelivery(Delivery):
+    def __init__(self, tracking_id, speed):
+        super().__init__(tracking_id)
+        self.speed = speed
+    def get_info(self):
+        super().get_info()
+        print(f"Speed: {self.speed}")
+
+class SameDayDelivery(ExpressDelivery):
+    def __init__(self, tracking_id, speed, cutoff_time):
+        super().__init__(tracking_id, speed)
+        self.cutoff_time = cutoff_time
+    def get_info(self):
+        super().get_info()
+        print(f"Cutoff Time: {self.cutoff_time}")
+
+class Delivery2():
+    def __init__(self, tracking_id):
+        self.tracking_id = tracking_id
+    def get_info(self):
+        print(f"Tracking Id: {self.tracking_id}")
+
+class ExpressDelivery2(Delivery):
+    def __init__(self, tracking_id, speed):
+        Delivery2.__init__(self, tracking_id)
+        self.speed = speed
+    def get_info(self):
+        Delivery2.get_info(self)
+        print(f"Speed: {self.speed}")
+
+class SameDayDelivery2(ExpressDelivery2):
+    def __init__(self, tracking_id, speed, cutoff_time):
+        ExpressDelivery2.__init__(self, tracking_id, speed)
+        self.cutoff_time = cutoff_time
+    def get_info(self):
+        SameDayDelivery2.get_info(self)
+        print(f"Cutoff time: {self.cutoff_time}")
+
+# package1 = SameDayDelivery(1, 40, 23)
+# package2 = ExpressDelivery(2, 67)
+package3 = SameDayDelivery2(3, 45, 12)
+package4 = ExpressDelivery2(4, 98)
+print("-----PACKAGES-----")
+# package1.get_info()
+# print(" ")
+# package2.get_info()
+# print(" ")
+package3.get_info()
+print(" ")
+package4.get_info()
