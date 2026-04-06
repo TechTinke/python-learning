@@ -115,23 +115,37 @@
 # to return "Manager" and "Intern" respectively.
 # Create an instance of each and call get_role() — explain what method overriding is and why it is useful.
 
-class Employeee():
-    def get_role(self):
-        return "Employee"
+# class Employeee():
+#     def get_role(self):
+#         return "Employee"
 
-class Manager(Employeee):
-    def get_role(self):
-        return "Manager"
-class Intern(Employeee):
-    def get_role(self):
-        return "Intern"
+# class Manager(Employeee):
+#     def get_role(self):
+#         return "Manager"
+# class Intern(Employeee):
+#     def get_role(self):
+#         return "Intern"
 
-oscar = Employeee()
-rachel = Manager()
-morris = Intern()
+# oscar = Employeee()
+# rachel = Manager()
+# morris = Intern()
 
-print(morris.get_role())
-print(rachel.get_role())
-print(oscar.get_role())
+# print(morris.get_role())
+# print(rachel.get_role())
+# print(oscar.get_role())
 
 #Over-riding means changing the logic of the child class in relation to the parent class
+
+# 4. E-Commerce Product Catalog
+# An online store sells different types of products.
+# Write a Product parent class with name, price, and a get_info() method.
+# Create three child classes — Electronics with a warranty_years attribute,
+# Clothing with a size attribute, and Food with an expiry_date attribute.
+# Each child class should override get_info() to include their unique attribute using super().
+# Create one instance of each and print their info.
+
+class Product():
+    def __init__(self, name, price):
+        self.name = name
+        self.price = price
+        pass
