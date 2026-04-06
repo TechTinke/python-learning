@@ -185,3 +185,35 @@
 # print(" ")
 # smart_tv.get_info()
 
+# 5. Multilevel Inheritance
+# A game has different character types.
+# Write a Character base class with name and health.
+# Create a child class Warrior(Character) that adds a weapon attribute and an attack() method
+# that prints "{name} attacks with {weapon}!".
+# Then create a grandchild class EliteWarrior(Warrior) that adds an armor attribute
+# and overrides attack() to deal double damage by printing "{name} attacks with {weapon} for DOUBLE DAMAGE!"
+# and also prints "{name} is protected by {armor}".
+# Create an instance of EliteWarrior and show it has access to attributes from all three levels.
+
+class Character():
+    def __init__(self, name, health):
+        self.name = name
+        self.health = health
+class Warrior(Character):
+    def __init__(self, name, health, weapon):
+        super().__init__(name, health)
+        self.weapon = weapon
+    def attack(self):
+        print(f"{self.name} attacks with {self.weapon}!")
+
+class EliteWarrior(Warrior):
+    def __init__(self, name, health, weapon, armor):
+        super().__init__(name, health, weapon)
+        self.armor = armor
+    def attack(self):
+        print(f"{self.name} attacks with {self.weapon} for DOUBLE DAMAGE!")
+        print(f"{self.name} is protected by {self.armor}")
+
+elite_warrior = EliteWarrior("Javlin", 98, "Karate Swords", "Shield")
+elite_warrior.attack()
+        
