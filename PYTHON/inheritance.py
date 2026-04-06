@@ -88,21 +88,22 @@
 # The following code is meant to model a banking system but throws an error.
 # Identify and fix it:
 
-# class Account():
-#     def __init__(self, owner, balance):
-#         self.owner = owner
-#         self.balance = balance
+class Account():
+    def __init__(self, owner, balance):
+        self.owner = owner
+        self.balance = balance
     
-#     def get_info(self):
-#         return f"{self.owner}: {self.balance}"
+    def get_info(self):
+        return f"{self.owner}: {self.balance}"
 
-# class SavingsAccount(Account):
-#     def __init__(self, owner, balance, interest_rate):
-#         super().__init__(owner, balance)
-#         self.interest_rate = interest_rate
+class SavingsAccount(Account):
+    def __init__(self, owner, balance, interest_rate):
+        super().__init__(owner, balance)
+        self.interest_rate = interest_rate
     
-#     def get_interest(self):
-#         return self.balance * self.interest_rate
+    def get_interest(self):
+        interest = self.balance * self.interest_rate
+        return interest
 
-# savings = SavingsAccount("Oscar", 5000, 0.05)
-# print(savings.get_interest())
+savings = SavingsAccount("Oscar", 5000, 0.05)
+print(savings.get_interest())
