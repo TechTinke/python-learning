@@ -225,39 +225,40 @@
 # and calls make_sound() on each.
 # This demonstrates polymorphism — explain in your own words how Python knows which make_sound() to call
 # for each animal.
+# Since the animals that we've created are child classes from the base parent Animal class and each animal created is automatically appended to the class variable animals, then the loop in the function zoo_sounds loops over each animal in animals and calls the function make_sound which is inherited by all animals
 
-class Animal():
-    animals = []
-    def __init__(self, name):
-        self.name = name
-        Animal.animals.append(self)
+# class Animal():
+#     animals = []
+#     def __init__(self, name):
+#         self.name = name
+#         Animal.animals.append(self)
     
-    def make_sound(self):
-        return "Some generic sound!"
+#     def make_sound(self):
+#         return "Some generic sound!"
 
-class Lion(Animal):
-    def make_sound(self):
-        return "ROOOARR!"
+# class Lion(Animal):
+#     def make_sound(self):
+#         return "ROOOARR!"
 
-class Elephant(Animal):
-    def make_sound(self):
-        return "GROWWWLLL!"
+# class Elephant(Animal):
+#     def make_sound(self):
+#         return "GROWWWLLL!"
 
-class Parrot(Animal):
-    def make_sound(self):
-        return "TRIIILL!"
+# class Parrot(Animal):
+#     def make_sound(self):
+#         return "TRIIILL!"
     
-class Snake(Animal):
-    def make_sound(self):
-        return "HIIIISS!"
+# class Snake(Animal):
+#     def make_sound(self):
+#         return "HIIIISS!"
 
-lion = Lion("Simba")
-elephant = Elephant("Elephante")
-parrot = Parrot("Hennery")
-snake = Snake("Nyoka")
+# lion = Lion("Simba")
+# elephant = Elephant("Elephante")
+# parrot = Parrot("Hennery")
+# snake = Snake("Nyoka")
 
-def zoo_sounds(animals):
-    for animal in animals:
-        print(" ")
-        print(animal.make_sound())
-zoo_sounds(Animal.animals)
+# def zoo_sounds(animals):
+#     for animal in animals:
+#         print(" ")
+#         print(animal.make_sound())
+# zoo_sounds(Animal.animals)
