@@ -216,4 +216,48 @@
 
 # elite_warrior = EliteWarrior("Javlin", 98, "Karate Swords", "Shield")
 # elite_warrior.attack()
-        
+
+# 6. Polymorphism Through Inheritance
+# A zoo management system tracks different animals.
+# Write an Animal parent class with name and a method make_sound() that prints "Some generic sound".
+# Create four child classes — Lion, Elephant, Parrot, and Snake — each overriding make_sound() with their own sound.
+# Then write a function zoo_sounds(animals) that takes a list of mixed animal objects
+# and calls make_sound() on each.
+# This demonstrates polymorphism — explain in your own words how Python knows which make_sound() to call
+# for each animal.
+
+class Animal():
+    animals = []
+    def __init__(self, name):
+        self.name = name
+        Animal.animals.append(self)
+    
+    def make_sound(self):
+        return "Some generic sound!"
+
+class Lion(Animal):
+    def make_sound(self):
+        return "ROOOARR!"
+
+class Elephant(Animal):
+    def make_sound(self):
+        return "GROWWWLLL!"
+
+class Parrot(Animal):
+    def make_sound(self):
+        return "TRIIILL!"
+    
+class Snake(Animal):
+    def make_sound(self):
+        return "HIIIISS!"
+
+lion = Lion("Simba")
+elephant = Elephant("Elephante")
+parrot = Parrot("Hennery")
+snake = Snake("Nyoka")
+
+def zoo_sounds(animals):
+    for animal in animals:
+        print(" ")
+        print(animal.make_sound())
+zoo_sounds(Animal.animals)
