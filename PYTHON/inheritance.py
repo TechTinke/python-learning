@@ -144,43 +144,43 @@
 # Each child class should override get_info() to include their unique attribute using super().
 # Create one instance of each and print their info.
 
-class Product():
-    def __init__(self, name, price):
-        self.name = name
-        self.price = price
-    def get_info(self):
-        print(f"Name: {self.name}")
-        print(f"Price: Kshs. {self.price:.2f}")
+# class Product():
+#     def __init__(self, name, price):
+#         self.name = name
+#         self.price = price
+#     def get_info(self):
+#         print(f"Name: {self.name}")
+#         print(f"Price: Kshs. {self.price:.2f}")
 
-class Electronics(Product):
-    def __init__(self, name, price, warranty_years):
-        super().__init__(name, price)
-        self.warranty_years = warranty_years
-    def get_info(self):
-        super().get_info()
-        print(f"Warranty Years: {self.warranty_years}")
-class Clothing(Product):
-    def __init__(self, name, price, size):
-        super().__init__(name, price)
-        self.size = size
-    def get_info(self):
-        super().get_info()
-        print(f"Size: {self.size}")
+# class Electronics(Product):
+#     def __init__(self, name, price, warranty_years):
+#         super().__init__(name, price)
+#         self.warranty_years = warranty_years
+#     def get_info(self):
+#         super().get_info()
+#         print(f"Warranty Years: {self.warranty_years}")
+# class Clothing(Product):
+#     def __init__(self, name, price, size):
+#         super().__init__(name, price)
+#         self.size = size
+#     def get_info(self):
+#         super().get_info()
+#         print(f"Size: {self.size}")
 
-class Food(Product):
-    def __init__(self, name, price, expiry_date):
-        super().__init__(name, price)
-        self.expiry_date = expiry_date
-    def get_info(self):
-        super().get_info()
-        print(f"Expiry Date: {self.expiry_date}")
+# class Food(Product):
+#     def __init__(self, name, price, expiry_date):
+#         super().__init__(name, price)
+#         self.expiry_date = expiry_date
+#     def get_info(self):
+#         super().get_info()
+#         print(f"Expiry Date: {self.expiry_date}")
 
-chicken_wings = Food("Chicken Wings", 560, "30.04.26")
-pants = Clothing("Sweatpants", 2500, "XL")
-smart_tv = Electronics("Samsung Smart TV", 118000, 2)
+# chicken_wings = Food("Chicken Wings", 560, "30.04.26")
+# pants = Clothing("Sweatpants", 2500, "XL")
+# smart_tv = Electronics("Samsung Smart TV", 118000, 2)
 
-chicken_wings.get_info()
-print(" ")
-pants.get_info()
-print(" ")
-smart_tv.get_info()
+# chicken_wings.get_info()
+# print(" ")
+# pants.get_info()
+# print(" ")
+# smart_tv.get_info()
