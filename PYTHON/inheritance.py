@@ -107,3 +107,31 @@
 
 # savings = SavingsAccount("Oscar", 5000, 0.05)
 # print(savings.get_interest())
+
+# 3. Method Overriding
+# A company has different types of employees.
+# Write an Employee parent class with a method get_role() that returns "Employee".
+# Create two child classes Manager and Intern that override get_role()
+# to return "Manager" and "Intern" respectively.
+# Create an instance of each and call get_role() — explain what method overriding is and why it is useful.
+
+class Employeee():
+    def get_role(self):
+        return "Employee"
+
+class Manager(Employeee):
+    def get_role(self):
+        return "Manager"
+class Intern(Employeee):
+    def get_role(self):
+        return "Intern"
+
+oscar = Employeee()
+rachel = Manager()
+morris = Intern()
+
+print(morris.get_role())
+print(rachel.get_role())
+print(oscar.get_role())
+
+#Over-riding means changing the logic of the child class in relation to the parent class
