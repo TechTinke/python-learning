@@ -262,3 +262,89 @@
 #         print(" ")
 #         print(animal.make_sound())
 # zoo_sounds(Animal.animals)
+
+# 7. Restaurant Order System
+# A restaurant has a menu with different item categories.
+# Write a MenuItem parent class with name, price,
+# and a get_receipt_line() method that returns "{name} .... {price}".
+# Create child classes MainCourse, Drink, and Dessert — Drink has a size attribute ("small", "medium", "large")
+# that affects the price (+20% for medium, +40% for large),
+# and Dessert has an is_vegan boolean. Each child overrides get_receipt_line() using super().
+# Then create an Order class (not inheriting from MenuItem) that holds a list of MenuItem objects,
+# has a get_total() method, and a print_receipt() method that calls get_receipt_line() on each item.
+# Create a full order and print the receipt.
+
+class MenuItem():
+    def __init__(self, name, price):
+        self.name = name
+        self.price = price
+    def get_receipt_line(self):
+        return f"{self.name} - {self.price}"
+class MainCourse(MenuItem):
+    pass
+class Drink(MenuItem):
+    pass
+class Dessert(MenuItem):
+    pass
+
+# Notification System
+# A company sends notifications through different channels.
+# Write a Notification parent class with recipient and message attributes
+# and a send() method that prints "Sending notification to {recipient}...".
+# Create three child classes — EmailNotification (adds email_address),
+# SMSNotification (adds phone_number), and PushNotification (adds device_id) —
+# each overriding send() using super() to extend the parent output with channel-specific details.
+# Then write a function send_all(notifications) that takes a list of mixed notification objects
+# and calls send() on each. Create at least 5 mixed notifications and call send_all().
+
+class Notification():
+    def __init__(self, recipient, message):
+        self.recipient = recipient
+        self.message = message
+    def send(self):
+        print(f"Sending notification to {self.recipient}...")
+class EmailNotification(Notification):
+    def __init__(self, recipient, message, email_address):
+        super().__init__(recipient, message)
+        self.email_address = email_address
+    def send(self):
+        return super().send()
+class SMSNotification(Notification):
+    def __init__(self, recipient, message, phone_number):
+        super().__init__(recipient, message)
+        self.phone_number = phone_number
+    def send(self):
+        return super().send()
+class PushNotification(Notification):
+    def __init__(self, recipient, message, device_id):
+        super().__init__(recipient, message)
+        self.device_id = device_id
+    def send(self):
+        return super().send()
+
+# Abstract Base Classes
+# A payment processing system handles multiple payment methods.
+# Write an abstract Payment base class using Python's abc module with an abstract method process_payment().
+# Create three concrete child classes — CreditCardPayment, MpesaPayment, and PayPalPayment —
+# each implementing process_payment() differently.
+# Then try to instantiate the abstract Payment class directly and observe what happens.
+# Explain why abstract base classes are useful in real systems — what problem do they solve that regular inheritance doesn't?
+
+class Payment():
+    def process_payment(self):
+        pass
+class CreditCardPayment(Payment):
+    pass
+class MpesaPayment(Payment):
+    pass
+class PayPalPayment(Payment):
+    pass
+
+# Mixin Pattern
+# A large e-commerce platform needs logging, serialization, and validation across many unrelated classes.
+# Create three mixin classes — LogMixin with a log(message) method that prints "[LOG]: {message}",
+# SerializeMixin with a to_dict() method that returns the object's attributes as a dictionary,
+# and ValidateMixin with a validate() method that checks required fields are not empty and returns True or False.
+# Then create a CustomerOrder class that inherits from all three mixins plus a base Order class with order_id, product, and quantity.
+# Demonstrate all mixin methods working on a CustomerOrder instance.
+# Explain what a mixin is and why it is preferred over putting all this logic in one giant parent class.
