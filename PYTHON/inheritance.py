@@ -287,7 +287,7 @@ class Drink(MenuItem):
 class Dessert(MenuItem):
     pass
 
-# Notification System
+# 8. Notification System
 # A company sends notifications through different channels.
 # Write a Notification parent class with recipient and message attributes
 # and a send() method that prints "Sending notification to {recipient}...".
@@ -341,7 +341,7 @@ class Dessert(MenuItem):
 #         notification.send()
 # send_all(Notification.notifications)
 
-# Abstract Base Classes
+# 9. Abstract Base Classes
 # A payment processing system handles multiple payment methods.
 # Write an abstract Payment base class using Python's abc module with an abstract method process_payment().
 # Create three concrete child classes — CreditCardPayment, MpesaPayment, and PayPalPayment —
@@ -349,15 +349,51 @@ class Dessert(MenuItem):
 # Then try to instantiate the abstract Payment class directly and observe what happens.
 # Explain why abstract base classes are useful in real systems — what problem do they solve that regular inheritance doesn't?
 
-class Payment():
+#They are useful in real systems because once a new class is created it must implement the methods in the parent class reminding the developer that the methods from the parent class must be used lest Python will throw an error
+#When a parent class has an abstract method, every child class must implement it or Python throws an error
+
+from abc import ABC, abstractmethod
+
+class Payment(ABC): #importing from ABC makes it abstract
+    def __init__(self, amount):
+        self.amount = amount
+
+    @abstractmethod
     def process_payment(self):
-        pass
+        print(f"Processing payment of {self.amount}")
+    
 class CreditCardPayment(Payment):
-    pass
+    def __init__(self, amount, card_number):
+        super().__init__(amount)
+        self.card_number = card_number
+    def process_payment(self):
+        print(f"Processing Payment of {self.amount} under credit card number {self.card_number}...")
+
 class MpesaPayment(Payment):
-    pass
+    def __init__(self, amount, phone_number):
+        super().__init__(amount)
+        self.phone_number = phone_number
+    def process_payment(self):
+        print(f"Processing payment of {self.amount} to {self.phone_number}...")
 class PayPalPayment(Payment):
-    pass
+    def __init__(self, amount, email_address):
+        super().__init__(amount)
+        self.email_address = email_address
+    def process_payment(self):
+        print(f"Processing payment of {self.amount}; Paypal email address: {self.email_address}")
+
+#INSTANTIATE - create an object from a class
+#payment = Payment(400)  #Can't instantiate abstract class Payment with abstract methods process_payment
+mpesa_payment = MpesaPayment(7800, 768789830)
+paypal_payment = PayPalPayment(90000, "rachael1234@gmail.com")
+credit_card_payment = CreditCardPayment(78900, 5674234576434567)
+
+mpesa_payment.process_payment()
+print(" ")
+paypal_payment.process_payment()
+print(" ")
+credit_card_payment.process_payment()
+
 
 # Mixin Pattern
 # A large e-commerce platform needs logging, serialization, and validation across many unrelated classes.
