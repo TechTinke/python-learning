@@ -297,30 +297,49 @@ class Dessert(MenuItem):
 # Then write a function send_all(notifications) that takes a list of mixed notification objects
 # and calls send() on each. Create at least 5 mixed notifications and call send_all().
 
-class Notification():
-    def __init__(self, recipient, message):
-        self.recipient = recipient
-        self.message = message
-    def send(self):
-        print(f"Sending notification to {self.recipient}...")
-class EmailNotification(Notification):
-    def __init__(self, recipient, message, email_address):
-        super().__init__(recipient, message)
-        self.email_address = email_address
-    def send(self):
-        return super().send()
-class SMSNotification(Notification):
-    def __init__(self, recipient, message, phone_number):
-        super().__init__(recipient, message)
-        self.phone_number = phone_number
-    def send(self):
-        return super().send()
-class PushNotification(Notification):
-    def __init__(self, recipient, message, device_id):
-        super().__init__(recipient, message)
-        self.device_id = device_id
-    def send(self):
-        return super().send()
+# class Notification():
+#     notifications = []
+#     def __init__(self, recipient, message):
+#         self.recipient = recipient
+#         self.message = message
+#         Notification.notifications.append(self)
+#     def send(self):
+#         print(f"Sending notification to {self.recipient}...")
+# class EmailNotification(Notification):
+#     def __init__(self, recipient, message, email_address):
+#         super().__init__(recipient, message)
+#         self.email_address = email_address
+#     def send(self):
+#         super().send()
+#         print(f"{self.email_address}")
+# class SMSNotification(Notification):
+#     def __init__(self, recipient, message, phone_number):
+#         super().__init__(recipient, message)
+#         self.phone_number = phone_number
+#     def send(self):
+#         super().send()
+#         print(f"{self.phone_number}")
+# class PushNotification(Notification):
+#     def __init__(self, recipient, message, device_id):
+#         super().__init__(recipient, message)
+#         self.device_id = device_id
+#     def send(self):
+#         super().send()
+#         print(f"{self.device_id}")
+
+# email_notification1 = EmailNotification("Oscar Maingi", "You are amazing!", "somba@gmail.com")
+# sms_notification2 = SMSNotification("Mlewa Morris", "I am a doctor", 789345672)
+# push_notification1 = PushNotification("Abel Patrick", "You are Oscar's roomate", 8)
+# sms_notification2 = SMSNotification("Ashley Emmanuelah", "I live in Donholm", 776268723)
+# push_notification2 = PushNotification("Myke Kyma", "I am a star", 9)
+# sms_notification3 = SMSNotification("Anne Yula", "I am a dentist", 782098734)
+# email_notification2 = EmailNotification("Rachael Mailo", "Mehhhn, you are nonchalant", "rachael@gmail.com")
+
+# def send_all(notifications):
+#     for notification in notifications:
+#         print(" ")
+#         notification.send()
+# send_all(Notification.notifications)
 
 # Abstract Base Classes
 # A payment processing system handles multiple payment methods.
