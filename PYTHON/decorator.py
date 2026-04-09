@@ -31,14 +31,14 @@
 # Call the function and observe the output.
 # Then answer: what would happen if you removed the decorator?
 
-def log_call(func):
-    def log(*args, **kwargs):
-        print(f"Function {func.__name__} was called")
-        func(*args, **kwargs)
-    return log
+# def log_call(func):
+#     def log(*args, **kwargs):
+#         print(f"Function {func.__name__} was called")
+#         func(*args, **kwargs)
+#     return log
 
-@log_call
-def process_order(order_id):
-    print(f"Processing order {order_id}")
+# @log_call
+# def process_order(order_id):
+#     print(f"Processing order {order_id}")
 
-process_order(9)
+# process_order(9)
