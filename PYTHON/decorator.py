@@ -107,22 +107,22 @@
 
 # view_dashboard()
 
-def require_login(func):
-    def wrapper(*args, **kwargs):
-        if is_logged_in == True:
-            func(*args, **kwargs)
-        else:
-            print("Access denied. Please log in first")
-    return wrapper
+# def require_login(func):
+#     def wrapper(*args, **kwargs):
+#         if is_logged_in == True:
+#             func(*args, **kwargs)
+#         else:
+#             print("Access denied. Please log in first")
+#     return wrapper
 
-@require_login
-def view_dashboard(name):
-    print(f"Access Approved, Welcome back, {name}!")
+# @require_login
+# def view_dashboard(name):
+#     print(f"Access Approved, Welcome back, {name}!")
 
-is_logged_in = False
-view_dashboard("Abel")
+# is_logged_in = False
+# view_dashboard("Abel")
 
-print(" ")
+# print(" ")
 
-is_logged_in = True
-view_dashboard("Oscar")
+# is_logged_in = True
+# view_dashboard("Oscar")
