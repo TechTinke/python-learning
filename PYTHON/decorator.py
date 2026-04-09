@@ -60,3 +60,26 @@
 #     print("Generating report...")
 
 # run_report()
+
+# 3. Repeat Decorator
+# A notification system needs to send certain alerts multiple times.
+# Write a decorator repeat(n) that runs the decorated function n times.
+# Apply it to a function send_alert(message) that prints "ALERT: {message}".
+# Call it with n=3 and a message of your choice. This introduces decorators with arguments —
+# notice the extra layer of nesting required.
+
+# Nesting refers to placing one programming construct inside another
+
+def repeat(n):
+    def inner(func):
+        def wrapper(*args, **kwargs):
+            for i in range(n):
+                func(*args, **kwargs)
+        return wrapper
+    return inner
+
+@repeat(4)
+def send_alert(message):
+    print(f"ALERT: {message}")
+
+send_alert("Oscar is a hero!")
