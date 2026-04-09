@@ -159,43 +159,43 @@
 # Stack all three on a function place_order(order_id).
 # Then answer: in what order do the decorators run and why?
 
-def check_restaurant_open(func):
-    def wrapper(*args, **kwargs):
-        if restaurant_open:
-            print("Restaurant is open")
-            func(*args, **kwargs)
-        else:
-            print("Restaurant is closed, can't place order!")
-    return wrapper
+# def check_restaurant_open(func):
+#     def wrapper(*args, **kwargs):
+#         if restaurant_open:
+#             print("Restaurant is open")
+#             func(*args, **kwargs)
+#         else:
+#             print("Restaurant is closed, can't place order!")
+#     return wrapper
 
-def check_items_available(func):
-    def wrapper(*args, **kwargs):
-        if items_available:
-            print("Items are available")
-            func(*args, **kwargs)
-        else:
-            print("Items aren't available, can't place order!")
-    return wrapper
+# def check_items_available(func):
+#     def wrapper(*args, **kwargs):
+#         if items_available:
+#             print("Items are available")
+#             func(*args, **kwargs)
+#         else:
+#             print("Items aren't available, can't place order!")
+#     return wrapper
 
-def check_delivery_zone(func):
-    def wrapper(*args, **kwargs):
-        if delivery_zone:
-            print("Delivery Zone is confirmed")
-            func(*args, **kwargs)
-        else:
-            print("Delivery Zone unavailable, can't place order!")
-    return wrapper
+# def check_delivery_zone(func):
+#     def wrapper(*args, **kwargs):
+#         if delivery_zone:
+#             print("Delivery Zone is confirmed")
+#             func(*args, **kwargs)
+#         else:
+#             print("Delivery Zone unavailable, can't place order!")
+#     return wrapper
 
-@check_restaurant_open
-@check_items_available
-@check_delivery_zone
-def place_order(order_id):
-    print(f"Order {order_id} confirmed!")
+# @check_restaurant_open
+# @check_items_available
+# @check_delivery_zone
+# def place_order(order_id):
+#     print(f"Order {order_id} confirmed!")
 
-restaurant_open = True
-print(" ")
-items_available = True
-print(" ")
-delivery_zone = False
-place_order(9)
+# restaurant_open = True
+# print(" ")
+# items_available = True
+# print(" ")
+# delivery_zone = False
+# place_order(9)
 
