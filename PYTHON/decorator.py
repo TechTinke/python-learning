@@ -235,3 +235,25 @@
 # get_weather("Kisumu")
 # print(" ")
 # get_weather("Kisumu")
+
+# 8. Retry Decorator
+# A payment system sometimes fails due to network issues.
+# Write a decorator retry(max_attempts)
+# that runs the decorated function up to max_attempts times if it raises an exception.
+# After each failed attempt print "Attempt {n} failed, retrying...".
+# If all attempts fail print "All attempts failed".
+# Apply it to a function charge_card() that randomly raises a ConnectionError using Python's random module.
+# Test it with max_attempts=3.
+
+def retry(max_attempts):
+    def inner(func):
+        def wrapper(*args, **kwargs):
+            for i, attempt in max_attempts:
+                print(f"Attempt {i} failed, retrying...")
+                if i == 3:
+                    print("All attempts failed")
+            func(*args, **kwargs)
+        return wrapper
+    return inner
+
+
