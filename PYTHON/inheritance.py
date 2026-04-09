@@ -403,3 +403,25 @@ class Dessert(MenuItem):
 # Then create a CustomerOrder class that inherits from all three mixins plus a base Order class with order_id, product, and quantity.
 # Demonstrate all mixin methods working on a CustomerOrder instance.
 # Explain what a mixin is and why it is preferred over putting all this logic in one giant parent class.
+
+
+class Order():
+    object_attributes = {}
+    def __init__(self, order_id, product, quantity):
+        self.order_id = order_id
+        self.product = product
+        self.quantity = quantity
+        Order.object_attributes.append()
+
+class LogMixin():
+    def log(message):
+        print(f"[LOG]: {message}")
+
+class SerializeMixin():
+    def to_dict():
+        return Order.object_attributes
+
+class ValidateMixin():
+    def validate():
+        pass
+
