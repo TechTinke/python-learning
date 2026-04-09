@@ -210,28 +210,28 @@
 
 # NB:append() is used for lists ONLY and not dictionaries
 
-def cache(func):
-    function_results = {} #needs to be outside wrapper so that when wrapper is called, it doesn't return to empty
+# def cache(func):
+#     function_results = {} #needs to be outside wrapper so that when wrapper is called, it doesn't return to empty
 
-    def wrapper(*args, **kwargs):
-        if args in function_results:
-            print("Returning cached result")
-            print(function_results[args])
-        else:
-            result = func(*args, **kwargs)
-            function_results[args] = result
-            # return result
-    return wrapper 
+#     def wrapper(*args, **kwargs):
+#         if args in function_results:
+#             print("Returning cached result")
+#             print(function_results[args])
+#         else:
+#             result = func(*args, **kwargs)
+#             function_results[args] = result
+#             # return result
+#     return wrapper 
 
-@cache
-def get_weather(city):
-    print(f"Fetching weather for {city}...")
-    print(f"{city}: 28°C")
+# @cache
+# def get_weather(city):
+#     print(f"Fetching weather for {city}...")
+#     print(f"{city}: 28°C")
 
-get_weather("Nairobi")
-print(" ")
-get_weather("Nairobi")
-print(" ")
-get_weather("Kisumu")
-print(" ")
-get_weather("Kisumu")
+# get_weather("Nairobi")
+# print(" ")
+# get_weather("Nairobi")
+# print(" ")
+# get_weather("Kisumu")
+# print(" ")
+# get_weather("Kisumu")
