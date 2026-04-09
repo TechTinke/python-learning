@@ -199,3 +199,39 @@
 # delivery_zone = False
 # place_order(9)
 
+# 7. Cache Decorator
+# A weather app makes expensive API calls.
+# Write a decorator cache that stores the result of a function call in a dictionary using the function's arguments as the key.
+# If the same arguments are passed again, return the cached result instead of running the function again
+# and print "Returning cached result".
+# Apply it to a function get_weather(city) that simulates an API call
+# by printing "Fetching weather for {city}..." and returning a fake temperature.
+# Call it twice with the same city and once with a different city.
+
+# NB:append() is used for lists ONLY and not dictionaries
+
+def cache(func):
+    function_results = {} #needs to be outside wrapper so that when wrapper is called, it doesn't return to empty
+
+    def wrapper(*args, **kwargs):
+        if args in function_results:
+            print("Returning cached result")
+            print(function_results[args])
+        else:
+            result = func(*args, **kwargs)
+            function_results[args] = result
+            # return result
+    return wrapper 
+
+@cache
+def get_weather(city):
+    print(f"Fetching weather for {city}...")
+    print(f"{city}: 28°C")
+
+get_weather("Nairobi")
+print(" ")
+get_weather("Nairobi")
+print(" ")
+get_weather("Kisumu")
+print(" ")
+get_weather("Kisumu")
