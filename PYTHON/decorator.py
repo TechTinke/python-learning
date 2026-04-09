@@ -48,15 +48,15 @@
 # but it has a bug.
 # Identify and fix it:
 
-def timer(func):
-    def wrapper(*args, **kwargs):
-        print("Starting timer...")
-        func(*args, **kwargs)
-        print("Done!")
-    return wrapper
+# def timer(func):
+#     def wrapper(*args, **kwargs):
+#         print("Starting timer...")
+#         func(*args, **kwargs)
+#         print("Done!")
+#     return wrapper
 
-@timer
-def run_report():
-    print("Generating report...")
+# @timer
+# def run_report():
+#     print("Generating report...")
 
-run_report()
+# run_report()
