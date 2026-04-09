@@ -84,3 +84,45 @@
 
 # send_alert("Oscar is a hero!")
 
+
+# 4. Authentication Decorator
+# A web app needs to protect certain routes.
+# Write a decorator require_login(func) that checks a global variable is_logged_in.
+# If True → run the function. If False → print "Access denied. Please log in first."
+# Apply it to a function view_dashboard(). Test it with both is_logged_in = True and is_logged_in = False.
+
+# def require_login(is_logged_in):
+#     def inner(func):
+#         def wrapper(*args, **kwargs):
+#             if is_logged_in == True:
+#                 func(*args, **kwargs)
+#             else:
+#                 print("Access denied. Please log in first")
+#         return wrapper
+#     return inner
+
+# @require_login(True)
+# def view_dashboard():
+#     print("Access Approved!")
+
+# view_dashboard()
+
+def require_login(func):
+    def wrapper(*args, **kwargs):
+        if is_logged_in == True:
+            func(*args, **kwargs)
+        else:
+            print("Access denied. Please log in first")
+    return wrapper
+
+@require_login
+def view_dashboard(name):
+    print(f"Access Approved, Welcome back, {name}!")
+
+is_logged_in = False
+view_dashboard("Abel")
+
+print(" ")
+
+is_logged_in = True
+view_dashboard("Oscar")
