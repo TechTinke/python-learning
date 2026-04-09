@@ -70,16 +70,17 @@
 
 # Nesting refers to placing one programming construct inside another
 
-def repeat(n):
-    def inner(func):
-        def wrapper(*args, **kwargs):
-            for i in range(n):
-                func(*args, **kwargs)
-        return wrapper
-    return inner
+# def repeat(n):
+#     def inner(func):
+#         def wrapper(*args, **kwargs):
+#             for i in range(n):
+#                 func(*args, **kwargs)
+#         return wrapper
+#     return inner
 
-@repeat(4)
-def send_alert(message):
-    print(f"ALERT: {message}")
+# @repeat(4)
+# def send_alert(message):
+#     print(f"ALERT: {message}")
 
-send_alert("Oscar is a hero!")
+# send_alert("Oscar is a hero!")
+
