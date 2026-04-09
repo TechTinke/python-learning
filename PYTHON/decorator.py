@@ -42,3 +42,21 @@
 #     print(f"Processing order {order_id}")
 
 # process_order(9)
+
+# 2. Spot the Bug
+# The following decorator is meant to print "Starting timer..." before a function runs and "Done!" after,
+# but it has a bug.
+# Identify and fix it:
+
+def timer(func):
+    def wrapper(*args, **kwargs):
+        print("Starting timer...")
+        func(*args, **kwargs)
+        print("Done!")
+    return wrapper
+
+@timer
+def run_report():
+    print("Generating report...")
+
+run_report()
