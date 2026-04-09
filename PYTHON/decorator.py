@@ -134,20 +134,20 @@
 # Apply it to a function fetch_data() that simulates a delay using time.sleep(2).
 # This is a very common real world use case — you'll see this pattern in almost every production codebase.
 
-import time
-def measure_time(func):
-    def wrapper(*args, **kwargs):
-        start = time.time()
-        func(*args, **kwargs)
-        end = time.time()
-        time_taken = end - start
-        print(f"Function took {time_taken:.2f} seconds")
-    return wrapper
+# import time
+# def measure_time(func):
+#     def wrapper(*args, **kwargs):
+#         start = time.time()
+#         func(*args, **kwargs)
+#         end = time.time()
+#         time_taken = end - start
+#         print(f"Function took {time_taken:.2f} seconds")
+#     return wrapper
 
-@measure_time
-def fetch_data():
-    time.sleep(4)
-    print("Function completed")
+# @measure_time
+# def fetch_data():
+#     time.sleep(4)
+#     print("Function completed")
 
-fetch_data()
+# fetch_data()
 
