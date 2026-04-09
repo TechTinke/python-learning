@@ -126,3 +126,28 @@
 
 # is_logged_in = True
 # view_dashboard("Oscar")
+
+# Timing Decorator
+# A developer wants to measure how long certain functions take to run.
+# Write a decorator measure_time that records the time before
+# and after the function runs using Python's time module and prints "Function took {time} seconds".
+# Apply it to a function fetch_data() that simulates a delay using time.sleep(2).
+# This is a very common real world use case — you'll see this pattern in almost every production codebase.
+
+import time
+def measure_time(func):
+    def wrapper(*args, **kwargs):
+        start = time.time()
+        func(*args, **kwargs)
+        end = time.time()
+        time_taken = end - start
+        print(f"Function took {time_taken:.2f} seconds")
+    return wrapper
+
+@measure_time
+def fetch_data():
+    time.sleep(4)
+    print("Function completed")
+
+fetch_data()
+
