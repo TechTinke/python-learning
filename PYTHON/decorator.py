@@ -245,15 +245,28 @@
 # Apply it to a function charge_card() that randomly raises a ConnectionError using Python's random module.
 # Test it with max_attempts=3.
 
+import random
+
 def retry(max_attempts):
     def inner(func):
         def wrapper(*args, **kwargs):
-            for i, attempt in max_attempts:
-                print(f"Attempt {i} failed, retrying...")
-                if i == 3:
-                    print("All attempts failed")
-            func(*args, **kwargs)
+            for attempt in range(max_attempts): # max_attempts is a variable and hence cannot be iterated over.
+                try:
+                    func(*args, **kwargs)
+                    break
+                except ConnectionError:
+                    print(f"Attempt {attempt + 1} failed, retrying...")
+            else:
+                print("All attempts failed")
         return wrapper
     return inner
+
+@retry(4)
+def charge_card():
+    if random.random() < 0.7:
+        raise ConnectionError("Network failure")
+    else:
+        print("Payment Successful")
+charge_card()
 
 
