@@ -312,20 +312,20 @@
 # Then compare it to a function based decorator doing the same thing —
 # explain what __init__ and __call__ do in a class based decorator and why you would choose one over the other.
 
-class CallCounter():
-    call_count = 0
+# class CallCounter():
+#     call_count = 0
 
-    def __init__(self, func):
-        self.func = func
-    def __call__(self, *args, **kwargs):
-        self.call_count += 1
-        print(f"This function has been called {self.call_count} times")
-        self.func(*args, **kwargs)
+#     def __init__(self, func):
+#         self.func = func
+#     def __call__(self, *args, **kwargs):
+#         self.call_count += 1
+#         print(f"This function has been called {self.call_count} times")
+#         self.func(*args, **kwargs)
 
-@CallCounter
-def generate_report():
-    print("Generating report...")
+# @CallCounter
+# def generate_report():
+#     print("Generating report...")
 
-generate_report()
-generate_report()
-generate_report()
+# generate_report()
+# generate_report()
+# generate_report()
