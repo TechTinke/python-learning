@@ -278,29 +278,29 @@
 # Apply it to a function search_products(query).
 # Test it by calling the function 7 times rapidly and observe which calls get blocked.
 
-def rate_limit(max_calls):
-    call_count = 0
-    def inner(func):
-        def wrapper(*args, **kwargs):
-            nonlocal call_count
-            call_count += 1
-            if call_count <= max_calls:
-                func(*args, **kwargs)
-            else:
-                print("Rate limit exceeded. Please try again later")
-        return wrapper
-    return inner
+# def rate_limit(max_calls):
+#     call_count = 0
+#     def inner(func):
+#         def wrapper(*args, **kwargs):
+#             nonlocal call_count
+#             call_count += 1
+#             if call_count <= max_calls:
+#                 func(*args, **kwargs)
+#             else:
+#                 print("Rate limit exceeded. Please try again later")
+#         return wrapper
+#     return inner
 
-@rate_limit(5)
-def search_products(query):
-    print(f"Searching for {query}...")
+# @rate_limit(5)
+# def search_products(query):
+#     print(f"Searching for {query}...")
 
-search_products("TV")
-search_products("Boots")
-search_products("Books")
-search_products("Water bottles")
-search_products("Shoes")
-search_products("Bags of chips")
-search_products("Samosas")
+# search_products("TV")
+# search_products("Boots")
+# search_products("Books")
+# search_products("Water bottles")
+# search_products("Shoes")
+# search_products("Bags of chips")
+# search_products("Samosas")
 
 
