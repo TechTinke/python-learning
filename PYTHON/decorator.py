@@ -330,24 +330,24 @@
 # generate_report()
 # generate_report()
 
-class Count():
-    call_count = 0
+# class Count():
+#     call_count = 0
 
-    def __init__(self, func):
-        self.func = func
+#     def __init__(self, func):
+#         self.func = func
     
-    def __call__(self, *args, **kwargs):
-        self.call_count += 1
-        print(f"Function call no.{self.call_count}")
-        self.func(*args, **kwargs)
+#     def __call__(self, *args, **kwargs):
+#         self.call_count += 1
+#         print(f"Function call no.{self.call_count}")
+#         self.func(*args, **kwargs)
 
-@Count
-def generate_report():
-    print("Generating report...")
+# @Count
+# def generate_report():
+#     print("Generating report...")
 
-generate_report()
-print(" ")
-generate_report()
-print(" ")
-generate_report()
-print(" ")
+# generate_report()
+# print(" ")
+# generate_report()
+# print(" ")
+# generate_report()
+# print(" ")
