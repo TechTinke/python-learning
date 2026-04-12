@@ -79,4 +79,25 @@
 #         print(f"{device.__class__.__name__} doesn't support typing")
 
 # 3. Renderable UI Components
-# A UI framework renders different components on screen. Write three classes — Button, Image, and TextBox — each with a render() method that prints what it renders. Write a function render_all(components) that loops through a list and calls render() on each. Create a mixed list and call render_all(). This is exactly how real UI frameworks like React work internally.
+# A UI framework renders different components on screen.
+# Write three classes — Button, Image, and TextBox — each with a render() method that prints what it renders.
+# Write a function render_all(components) that loops through a list and calls render() on each.
+# Create a mixed list and call render_all().
+# This is exactly how real UI frameworks like React work internally.
+
+# Rendering - calling your components
+
+class Button():
+    def render(self):
+        print("Rendering button!")
+class Image():
+    def render(self):
+        print("Rendering image!")
+class TextBox():
+    def render(self):
+        print("Rendeing a text box!")
+components = [Button(), Image(), TextBox()]
+def render_all(components):
+    for component in components:
+        component.render()
+render_all(components)
