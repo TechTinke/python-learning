@@ -1,35 +1,57 @@
 # "Duck Typing" = Another way to achieve polymorphism besides Inheritance
 #                 Object must have the minimum necessary attributes/methods
 #                 "If it looks like a duck and quacks like a duck, it must be a duck"
+#Polymorphism - allowing objects to achieve different behaviours
 
 
-class Animal:
-    alive = True
+# class Animal:
+#     alive = True
 
-class Dog(Animal):
-    def speak(self):
-        print("WOOF!")
+# class Dog(Animal):
+#     def speak(self):
+#         print("WOOF!")
 
-class Cat(Animal):
-    def speak(self):
-        print("MEOW!")
+# class Cat(Animal):
+#     def speak(self):
+#         print("MEOW!")
 
-class Car:
-    alive = False
-    def speak(self):
-        print("HONK!")
+# class Car:
+#     alive = False
+#     def speak(self):
+#         print("HONK!")
 
-animals = [Dog(), Cat(), Car()] #Car meets the minimum requirements to be called an Animal(has speak attribute, alive attribute)
-#                               even though it doesn't inherit from the class Animal                                
+# animals = [Dog(), Cat(), Car()] #Car meets the minimum requirements to be called an Animal(has speak attribute, alive attribute)
+# #                               even though it doesn't inherit from the class Animal                                
 
-for animal in animals:
-    animal.speak()
-    print(animal.alive)
+# for animal in animals:
+#     animal.speak()
+#     print(animal.alive)
 
-# WORK TO BE DONE
-# 1. Notification Sender (classic duck typing)
-# Create three completely unrelated classes (no inheritance):
-# EmailSender: method send(message: str) → prints "Email: {message}"
-# SMSSender: method send(message: str) → prints "SMS: {message}"
-# SlackSender: method send(message: str) → prints "Slack: {message}"
-# Write a function broadcast(notifiers: list, message: str) that loops through the list and calls .send(message) on each — show duck typing works without any common base class.
+# PRACTICE QUESTIONS
+# 1. Payment Processor
+# A checkout system processes payments.
+# Write three classes — CreditCard, Mpesa, and PayPal — none of which inherit from each other.
+# Each has a process(amount) method that prints how it processes the payment.
+# Write a function checkout(payment_method, amount) that calls process() on whatever object is passed.
+# Test it with all three. Then answer: why does this work even though the classes share no parent?
+
+class CreditCard():
+    #All instance methods require self
+    # Instance method - a regular method that belongs to an object 
+    def process(self, amount):
+        return f"Processing Kshs.{amount} via Credit Card"
+
+class Mpesa():
+    def process(self, amount):
+        return f"Processing Kshs.{amount} via Mpesa"
+
+class PayPal():
+    def process(self, amount):
+        return f"Processing Kshs.{amount} via Paypal"
+    
+def checkout(payment_method, amount):
+    print(payment_method.process(amount))
+
+checkout(PayPal(), 3500)
+checkout(Mpesa(), 7800)
+checkout(CreditCard(), 8900)
