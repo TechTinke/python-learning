@@ -101,3 +101,32 @@
 #     for component in components:
 #         component.render()
 # render_all(components)
+
+# 4. File Exporter
+# A data platform exports reports in different formats.
+# Write three classes — PDFExporter, CSVExporter, and ExcelExporter — each with an export(data) method.
+# None inherit from each other.
+# Write a function run_export(exporter, data) that calls export() on whatever exporter is passed.
+# Then add a fourth class XMLExporter without an export() method and try passing it to run_export() —
+# observe what happens and explain why.
+
+class PDFExporter():
+    def export(self, data):
+        print(f"Exporting {data} in PDF format")
+class CSVExporter():
+    def export(self, data):
+        print(f"Exporting {data} in CSV format")
+class ExcelExporter():
+    def export(dself, data):
+        print(f"Exporting {data} in excel format")
+class XMLExporter():
+    def move(self, data):
+        print(f"Exporting {data} in XML format")
+
+
+def run_export(exporter, data):
+    exporter.export(data)
+run_export(PDFExporter(), "Oscar is a hero")
+run_export(CSVExporter(), "Oscar, 17, CEO")
+run_export(ExcelExporter(), "Morris, 179000")
+run_export(XMLExporter(), "WTH, WTF") # returns AttributeError: 'XMLExporter' object has no attribute 'export' because it doesn't have export method
