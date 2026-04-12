@@ -35,23 +35,23 @@
 # Write a function checkout(payment_method, amount) that calls process() on whatever object is passed.
 # Test it with all three. Then answer: why does this work even though the classes share no parent?
 
-class CreditCard():
-    #All instance methods require self
-    # Instance method - a regular method that belongs to an object 
-    def process(self, amount):
-        return f"Processing Kshs.{amount} via Credit Card"
+# class CreditCard():
+#     #All instance methods require self
+#     # Instance method - a regular method that belongs to an object 
+#     def process(self, amount):
+#         return f"Processing Kshs.{amount} via Credit Card"
 
-class Mpesa():
-    def process(self, amount):
-        return f"Processing Kshs.{amount} via Mpesa"
+# class Mpesa():
+#     def process(self, amount):
+#         return f"Processing Kshs.{amount} via Mpesa"
 
-class PayPal():
-    def process(self, amount):
-        return f"Processing Kshs.{amount} via Paypal"
+# class PayPal():
+#     def process(self, amount):
+#         return f"Processing Kshs.{amount} via Paypal"
     
-def checkout(payment_method, amount):
-    print(payment_method.process(amount))
+# def checkout(payment_method, amount):
+#     print(payment_method.process(amount))
 
-checkout(PayPal(), 3500)
-checkout(Mpesa(), 7800)
-checkout(CreditCard(), 8900)
+# checkout(PayPal(), 3500)
+# checkout(Mpesa(), 7800)
+# checkout(CreditCard(), 8900)
