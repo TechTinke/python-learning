@@ -146,18 +146,18 @@
 # Write a function log_event(logger, message) that works with any logger.
 # Then explain: how is this different from achieving the same thing with inheritance or abstract classes?
 # With Inheritance, there would be a parent class like a Logger class with sub classes now like FileLogger that would be inheriting from the parent class and they would all have a log method and would not crash even if a particular class would not be overriding the fucntion from the parent class. Using abstract methods there would be enforcement
-class FileLogger():
-    def log(self, message):
-        print(f"{message} is being logged to a file")
-class DatabaseLogger():
-    def log(self, message):
-        print(f"{message} is being logged to a database")
-class CloudLogger():
-    def log(self, message):
-        print(f"{message} is being logged to the cloud")
+# class FileLogger():
+#     def log(self, message):
+#         print(f"{message} is being logged to a file")
+# class DatabaseLogger():
+#     def log(self, message):
+#         print(f"{message} is being logged to a database")
+# class CloudLogger():
+#     def log(self, message):
+#         print(f"{message} is being logged to the cloud")
 
-def log_event(logger, message):
-    logger.log(message)
-log_event(CloudLogger(), "Kiseuni employee data")
-log_event(DatabaseLogger(), "Student info")
-log_event(FileLogger(), "Invoice data")
+# def log_event(logger, message):
+#     logger.log(message)
+# log_event(CloudLogger(), "Kiseuni employee data")
+# log_event(DatabaseLogger(), "Student info")
+# log_event(FileLogger(), "Invoice data")
