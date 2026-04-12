@@ -3,6 +3,14 @@
 #                 "If it looks like a duck and quacks like a duck, it must be a duck"
 #Polymorphism - allowing objects to achieve different behaviours
 
+# Duck Typing        → No parent class, no rules — just needs log() to exist
+                    #  - Flexible as there is No enforcement
+
+# Inheritance        → Parent Logger class with log() — child can override or use parent's
+                    #  shared behavior and Child can forget to override, no crash
+
+# Abstract Classes   → Parent Logger with @abstractmethod log()
+                    #   Enforced  : More code, more rigid
 
 # class Animal:
 #     alive = True
@@ -130,3 +138,26 @@
 # run_export(CSVExporter(), "Oscar, 17, CEO")
 # run_export(ExcelExporter(), "Morris, 179000")
 # run_export(XMLExporter(), "WTH, WTF") # returns AttributeError: 'XMLExporter' object has no attribute 'export' because it doesn't have export method
+
+# 5. Logger System
+# A backend system logs events in different ways.
+# Write three classes — FileLogger, DatabaseLogger, and CloudLogger — each with a log(message) method
+# that prints where the message is being logged.
+# Write a function log_event(logger, message) that works with any logger.
+# Then explain: how is this different from achieving the same thing with inheritance or abstract classes?
+# With Inheritance, there would be a parent class like a Logger class with sub classes now like FileLogger that would be inheriting from the parent class and they would all have a log method and would not crash even if a particular class would not be overriding the fucntion from the parent class. Using abstract methods there would be enforcement
+class FileLogger():
+    def log(self, message):
+        print(f"{message} is being logged to a file")
+class DatabaseLogger():
+    def log(self, message):
+        print(f"{message} is being logged to a database")
+class CloudLogger():
+    def log(self, message):
+        print(f"{message} is being logged to the cloud")
+
+def log_event(logger, message):
+    logger.log(message)
+log_event(CloudLogger(), "Kiseuni employee data")
+log_event(DatabaseLogger(), "Student info")
+log_event(FileLogger(), "Invoice data")
