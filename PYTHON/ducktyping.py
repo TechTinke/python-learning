@@ -55,3 +55,28 @@
 # checkout(PayPal(), 3500)
 # checkout(Mpesa(), 7800)
 # checkout(CreditCard(), 8900)
+
+# 2. Spot the Bug
+# The following duck typing code throws an error. Identify and fix it:
+# class Keyboard:
+#     def type(self):
+#         print("Clack clack clack!")
+
+# class Typewriter:
+#     def type(self):
+#         print("Clack ding!")
+
+# class VoiceAssistant:
+#     def speak(self):
+#         print("How can I help you?")
+
+# devices = [Keyboard(), Typewriter(), VoiceAssistant()]
+
+# for device in devices:
+#     if hasattr(device, 'type'):
+#         device.type()
+#     else:
+#         print(f"{device.__class__.__name__} doesn't support typing")
+
+# 3. Renderable UI Components
+# A UI framework renders different components on screen. Write three classes — Button, Image, and TextBox — each with a render() method that prints what it renders. Write a function render_all(components) that loops through a list and calls render() on each. Create a mixed list and call render_all(). This is exactly how real UI frameworks like React work internally.
