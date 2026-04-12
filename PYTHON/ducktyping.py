@@ -87,17 +87,17 @@
 
 # Rendering - calling your components
 
-class Button():
-    def render(self):
-        print("Rendering button!")
-class Image():
-    def render(self):
-        print("Rendering image!")
-class TextBox():
-    def render(self):
-        print("Rendeing a text box!")
-components = [Button(), Image(), TextBox()]
-def render_all(components):
-    for component in components:
-        component.render()
-render_all(components)
+# class Button():
+#     def render(self):
+#         print("Rendering button!")
+# class Image():
+#     def render(self):
+#         print("Rendering image!")
+# class TextBox():
+#     def render(self):
+#         print("Rendering a text box!")
+# components = [Button(), Image(), TextBox()]
+# def render_all(components):
+#     for component in components:
+#         component.render()
+# render_all(components)
