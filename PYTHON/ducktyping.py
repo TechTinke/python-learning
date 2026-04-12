@@ -161,3 +161,42 @@
 # log_event(CloudLogger(), "Kiseuni employee data")
 # log_event(DatabaseLogger(), "Student info")
 # log_event(FileLogger(), "Invoice data")
+
+# 6. Serializer
+
+# Serialization - process of converting complex data objects or data structures into a format
+# such as bytes, JSON, or XML—that can be easily stored (in memory, files, or databases) or transmitted across a network
+
+
+# A web API needs to serialize objects into different formats.
+# Write three classes — JSONSerializer, XMLSerializer, and CSVSerializer — each with a serialize(data) method
+# that returns a string representation of the data in that format.
+# Write a function send_response(serializer, data) that calls serialize() and prints the result.
+# Pass a simple dictionary as data and test all three.
+
+class JSONSerializer():
+    def serialize(self, data):
+        result = str(data).replace("'", "'")
+        print(f"JSON: {result}")
+        # return data.json()
+class XMLSerializer():
+    def serialize(self, data):
+        result = "".join(f"<{k}>{v}</{k}>" for k, v in data.items())
+        print(f"XML: <root>{result}</root>")
+        # return data.xml()
+class CSVSerializer():
+    def serialize(self, data):
+        result = ", ".join(f"{k}: {v}" for k, v in data.items())
+        print(f"CSV: {result}") 
+        # return data.csv()
+
+def send_response(serializer, data):
+    serializer.serialize(data)
+
+data = {"Oscar": "CEO",
+        "Morris": "Surgeon"}
+send_response(JSONSerializer(), data)
+send_response(XMLSerializer(), data)
+send_response(CSVSerializer(), data)
+
+
