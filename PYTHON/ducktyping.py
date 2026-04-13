@@ -209,31 +209,31 @@
 # and a run_all(text) method that runs all registered plugins on the text.
 # Register all four and run them.
 
-class PluginManager():
-    plug_ins = []
-    def add_plugin(self, plugin):
-        PluginManager.plug_ins.append(plugin)
-    def run_all(self, text):
-        for plug_in in PluginManager.plug_ins:
-            plug_in.run(text)
-class SpellChecker():
-    def run(self, text):
-        print(f"Running {text} through a spell checker")
-class WordCounter():
-    def run(self, text):
-        print(f"Running {text} through a word counter")
-class AutoFormatter():
-    def run(self, text):
-        print(f"Running {text} through an auto formatter")
-class SyntaxHighlighter():
-    def run(self, text):
-        print(f"Running {text} through a syntax highlighter")
+# class PluginManager():
+#     plug_ins = []
+#     def add_plugin(self, plugin):
+#         PluginManager.plug_ins.append(plugin)
+#     def run_all(self, text):
+#         for plug_in in PluginManager.plug_ins:
+#             plug_in.run(text)
+# class SpellChecker():
+#     def run(self, text):
+#         print(f"Running {text} through a spell checker")
+# class WordCounter():
+#     def run(self, text):
+#         print(f"Running {text} through a word counter")
+# class AutoFormatter():
+#     def run(self, text):
+#         print(f"Running {text} through an auto formatter")
+# class SyntaxHighlighter():
+#     def run(self, text):
+#         print(f"Running {text} through a syntax highlighter")
 
-manager = PluginManager()
-manager.add_plugin(SpellChecker())
-manager.add_plugin(WordCounter())
-manager.add_plugin(AutoFormatter())
-manager.add_plugin(SyntaxHighlighter())
-manager.run_all("I am great!")
+# manager = PluginManager()
+# manager.add_plugin(SpellChecker())
+# manager.add_plugin(WordCounter())
+# manager.add_plugin(AutoFormatter())
+# manager.add_plugin(SyntaxHighlighter())
+# manager.run_all("I am great!")
 
 
