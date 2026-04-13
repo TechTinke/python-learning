@@ -200,6 +200,40 @@
 # send_response(XMLSerializer(), data)
 # send_response(CSVSerializer(), data)
 
+# 7. Plugin System
+# A text editor supports plugins.
+# Write a base concept where any class with a run(text) method can act as a plugin.
+# Create four plugin classes — SpellChecker, WordCounter, AutoFormatter, and SyntaxHighlighter —
+# each implementing run(text) differently.
+# Write a PluginManager class with an add_plugin(plugin) method
+# and a run_all(text) method that runs all registered plugins on the text.
+# Register all four and run them.
 
+class PluginManager():
+    plug_ins = []
+    def add_plugin(self, plugin):
+        PluginManager.plug_ins.append(plugin)
+    def run_all(self, text):
+        for plug_in in PluginManager.plug_ins:
+            plug_in.run(text)
+class SpellChecker():
+    def run(self, text):
+        print(f"Running {text} through a spell checker")
+class WordCounter():
+    def run(self, text):
+        print(f"Running {text} through a word counter")
+class AutoFormatter():
+    def run(self, text):
+        print(f"Running {text} through an auto formatter")
+class SyntaxHighlighter():
+    def run(self, text):
+        print(f"Running {text} through a syntax highlighter")
+
+manager = PluginManager()
+manager.add_plugin(SpellChecker())
+manager.add_plugin(WordCounter())
+manager.add_plugin(AutoFormatter())
+manager.add_plugin(SyntaxHighlighter())
+manager.run_all("I am great!")
 
 
