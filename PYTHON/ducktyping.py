@@ -174,31 +174,31 @@
 # Write a function send_response(serializer, data) that calls serialize() and prints the result.
 # Pass a simple dictionary as data and test all three.
 
-import json
-class JSONSerializer():
-    def serialize(self, data):
-        result = json.dumps(data)
-        print(f"JSON: {result}")
-        # return data.json()
-class XMLSerializer():
-    def serialize(self, data):
-        result = "".join(f"<{k}>{v}</{k}>" for k, v in data.items())
-        print(f"XML: <root>{result}</root>")
-        # return data.xml()
-class CSVSerializer():
-    def serialize(self, data):
-        result = ", ".join(f"{k}: {v}" for k, v in data.items())
-        print(f"CSV: {result}") 
-        # return data.csv()
+# import json
+# class JSONSerializer():
+#     def serialize(self, data):
+#         result = json.dumps(data)
+#         print(f"JSON: {result}")
+#         # return data.json()
+# class XMLSerializer():
+#     def serialize(self, data):
+#         result = "".join(f"<{k}>{v}</{k}>" for k, v in data.items())
+#         print(f"XML: <root>{result}</root>")
+#         # return data.xml()
+# class CSVSerializer():
+#     def serialize(self, data):
+#         result = ", ".join(f"{k}: {v}" for k, v in data.items())
+#         print(f"CSV: {result}") 
+#         # return data.csv()
 
-def send_response(serializer, data):
-    serializer.serialize(data)
+# def send_response(serializer, data):
+#     serializer.serialize(data)
 
-data = {"Oscar": "CEO",
-        "Morris": "Surgeon"}
-send_response(JSONSerializer(), data)
-send_response(XMLSerializer(), data)
-send_response(CSVSerializer(), data)
+# data = {"Oscar": "CEO",
+#         "Morris": "Surgeon"}
+# send_response(JSONSerializer(), data)
+# send_response(XMLSerializer(), data)
+# send_response(CSVSerializer(), data)
 
 
 
