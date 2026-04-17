@@ -365,4 +365,54 @@
 # pipeline = Pipeline()
 # pipeline.run("  Hello, WORLD!  123  ")
 
+# 10. Duck Typing with hasattr — Safe Dynamic Dispatch
+# A smart home system controls different devices.
+# Write five device classes — SmartLight, SmartTV, SmartSpeaker, SmartLock, and SmartThermostat —
+# some have a turn_on() method, some have a play() method, some have both, and some have neither.
+# Write a function activate_device(device) that uses hasattr() to safely check what
+# methods the device has before calling them — printing a meaningful message if a method doesn't exist.
+# This demonstrates safe duck typing
+# explain why hasattr() is important when you can't guarantee what methods an object has.
 
+class SmartLight():
+    def turn_on(self):
+        print(f"{self.__class__.__name__} is turned on!")
+class SmartTv():
+    def play(self):
+        print(f"{self.__class__.__name__} is playing!")
+class SmartSpeaker():
+    def turn_on(self):
+        print(f"{self.__class__.__name__} is turned on!")
+    def play(self):
+        print(f"{self.__class__.__name__} is playing!")
+class SmartLock():
+    def turn_on(self):
+        print(f"{self.__class__.__name__} is turned on!")
+    def play(self):
+        print(f"{self.__class__.__name__} is playing!")
+class ThermoStat():
+    pass
+
+smart_light = SmartLight()
+smart_tv = SmartTv()
+smart_speaker = SmartSpeaker()
+smart_lock = SmartLock()
+thermostat = ThermoStat()
+
+def activate_device(device):
+    if hasattr(device, "turn_on"):
+        device.turn_on()
+    if hasattr(device, "play"):
+        device.play()
+    if not hasattr(device, "turn_on") and not hasattr(device, "play"):
+        print(f"{device.__class__.__name__} doesn't support any known actions!")
+
+activate_device(smart_light)
+print(" ")
+activate_device(smart_tv)
+print(" ")
+activate_device(smart_speaker)
+print(" ")
+activate_device(smart_lock)
+print(" ")
+activate_device(thermostat)
