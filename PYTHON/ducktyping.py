@@ -236,4 +236,91 @@
 # manager.add_plugin(SyntaxHighlighter())
 # manager.run_all("I am great!")
 
+# 8. Duck Typing vs Abstract Classes
+# Implement the same notification system twice:
 
+# Version 1 — Using duck typing:
+# EmailNotification, SMSNotification, PushNotification with no shared parent,
+# each having a notify(recipient, message) method
+
+# class EmailNotification():
+#     def notify(self, recipient, message):
+#         print(f"`Email Adress: {recipient}")
+#         print(f"Message: {message}")
+# class SMSNotification():
+#     def notify(self, recipient, message):
+#         print(f"Phone Number: {recipient}")
+#         print(f"Message: {message}")
+# class PushNotification():
+#     def notify(self, recipient, message):
+#         print(f"Username: {recipient}")
+#         print(f"Message: {message}")
+
+# email = EmailNotification()
+# sms = SMSNotification()
+# push = PushNotification()
+
+# def send_notification(notifier, recipient, message):
+#     notifier.notify(recipient, message)
+
+# send_notification(email, "maingioscar2@gmail.com", "Email Notification")
+# print(" ")
+# send_notification(sms, "0712674005", "SMS Notification")
+# print(" ")
+# send_notification(push, "_saintt", "Push notification")
+
+
+
+# Version 2 — Using abstract base class:
+# same three classes but inheriting from an abstract Notification class with notify() as an abstract method
+# from abc import ABC, abstractmethod
+# class Notification(ABC):
+#     @abstractmethod
+#     def notify(self, recipient, message):
+#         print(f"Recipient: {recipient}")
+#         print(f"Message: {message}")
+# class EmailNotification(Notification):
+#     def notify(self, recipient, message):
+#         print(f"Recipient Email Adress: {recipient}")
+#         print(f"Message: {message}")
+# class SMSNotification(Notification):
+#     def notify(self, recipient, message):
+#         print(f"Recipient Email Adress: {recipient}")
+#         print(f"Message: {message}")
+# class PushNotification(Notification):
+#     def notify(self, recipient, message):
+#         print(f"Recipient Email Adress: {recipient}")
+#         print(f"Message: {message}")
+
+# email = EmailNotification()
+# sms = SMSNotification()
+# push = PushNotification()
+
+# def send_notification(notifier, recipient, message):
+#     notifier.notify(recipient, message)
+
+# send_notification(email, "maingioscar2@gmail.com", "Email Notification")
+# print(" ")
+# send_notification(sms, "0712674005", "SMS Notification")
+# print(" ")
+# send_notification(push, "_saintt", "Push notification")
+
+
+
+# Write a function send_notification(notifier, recipient, message) that works for both versions. Then answer:
+
+# When would you choose duck typing over abstract classes?
+
+# When classes are unrelated — like Car and Dog both having speak() — forcing them into an inheritance hierarchy makes no sense
+# When working with third party code you don't control — you can't make someone else's class inherit from your abstract class
+# When you want flexibility — any object with the right method just works
+# When building small, quick systems where enforcement isn't critical
+
+
+# What does duck typing sacrifice that abstract classes provide?
+# Enforcement — nothing stops a developer from forgetting to implement notify(), Python only crashes at runtime when the method is actually called
+# Early error detection — with abstract classes Python crashes immediately when you instantiate an incomplete class, with duck typing it crashes later when you call the missing method
+# Documentation — abstract classes clearly communicate "these are the methods you must implement", duck typing relies on developers just knowing what methods are needed
+
+
+# Duck typing is flexible but trusting — abstract classes are strict but safe 😄
