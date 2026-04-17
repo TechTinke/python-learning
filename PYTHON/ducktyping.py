@@ -333,36 +333,36 @@
 # that passes data through each transformer in order, feeding the output of one into the input of the next.
 # Test it with a messy string like "  Hello, WORLD!  123  ".
 
-class Cleaner():
-    def transform(self, data):
-        print("Data Cleaning...")
-        return data.strip()
-class Normalizer():
-    def transform(self, data):
-        print("Data Normalization...")
-        return data.lower()
-class Encoder():
-    def transform(self, data):
-        print("Data Encoding...")
-        return data.encode("utf-8")
-class Validator():
-    def transform(self, data):
-        print("Data Validation...")
-        return data
-class Formatter():
-    def transform(self, data):
-        print("Data Formatting...")
-        return data
+# class Cleaner():
+#     def transform(self, data):
+#         print("Data Cleaning...")
+#         return data.strip()
+# class Normalizer():
+#     def transform(self, data):
+#         print("Data Normalization...")
+#         return data.lower()
+# class Encoder():
+#     def transform(self, data):
+#         print("Data Encoding...")
+#         return data.encode("utf-8")
+# class Validator():
+#     def transform(self, data):
+#         print("Data Validation...")
+#         return data
+# class Formatter():
+#     def transform(self, data):
+#         print("Data Formatting...")
+#         return data
 
 
-class Pipeline():
-    # transformers = [cleaner_transform, normalizer_transformer, encoder_transformer, validator_transformer, formatter_transformer]
-    transformers = [Cleaner(), Normalizer(), Encoder(), Validator(), Formatter()]
-    def run(self, data):
-        for transformer in self.transformers:
-            data = transformer.transform(data)
-        print(f"\nFinal result: {data}")
-pipeline = Pipeline()
-pipeline.run("  Hello, WORLD!  123  ")
+# class Pipeline():
+#     # transformers = [cleaner_transform, normalizer_transformer, encoder_transformer, validator_transformer, formatter_transformer]
+#     transformers = [Cleaner(), Normalizer(), Encoder(), Validator(), Formatter()]
+#     def run(self, data):
+#         for transformer in self.transformers:
+#             data = transformer.transform(data)
+#         print(f"\nFinal result: {data}")
+# pipeline = Pipeline()
+# pipeline.run("  Hello, WORLD!  123  ")
 
 
