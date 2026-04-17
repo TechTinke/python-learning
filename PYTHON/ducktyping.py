@@ -323,4 +323,46 @@
 # Documentation — abstract classes clearly communicate "these are the methods you must implement", duck typing relies on developers just knowing what methods are needed
 
 
-# Duck typing is flexible but trusting — abstract classes are strict but safe 😄
+# Duck typing is flexible but trusting — abstract classes are strict but safe 
+
+# 9. Data Pipeline
+# A data processing pipeline passes data through multiple transformation steps.
+# Write five transformer classes — Cleaner, Normalizer, Encoder, Validator, and Formatter
+# each with a transform(data) method that modifies and returns the data.
+# Write a Pipeline class that holds a list of transformers and has a run(data) method
+# that passes data through each transformer in order, feeding the output of one into the input of the next.
+# Test it with a messy string like "  Hello, WORLD!  123  ".
+
+class Cleaner():
+    def transform(self, data):
+        print("Data Cleaning...")
+        return data.strip()
+class Normalizer():
+    def transform(self, data):
+        print("Data Normalization...")
+        return data.lower()
+class Encoder():
+    def transform(self, data):
+        print("Data Encoding...")
+        return data.encode("utf-8")
+class Validator():
+    def transform(self, data):
+        print("Data Validation...")
+        return data
+class Formatter():
+    def transform(self, data):
+        print("Data Formatting...")
+        return data
+
+
+class Pipeline():
+    # transformers = [cleaner_transform, normalizer_transformer, encoder_transformer, validator_transformer, formatter_transformer]
+    transformers = [Cleaner(), Normalizer(), Encoder(), Validator(), Formatter()]
+    def run(self, data):
+        for transformer in self.transformers:
+            data = transformer.transform(data)
+        print(f"\nFinal result: {data}")
+pipeline = Pipeline()
+pipeline.run("  Hello, WORLD!  123  ")
+
+
