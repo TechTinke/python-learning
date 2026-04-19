@@ -111,49 +111,49 @@
 # and PaymentFailedError. Write a function place_order(item, quantity, payment_valid)
 # that raises the appropriate exception based on the situation. Handle each separately and test all three error cases.
 
-class OutOfStockError(Exception):
-    pass
-class InvalidQuantityError(Exception):
-    pass
-class PaymentFailedError(Exception):
-    pass
+# class OutOfStockError(Exception):
+#     pass
+# class InvalidQuantityError(Exception):
+#     pass
+# class PaymentFailedError(Exception):
+#     pass
 
-def place_order(item, quantity, payment_valid):
-    if not payment_valid:                        
-        raise PaymentFailedError("Payment is invalid")
-    if quantity == 0:
-        raise OutOfStockError(f"{item} is out of stock")
-    elif quantity < 0:                           
-        raise InvalidQuantityError("Quantity must be greater than 0")
-    print(f"Order placed for {quantity}x {item} successfully!")
+# def place_order(item, quantity, payment_valid):
+#     if not payment_valid:                        
+#         raise PaymentFailedError("Payment is invalid")
+#     if quantity == 0:
+#         raise OutOfStockError(f"{item} is out of stock")
+#     elif quantity < 0:                           
+#         raise InvalidQuantityError("Quantity must be greater than 0")
+#     print(f"Order placed for {quantity}x {item} successfully!")
 
-try:
-    place_order("Cedar", 9, False)
-except OutOfStockError as e:
-    print(e)
-except InvalidQuantityError as e:
-    print(e)
-except PaymentFailedError as e:
-    print(e)
+# try:
+#     place_order("Cedar", 9, False)
+# except OutOfStockError as e:
+#     print(e)
+# except InvalidQuantityError as e:
+#     print(e)
+# except PaymentFailedError as e:
+#     print(e)
 
-print(" ")
+# print(" ")
 
-try:
-    place_order("Yoghurt", 0, True)
-except OutOfStockError as e:
-    print(e)
-except InvalidQuantityError as e:
-    print(e)
-except PaymentFailedError as e:
-    print(e)
+# try:
+#     place_order("Yoghurt", 0, True)
+# except OutOfStockError as e:
+#     print(e)
+# except InvalidQuantityError as e:
+#     print(e)
+# except PaymentFailedError as e:
+#     print(e)
 
-print(" ")
+# print(" ")
 
-try:
-    place_order("Apple", -9, True)
-except OutOfStockError as e:
-    print(e)
-except InvalidQuantityError as e:
-    print(e)
-except PaymentFailedError as e:
-    print(e)
+# try:
+#     place_order("Apple", -9, True)
+# except OutOfStockError as e:
+#     print(e)
+# except InvalidQuantityError as e:
+#     print(e)
+# except PaymentFailedError as e:
+#     print(e)
