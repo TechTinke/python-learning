@@ -91,16 +91,16 @@
 # and use finally to print "File operation attempted."
 # Test by passing a filename that doesn't exist on your system.
 
-def read_file(filename):
-    file = open(filename, "r") #raises FileNotFoundError
-    content = file.read()
-    print(content)
-    file.close()
-try:
-    read_file("oscar")
-except FileNotFoundError:
-    print("File doesn't exist!")
-except PermissionError:
-    print("You don't have the permission to access the file")
-finally:
-    print("File operation attempted")
+# def read_file(filename):
+#     file = open(filename, "r") #raises FileNotFoundError
+#     content = file.read()
+#     print(content)
+#     file.close()
+# try:
+#     read_file("oscar")
+# except FileNotFoundError:
+#     print("File doesn't exist!")
+# except PermissionError:
+#     print("You don't have the permission to access the file")
+# finally:
+#     print("File operation attempted")
