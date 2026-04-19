@@ -50,3 +50,15 @@
 # print(" ")
 # withdraw(56000, 6890)
 # print(" ")
+
+# 2. Spot the Bug
+# The following exception handling code has a bug —
+# it never reaches the specific error handlers.
+# Identify and fix it:
+try:
+    age = int(input("Enter your year of birth: "))
+    print(f"Your age is {2026 - age}")
+except ValueError:
+    print("Please enter a valid number")
+except Exception: #Exception is the parent class of all exceptions. IT ALWAYS COMES LAST!
+    print("Something went wrong")
