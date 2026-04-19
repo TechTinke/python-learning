@@ -1,5 +1,8 @@
 # exception =   An event that interrupts the flow of a program
 #               (ZeroDivisionError, TypeError, ValueError)
+# - ValueError triggers when you pass the right type but wrong value like int("pizza").
+# - TypeError triggers when you pass the wrong type entirely like "Hoes" / 90.
+
 #               1. try, 2. except, 3. finally
 
 # ZeroDivisionError - occurs when you divide a number by 0
@@ -22,3 +25,28 @@
 #     print("Something went wrong")
 # finally:
 #     print("Do some cleanup here")
+
+# 1. ATM Withdrawal
+# A bank ATM needs to handle errors gracefully.
+# Write a function withdraw(balance, amount) that divides the balance by the amount.
+# Handle a ZeroDivisionError if amount is 0, a ValueError if a non-number is passed,
+# and use finally to always print "Transaction complete."
+# Test with three cases — a valid withdrawal, a zero amount, and a string amount.
+
+def withdraw(balance, amount):
+    try:
+        balance_amount = balance / amount
+        print(f"{balance} / {amount} = {balance_amount}")
+        print("Transaction complete")
+    except ZeroDivisionError:
+        print("Amount can't be zero")
+    except TypeError:
+        print("Please enter a number")
+       
+
+withdraw(56000, 0)
+print(" ")
+withdraw("Hoes", 90)
+print(" ")
+withdraw(56000, 6890)
+print(" ")
