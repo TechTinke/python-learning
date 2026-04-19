@@ -62,3 +62,26 @@
 #     print("Please enter a valid number")
 # except Exception: #Exception is the parent class of all exceptions. IT ALWAYS COMES LAST!
 #     print("Something went wrong")
+
+# 3. Custom Exception
+# A voting system needs to reject underage voters.
+# Create a custom exception class UnderageVoterError that inherits from Exception.
+# Write a function register_voter(name, age) that raises UnderageVoterError
+# if age is below 18 with the message "{name} is too young to vote".
+# Handle it with a try/except block and test with both a valid and invalid age.
+
+class UnderageVoterError(Exception):
+    pass
+def register_voter(name, age):
+            if age < 18:
+                  raise UnderageVoterError(f"{name} is too young to vote")
+            else:
+                  print(f"{name} is eligible to vote")
+try:
+    register_voter("Oscar", 14)
+
+except UnderageVoterError as e:
+      print(e)
+    
+            
+
