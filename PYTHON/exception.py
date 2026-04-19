@@ -82,6 +82,25 @@
 
 # except UnderageVoterError as e:
 #       print(e)
-    
-            
 
+
+# 4. File Reader
+# A document processing system reads files.
+# Write a function read_file(filename) that opens and reads a file.
+# Handle FileNotFoundError if the file doesn't exist, PermissionError if the file can't be accessed,
+# and use finally to print "File operation attempted."
+# Test by passing a filename that doesn't exist on your system.
+
+def read_file(filename):
+    file = open(filename, "r") #raises FileNotFoundError
+    content = file.read()
+    print(content)
+    file.close()
+try:
+    read_file("oscar")
+except FileNotFoundError:
+    print("File doesn't exist!")
+except PermissionError:
+    print("You don't have the permission to access the file")
+finally:
+    print("File operation attempted")
