@@ -33,20 +33,20 @@
 # and use finally to always print "Transaction complete."
 # Test with three cases — a valid withdrawal, a zero amount, and a string amount.
 
-def withdraw(balance, amount):
-    try:
-        balance_amount = balance / amount
-        print(f"{balance} / {amount} = {balance_amount}")
-        print("Transaction complete")
-    except ZeroDivisionError:
-        print("Amount can't be zero")
-    except TypeError:
-        print("Please enter a number")
+# def withdraw(balance, amount):
+#     try:
+#         balance_amount = balance / amount
+#         print(f"{balance} / {amount} = {balance_amount}")
+#         print("Transaction complete")
+#     except ZeroDivisionError:
+#         print("Amount can't be zero")
+#     except TypeError:
+#         print("Please enter a number")
        
 
-withdraw(56000, 0)
-print(" ")
-withdraw("Hoes", 90)
-print(" ")
-withdraw(56000, 6890)
-print(" ")
+# withdraw(56000, 0)
+# print(" ")
+# withdraw("Hoes", 90)
+# print(" ")
+# withdraw(56000, 6890)
+# print(" ")
