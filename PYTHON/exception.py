@@ -230,3 +230,48 @@
 #         raise APITimeoutError(f"Booking service unavailable after {max_attempts} attempts")
 
 # retry(lambda:book_flight("Nairobi"), 3) # lambda lets you pass book_flight WITH its argument as a function
+
+# 8. Context Manager with Exceptions
+# A database system needs to ensure connections are always closed even when errors occur.
+# Write a class DatabaseConnection with __enter__ and __exit__ methods — __enter__ prints "Connection opened"
+# and returns the connection, __exit__ prints "Connection closed"
+# and handles any exceptions that occur inside the with block.
+# Use it with a with statement and deliberately raise an exception inside the block
+# to show the connection still closes.
+
+class DatabaseConnection():
+    def __enter__(self):
+        print("Connection opened")
+        return self
+    def __exit__(self, exc_type, exc_val, tb): #exc_type - exception type(TypeError, ValueError, KeyError)
+        #exc_val - exception message
+        #tb - traceback
+        print("Connection closed")
+        if exc_type:
+            print(f"Error handled: {exc_val}")
+        return True # Suppresses the exception and thus the program continues
+        # return False # Re-raises the exception and thus the program crashes
+with DatabaseConnection() as db:
+    print("Doing some database work")
+    raise Exception("Something went wrong")
+    print("This never works")
+
+# 9. Exception Hierarchy
+# A payment processing system has a hierarchy of exceptions.
+# Create a base PaymentError exception,
+# then create child exceptions InsufficientFundsError, CardExpiredError, and NetworkError —
+# all inheriting from PaymentError.
+# Write a function process_payment(amount, card) that raises different ex   ceptions based on conditions.
+# Write TWO exception handlers — one that catches specific child exceptions
+# and one that catches the parent PaymentError — and demonstrate that catching the parent catches all children 
+# but loses specificity.
+
+# 10. Global Exception Handler — Production Logger
+# A production web server needs to handle all unexpected errors gracefully without crashing.
+# Write a decorator handle_exceptions(func) that wraps any function in a try/except block,
+# catches all exceptions, logs the error with the function name, exception type, and
+# message to a list called error_log, and returns None instead of crashing.
+# Apply it to three different functions that raise different exceptions.
+# After running all three print the full error_log.
+# This pattern is used in every production web framework —
+# explain why returning None instead of crashing is critical in a live server.
