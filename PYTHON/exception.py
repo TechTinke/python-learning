@@ -239,22 +239,22 @@
 # Use it with a with statement and deliberately raise an exception inside the block
 # to show the connection still closes.
 
-class DatabaseConnection():
-    def __enter__(self):
-        print("Connection opened")
-        return self
-    def __exit__(self, exc_type, exc_val, tb): #exc_type - exception type(TypeError, ValueError, KeyError)
-        #exc_val - exception message
-        #tb - traceback
-        print("Connection closed")
-        if exc_type:
-            print(f"Error handled: {exc_val}")
-        return True # Suppresses the exception and thus the program continues
-        # return False # Re-raises the exception and thus the program crashes
-with DatabaseConnection() as db:
-    print("Doing some database work")
-    raise Exception("Something went wrong")
-    print("This never works")
+# class DatabaseConnection():
+#     def __enter__(self):
+#         print("Connection opened")
+#         return self
+#     def __exit__(self, exc_type, exc_val, tb): #exc_type - exception type(TypeError, ValueError, KeyError)
+#         #exc_val - exception message
+#         #tb - traceback
+#         print("Connection closed")
+#         if exc_type:
+#             print(f"Error handled: {exc_val}")
+#         return True # Suppresses the exception and thus the program continues
+#         # return False # Re-raises the exception and thus the program crashes
+# with DatabaseConnection() as db:
+#     print("Doing some database work")
+#     raise Exception("Something went wrong")
+#     print("This never works")
 
 # 9. Exception Hierarchy
 # A payment processing system has a hierarchy of exceptions.
