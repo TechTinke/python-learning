@@ -157,3 +157,45 @@
 #     print(e)
 # except PaymentFailedError as e:
 #     print(e)
+
+# 6. Exception Chaining
+# A user authentication system logs errors with context.
+# Write a function authenticate(username, password) that tries to look up a user from a dictionary.
+# If the user doesn't exist, catch the KeyError and raise a new AuthenticationError
+# using raise AuthenticationError("Login failed") from original_error.
+# This is called exception chaining — explain what the from keyword adds and
+# why it is useful in production systems.
+
+system_users = {"Oscar": "oskrr4567",
+                "Mlewa": "mlewa1234"}
+
+#NB: indexing a key from a dictionary gives back the value
+class AuthenticationError(Exception):
+    pass
+def authenticate(username, password):
+    try:
+        username_password = system_users[username]
+    except KeyError as e:
+        raise AuthenticationError("Login failed - User not found") from e # Exception Chaining
+    
+    if username_password != password:
+        raise AuthenticationError("Login failed - Wrong password")
+    print("Successful login")
+try:
+    authenticate("Oscar", "oskrr4567")
+except AuthenticationError as e:
+    print(e)
+
+print(" ")
+
+try:
+    authenticate("Oscr", "oskrr467")
+except AuthenticationError as e:
+    print(e)
+
+print(" ")
+
+try:
+    authenticate("Oscar", "yiw7")
+except AuthenticationError as e:
+    print(e)
