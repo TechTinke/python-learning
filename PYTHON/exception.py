@@ -166,36 +166,36 @@
 # This is called exception chaining — explain what the from keyword adds and
 # why it is useful in production systems.
 
-system_users = {"Oscar": "oskrr4567",
-                "Mlewa": "mlewa1234"}
+# system_users = {"Oscar": "oskrr4567",
+#                 "Mlewa": "mlewa1234"}
 
 #NB: indexing a key from a dictionary gives back the value
-class AuthenticationError(Exception):
-    pass
-def authenticate(username, password):
-    try:
-        username_password = system_users[username]
-    except KeyError as e:
-        raise AuthenticationError("Login failed - User not found") from e # Exception Chaining
+# class AuthenticationError(Exception):
+#     pass
+# def authenticate(username, password):
+#     try:
+#         username_password = system_users[username]
+#     except KeyError as e:
+#         raise AuthenticationError("Login failed - User not found") from e # Exception Chaining
     
-    if username_password != password:
-        raise AuthenticationError("Login failed - Wrong password")
-    print("Successful login")
-try:
-    authenticate("Oscar", "oskrr4567")
-except AuthenticationError as e:
-    print(e)
+#     if username_password != password:
+#         raise AuthenticationError("Login failed - Wrong password")
+#     print("Successful login")
+# try:
+#     authenticate("Oscar", "oskrr4567")
+# except AuthenticationError as e:
+#     print(e)
 
-print(" ")
+# print(" ")
 
-try:
-    authenticate("Oscr", "oskrr467")
-except AuthenticationError as e:
-    print(e)
+# try:
+#     authenticate("Oscr", "oskrr467")
+# except AuthenticationError as e:
+#     print(e)
 
-print(" ")
+# print(" ")
 
-try:
-    authenticate("Oscar", "yiw7")
-except AuthenticationError as e:
-    print(e)
+# try:
+#     authenticate("Oscar", "yiw7")
+# except AuthenticationError as e:
+#     print(e)
