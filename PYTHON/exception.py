@@ -199,3 +199,34 @@
 #     authenticate("Oscar", "yiw7")
 # except AuthenticationError as e:
 #     print(e)
+
+# 7. Retry with Custom Exceptions
+# A flight booking system retries failed API calls.
+# Create a custom APITimeoutError exception.
+# Write a function book_flight(destination) that randomly raises APITimeoutError 60% of the time.
+# Write a retry(func, max_attempts) function that retries the function up to max_attempts times,
+# catching APITimeoutError each time and printing "Timeout, retrying...".
+# If all attempts fail raise a final APITimeoutError with the message "Booking service unavailable
+#   after {max_attempts} attempts".
+
+import random
+
+class APITimeoutError(Exception):
+    pass
+
+def book_flight(destination):
+    if random.random() < 0.6:
+        raise APITimeoutError("Connection timeout")
+    print(f"Flight to {destination} booked successfully")
+
+def retry(func, max_attempts):
+    for attempt in range(max_attempts):
+        try:
+            func()
+            break
+        except APITimeoutError:
+            print(f"Attempt {attempt + 1} failed, retrying...")
+    else:
+        raise APITimeoutError(f"Booking service unavailable after {max_attempts} attempts")
+
+retry(book_flight("Nairobi"), 3) # lambda lets you pass book_flight WITH its argument as a function
