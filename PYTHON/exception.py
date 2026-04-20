@@ -176,7 +176,7 @@
 #     try:
 #         username_password = system_users[username]
 #     except KeyError as e:
-#         raise AuthenticationError("Login failed - User not found") from e # Exception Chaining
+#         raise AuthenticationError("Login failed - User not found") from e # Exception Chaining # from keyword attaches the original KeyError as the cause
     
 #     if username_password != password:
 #         raise AuthenticationError("Login failed - Wrong password")
