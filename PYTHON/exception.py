@@ -209,24 +209,24 @@
 # If all attempts fail raise a final APITimeoutError with the message "Booking service unavailable
 #   after {max_attempts} attempts".
 
-import random
+# import random
 
-class APITimeoutError(Exception):
-    pass
+# class APITimeoutError(Exception):
+#     pass
 
-def book_flight(destination):
-    if random.random() < 0.6:
-        raise APITimeoutError("Connection timeout")
-    print(f"Flight to {destination} booked successfully")
+# def book_flight(destination):
+#     if random.random() < 0.6:
+#         raise APITimeoutError("Connection timeout")
+#     print(f"Flight to {destination} booked successfully")
 
-def retry(func, max_attempts):
-    for attempt in range(max_attempts):
-        try:
-            func()
-            break
-        except APITimeoutError:
-            print(f"Attempt {attempt + 1} failed, retrying...")
-    else:
-        raise APITimeoutError(f"Booking service unavailable after {max_attempts} attempts")
+# def retry(func, max_attempts):
+#     for attempt in range(max_attempts):
+#         try:
+#             func()
+#             break
+#         except APITimeoutError:
+#             print(f"Attempt {attempt + 1} failed, retrying...")
+#     else:
+#         raise APITimeoutError(f"Booking service unavailable after {max_attempts} attempts")
 
-retry(book_flight("Nairobi"), 3) # lambda lets you pass book_flight WITH its argument as a function
+# retry(lambda:book_flight("Nairobi"), 3) # lambda lets you pass book_flight WITH its argument as a function
