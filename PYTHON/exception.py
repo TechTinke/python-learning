@@ -299,6 +299,8 @@
 #     process_payment(8900, None)
 # except PaymentError as e:
 #     print(f"Payment failed: {e}")
+
+
 # 10. Global Exception Handler — Production Logger
 # A production web server needs to handle all unexpected errors gracefully without crashing.
 # Write a decorator handle_exceptions(func) that wraps any function in a try/except block,
@@ -308,3 +310,48 @@
 # After running all three print the full error_log.
 # This pattern is used in every production web framework —
 # explain why returning None instead of crashing is critical in a live server.
+
+import traceback
+
+error_log = []
+
+def handle_exceptions(func):
+    def wrapper(*args, **kwargs):
+        try:
+            return func(*args, **kwargs)
+        except Exception as e:
+            error_log.append({
+                "function": func.__name__,        # ✅ Function name
+                "exception_type": type(e).__name__, # ✅ Exception type
+                "message": str(e)                  # ✅ Exception message
+            })
+            return None                            # ✅ Returns None instead of crashing
+    return wrapper
+
+@handle_exceptions
+def process_order(order_id):
+    raise ValueError(f"Invalid order ID: {order_id}")
+
+@handle_exceptions
+def send_email(recipient):
+    raise ConnectionError(f"Could not connect to mail server for {recipient}")
+
+@handle_exceptions
+def calculate_discount(price):
+    raise ZeroDivisionError("Cannot divide discount by zero!")
+
+# Run all three — none of them crash the program
+print("-----RUNNING FUNCTIONS-----")
+process_order(999)
+send_email("oscar@gmail.com")
+calculate_discount(5000)
+print("All functions ran without crashing!")
+
+# Print the full error log
+print(" ")
+print("-----ERROR LOG-----")
+for error in error_log:
+    print(f"Function : {error['function']}")
+    print(f"Exception: {error['exception_type']}")
+    print(f"Message  : {error['message']}")
+    print(" ")
