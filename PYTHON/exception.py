@@ -266,39 +266,39 @@
 # and one that catches the parent PaymentError — and demonstrate that catching the parent catches all children 
 # but loses specificity.
 
-class PaymentError(Exception):
-    pass
-class InsufficentFundsError(PaymentError):
-    pass
-class CardExpiredError(PaymentError):
-    pass
-class NetworkError(PaymentError):
-    pass
+# class PaymentError(Exception):
+#     pass
+# class InsufficentFundsError(PaymentError):
+#     pass
+# class CardExpiredError(PaymentError):
+#     pass
+# class NetworkError(PaymentError):
+#     pass
 
-def process_payment(amount, card):
-    if card == None:
-        raise NetworkError("No card has been detected - Network Error")
-    if amount < 1000:
-        raise InsufficentFundsError("Insufficient funds - Please top up your account")
-    if card == "expired":
-        raise CardExpiredError("Your card has expired, please try another card")
-    print(f"Payment of {amount} has been processed successfully!")
+# def process_payment(amount, card):
+#     if card == None:
+#         raise NetworkError("No card has been detected - Network Error")
+#     if amount < 1000:
+#         raise InsufficentFundsError("Insufficient funds - Please top up your account")
+#     if card == "expired":
+#         raise CardExpiredError("Your card has expired, please try another card")
+#     print(f"Payment of {amount} has been processed successfully!")
 
-try:
-    process_payment(6970, None)
-except NetworkError as e:
-    print(e)
-except InsufficentFundsError as e:
-    print(e)
-except CardExpiredError as e:
-    print(e)
+# try:
+#     process_payment(6970, None)
+# except NetworkError as e:
+#     print(e)
+# except InsufficentFundsError as e:
+#     print(e)
+# except CardExpiredError as e:
+#     print(e)
 
-print(" ")
+# print(" ")
 
-try:
-    process_payment(8900, None)
-except PaymentError as e:
-    print(f"Payment failed: {e}")
+# try:
+#     process_payment(8900, None)
+# except PaymentError as e:
+#     print(f"Payment failed: {e}")
 # 10. Global Exception Handler — Production Logger
 # A production web server needs to handle all unexpected errors gracefully without crashing.
 # Write a decorator handle_exceptions(func) that wraps any function in a try/except block,
