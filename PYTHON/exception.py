@@ -311,47 +311,47 @@
 # This pattern is used in every production web framework —
 # explain why returning None instead of crashing is critical in a live server.
 
-import traceback
+# import traceback
 
-error_log = []
+# error_log = []
 
-def handle_exceptions(func):
-    def wrapper(*args, **kwargs):
-        try:
-            return func(*args, **kwargs)
-        except Exception as e:
-            error_log.append({
-                "function": func.__name__,        # ✅ Function name
-                "exception_type": type(e).__name__, # ✅ Exception type
-                "message": str(e)                  # ✅ Exception message
-            })
-            return None                            # ✅ Returns None instead of crashing
-    return wrapper
+# def handle_exceptions(func):
+#     def wrapper(*args, **kwargs):
+#         try:
+#             return func(*args, **kwargs)
+#         except Exception as e:
+#             error_log.append({
+#                 "function": func.__name__,        # ✅ Function name
+#                 "exception_type": type(e).__name__, # ✅ Exception type
+#                 "message": str(e)                  # ✅ Exception message
+#             })
+#             return None                            # ✅ Returns None instead of crashing
+#     return wrapper
 
-@handle_exceptions
-def process_order(order_id):
-    raise ValueError(f"Invalid order ID: {order_id}")
+# @handle_exceptions
+# def process_order(order_id):
+#     raise ValueError(f"Invalid order ID: {order_id}")
 
-@handle_exceptions
-def send_email(recipient):
-    raise ConnectionError(f"Could not connect to mail server for {recipient}")
+# @handle_exceptions
+# def send_email(recipient):
+#     raise ConnectionError(f"Could not connect to mail server for {recipient}")
 
-@handle_exceptions
-def calculate_discount(price):
-    raise ZeroDivisionError("Cannot divide discount by zero!")
+# @handle_exceptions
+# def calculate_discount(price):
+#     raise ZeroDivisionError("Cannot divide discount by zero!")
 
-# Run all three — none of them crash the program
-print("-----RUNNING FUNCTIONS-----")
-process_order(999)
-send_email("oscar@gmail.com")
-calculate_discount(5000)
-print("All functions ran without crashing!")
+# # Run all three — none of them crash the program
+# print("-----RUNNING FUNCTIONS-----")
+# process_order(999)
+# send_email("oscar@gmail.com")
+# calculate_discount(5000)
+# print("All functions ran without crashing!")
 
-# Print the full error log
-print(" ")
-print("-----ERROR LOG-----")
-for error in error_log:
-    print(f"Function : {error['function']}")
-    print(f"Exception: {error['exception_type']}")
-    print(f"Message  : {error['message']}")
-    print(" ")
+# # Print the full error log
+# print(" ")
+# print("-----ERROR LOG-----")
+# for error in error_log:
+#     print(f"Function : {error['function']}")
+#     print(f"Exception: {error['exception_type']}")
+#     print(f"Message  : {error['message']}")
+#     print(" ")
