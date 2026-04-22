@@ -143,21 +143,21 @@
 # If the file is larger than 1MB print "⚠️ Large file detected!".
 # This introduces os.path.getsize().
 
-import os
+# import os
 
-file = "PYTHON/ducktyping.py"
+# file = "PYTHON/ducktyping.py"
 
-if os.path.exists(file):
-    file_size = os.path.getsize(file)
-    file_size_KB = file_size / 1024
-    file_size_MB = file_size_KB /1024
+# if os.path.exists(file):
+#     file_size = os.path.getsize(file)
+#     file_size_KB = file_size / 1024
+#     file_size_MB = file_size_KB /1024
 
-    print(f"{file_size} bytes")
-    print(f"{file_size_KB:.2f} KB")
-    print(f"{file_size_MB:.3f} MB")
+#     print(f"{file_size} bytes")
+#     print(f"{file_size_KB:.2f} KB")
+#     print(f"{file_size_MB:.3f} MB")
 
-    if file_size_KB > 1:
-        print(f"This file {file} is large")
+#     if file_size_KB > 1:
+#         print(f"This file {file} is large")
 
 # 7. Recursive File Search
 # A search tool finds all files with a specific extension inside a folder and all its subfolders.
