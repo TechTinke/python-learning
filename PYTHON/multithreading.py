@@ -96,3 +96,39 @@ def get_mail():
 
 # t1.join()
 # t2.join()
+
+# 3. Thread Naming
+# A logging system needs to identify which thread is doing what.
+# Write three functions that each print the name of the thread currently running them
+# using threading.current_thread().name.
+# Create three threads with custom names using the name parameter in threading.Thread()
+# and run them concurrently. This introduces threading.current_thread().
+
+
+import threading
+import time
+
+def task_one():
+    print(f"Thread running: {threading.current_thread().name}")
+    time.sleep(2)
+    print(f"Thread finished: {threading.current_thread().name}")
+def task_two():
+    print(f"Thread running: {threading.current_thread().name}")
+    time.sleep(3)
+    print(f"Thread finished: {threading.current_thread().name}")
+def task_three():
+    print(f"Thread running: {threading.current_thread().name}")
+    time.sleep(4)
+    print(f"Thread finished: {threading.current_thread().name}")
+
+t1 = threading.Thread(target=task_one, name="Logger-1")   # ✅ Custom name
+t1.start()
+t2 = threading.Thread(target=task_two, name="Logger-2")    # ✅ Custom name
+t2.start()
+t3 = threading.Thread(target=task_three, name="Logger-3")  # ✅
+t3.start()
+
+t1.join()
+t2.join()
+t3.join()
+
