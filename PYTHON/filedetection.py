@@ -28,15 +28,15 @@
 # If it doesn't exist print "invoice.txt not found".
 # Create the file/folder manually on your system to test both cases.
 
-import os
+# import os
 
-file_path = "documents/invoice.txt"
+# file_path = "documents/invoice.txt"
 
-if os.path.exists(file_path):
-    print(f"That location {file_path} exists")
+# if os.path.exists(file_path):
+#     print(f"That location {file_path} exists")
 
-    if os.path.isfile(file_path):
-        print("That is a file")
-    if os.path.isdir(file_path):
-        print("That is a directory")
-print(f"That location {file_path} doesn't exist")
+#     if os.path.isfile(file_path):
+#         print("That is a file")
+#     if os.path.isdir(file_path):
+#         print("That is a directory")
+# print(f"That location {file_path} doesn't exist")
