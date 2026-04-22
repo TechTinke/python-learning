@@ -165,22 +165,22 @@
 # to recursively search through all subdirectories and returns a list of all matching file paths.
 # Test it by searching for all .txt files in a folder that has nested subfolders.
 # This introduces os.walk() — figure out what it returns (it's a tuple of three things).
-import os
+# import os
 
-def find_files(directory, extension):
-    matching_files = []
+# def find_files(directory, extension):
+#     matching_files = []
     
-    for root, dirs, files in os.walk(directory): #
-        for file in files:
-            # Check if file ends with the extension
-            if os.path.splitext(file) == ".py":
-                matching_files.append(file)
+#     for root, dirs, files in os.walk(directory): #
+#         for file in files:
+#             # Check if file ends with the extension
+#             if os.path.splitext(file) == ".py":
+#                 matching_files.append(file)
             
-    return matching_files
+#     return matching_files
 
-results = find_files("PYTHON", ".py")
-for file in results:
-    print(file)
+# results = find_files("PYTHON", ".py")
+# for file in results:
+#     print(file)
 
 
 
