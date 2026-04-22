@@ -46,15 +46,14 @@
 # it always prints "That is a file" even for directories.
 # Identify and fix it:
 
-import os
+# import os
 
-path = "PYTHON/files"
+# path = "PYTHON/files"
 
-if os.path.exists(path):
-    if os.path.isfile(path):
-        print("That is a file")
-    if os.path.isdir(path):
-        print("That is a directory")
-else:
-    print("Path doesn't exist")
-    
+# if os.path.exists(path):
+#     if os.path.isfile(path):
+#         print("That is a file")
+#     if os.path.isdir(path):
+#         print("That is a directory")
+# else:
+#     print("Path doesn't exist")
