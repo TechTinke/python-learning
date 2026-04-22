@@ -143,21 +143,28 @@
 # If the file is larger than 1MB print "⚠️ Large file detected!".
 # This introduces os.path.getsize().
 
-# import os
+import os
 
-# file = "PYTHON/requestapidata.py"
+file = "PYTHON/ducktyping.py"
 
-# if os.path.exists(file):
-#     file_size = os.path.getsize(file) #os.path.getsize() returns the fie size in bytes
-#     file_size_KB = file_size / 1024
-#     file_size_MB = file_size_KB / 1024
-#     print(f"{file_size} bytes")
-#     print(f"{file_size_KB:.2f} KB")
-#     print(f"{file_size_MB:.4f} MB")
-#     if file_size_MB > 1:
-#         print("This is a large file")
-# else:
-#     print(f"The file {file} doesn't exist")
+if os.path.exists(file):
+    file_size = os.path.getsize(file)
+    file_size_KB = file_size / 1024
+    file_size_MB = file_size_KB /1024
+
+    print(f"{file_size} bytes")
+    print(f"{file_size_KB:.2f} KB")
+    print(f"{file_size_MB:.3f} MB")
+
+    if file_size_KB > 1:
+        print(f"This file {file} is large")
+
+# 7. Recursive File Search
+# A search tool finds all files with a specific extension inside a folder and all its subfolders.
+# Write a function find_files(directory, extension) that uses os.walk()
+# to recursively search through all subdirectories and returns a list of all matching file paths.
+# Test it by searching for all .txt files in a folder that has nested subfolders.
+# This introduces os.walk() — figure out what it returns (it's a tuple of three things).
 
 
 
