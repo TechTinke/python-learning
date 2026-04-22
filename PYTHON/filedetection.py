@@ -182,6 +182,27 @@
 # for file in results:
 #     print(file)
 
+# 8. File Watcher
+# A deployment system monitors a folder for new files.
+# Write a program that takes a snapshot of all files in a directory using os.listdir(),
+# waits 10 seconds using time.sleep(10), takes another snapshot,
+# and then compares the two to print which files were added and which were deleted during that time.
+# Manually add or delete a file during the 10 second wait to test it.
 
+# 9. Duplicate File Finder
+# A storage cleanup tool finds duplicate files.
+# Write a function find_duplicates(directory) that scans a directory, groups files by their size using os.path.getsize(),
+# and flags any files that have the same size as potential duplicates.
+# Print the groups of potential duplicates.
+# Then explain why file size alone is not a reliable way to detect duplicates and what a better approach would be.
+
+# 10. File Organizer
+# A download folder organizer automatically sorts files into subfolders by type.
+# Write a function organize_files(directory) that scans a directory,
+# and for each file moves it into a subfolder based on its extension — .txt and .pdf go
+# into "Documents", .jpg and .png go into "Images", .mp4 and .mov go into "Videos",
+# and everything else goes into "Others". Use os.makedirs()
+# to create subfolders if they don't exist and os.rename() to move files.
+# Test it on a folder with mixed file types.
 
 
