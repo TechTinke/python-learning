@@ -65,14 +65,14 @@
 # and print whether it is a ".mp4", ".jpg", or ".pdf" — printing "Unsupported file type" for anything else.
 # This introduces os.path.splitext() — look it up and figure out what it returns.
 
-import os
+# import os
 
-file_name = "PYTHON/video.mp3"
+# file_name = "PYTHON/video.mp3"
 
-if os.path.exists(file_name):
-    print(f"The file {file_name} exists")
-    root, ext = os.path.splitext(file_name)
-    print(f"It as a {ext} file")
-else:
-    print(f"The file {file_name} doesn't exist")
+# if os.path.exists(file_name):
+#     print(f"The file {file_name} exists")
+#     root, ext = os.path.splitext(file_name)
+#     print(f"It as a {ext} file")
+# else:
+#     print(f"The file {file_name} doesn't exist")
 
