@@ -44,31 +44,55 @@ def get_mail():
 # Run all three concurrently using threads and use join()
 # to wait for all of them to finish before printing "All orders ready!".
 # Compare what happens when you run them without threads.
-import time
+# import time
+# import threading
+
+# def make_pizza(order_id):
+#     print("Making pizza...")
+#     time.sleep(4)
+#     print("Pizza is ready!")
+# def make_burger(order_id):
+#     print("Making burger...")
+#     time.sleep(6)
+#     print("Burger is ready!")
+# def make_salad(order_id):
+#     print("Making salad...")
+#     time.sleep(5)
+#     print("Salad is ready")
+# pizza = threading.Thread(target=make_pizza, args=(2,)) #args needs a tuple not a single value
+# pizza.start()
+# burger = threading.Thread(target=make_burger, args=(1,))
+# burger.start()
+# salad = threading.Thread(target=make_salad, args=(3,))
+# salad.start()
+
+# pizza.join()
+# print(" ")
+# burger.join()
+# print(" ")
+# salad.join()
+# print("All orders are ready")
+
+# 2. Spot the Bug
+# The following multithreading code is meant to run two tasks concurrently
+# but they run one after the other instead.
+# Identify and fix it:
+
 import threading
+import time
 
-def make_pizza(order_id):
-    print("Making pizza...")
-    time.sleep(4)
-    print("Pizza is ready!")
-def make_burger(order_id):
-    print("Making burger...")
-    time.sleep(6)
-    print("Burger is ready!")
-def make_salad(order_id):
-    print("Making salad...")
-    time.sleep(5)
-    print("Salad is ready")
-pizza = threading.Thread(target=make_pizza, args=(2,))
-pizza.start()
-burger = threading.Thread(target=make_burger, args=(1,))
-burger.start()
-salad = threading.Thread(target=make_salad, args=(3,))
-salad.start()
+def download_file(filename):
+    time.sleep(3)
+    print(f"{filename} downloaded!")
 
-pizza.join()
-print(" ")
-burger.join()
-print(" ")
-salad.join()
-print("All orders are ready")
+def send_email(recipient):
+    time.sleep(2)
+    print(f"Email sent to {recipient}!")
+
+t1 = threading.Thread(target=download_file, args=("report.pdf",))
+t1.start()
+t2 = threading.Thread(target=send_email, args=("oscar@gmail.com",))
+t2.start()
+
+t1.join()
+t2.join()
