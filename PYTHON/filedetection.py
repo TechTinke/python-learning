@@ -83,23 +83,23 @@
 # and separates them into two lists: files_found and files_missing.
 # Print both lists at the end. Create at least 2 of the files on your system to test it.
 
-import os
+# import os
 
-file_names = ["PYTHON/report.txt", "PYHTON/data.csv", "PYTHON/image.jpg", "PYTHON/notes.txt", "PYTHON/archive.zip"]
-files_found = []
-files_missing = []
+# file_names = ["PYTHON/report.txt", "PYHTON/data.csv", "PYTHON/image.jpg", "PYTHON/notes.txt", "PYTHON/archive.zip"]
+# files_found = []
+# files_missing = []
 
-for file_name in file_names:
-    if os.path.exists(file_name):
-        print(f"That file {file_name} exists")
-        files_found.append(file_name)
-    else:
-        print(f"That file {file_name} doesn't exist")
-        files_missing.append(file_name)
+# for file_name in file_names:
+#     if os.path.exists(file_name):
+#         print(f"That file {file_name} exists")
+#         files_found.append(file_name)
+#     else:
+#         print(f"That file {file_name} doesn't exist")
+#         files_missing.append(file_name)
 
-for file_name in files_found:
-    print(file_name)
-print(" ")
+# for file_name in files_found:
+#     print(file_name)
+# print(" ")
 
-for file_name in files_missing:
-    print(file_name)
+# for file_name in files_missing:
+#     print(file_name)
