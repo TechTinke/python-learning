@@ -57,3 +57,22 @@
 #         print("That is a directory")
 # else:
 #     print("Path doesn't exist")
+
+# 3. File Extension Checker
+# A media platform only accepts certain file types.
+# Write a program that takes a filename like "video.mp4" and checks if it exists.
+# If it does, use os.path.splitext() to extract the extension
+# and print whether it is a ".mp4", ".jpg", or ".pdf" — printing "Unsupported file type" for anything else.
+# This introduces os.path.splitext() — look it up and figure out what it returns.
+
+import os
+
+file_name = "PYTHON/video.mp3"
+
+if os.path.exists(file_name):
+    print(f"The file {file_name} exists")
+    root, ext = os.path.splitext(file_name)
+    print(f"It as a {ext} file")
+else:
+    print(f"The file {file_name} doesn't exist")
+
