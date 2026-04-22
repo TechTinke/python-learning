@@ -78,21 +78,21 @@ def get_mail():
 # but they run one after the other instead.
 # Identify and fix it:
 
-import threading
-import time
+# import threading
+# import time
 
-def download_file(filename):
-    time.sleep(3)
-    print(f"{filename} downloaded!")
+# def download_file(filename):
+#     time.sleep(3)
+#     print(f"{filename} downloaded!")
 
-def send_email(recipient):
-    time.sleep(2)
-    print(f"Email sent to {recipient}!")
+# def send_email(recipient):
+#     time.sleep(2)
+#     print(f"Email sent to {recipient}!")
 
-t1 = threading.Thread(target=download_file, args=("report.pdf",))
-t1.start()
-t2 = threading.Thread(target=send_email, args=("oscar@gmail.com",))
-t2.start()
+# t1 = threading.Thread(target=download_file, args=("report.pdf",))
+# t1.start()
+# t2 = threading.Thread(target=send_email, args=("oscar@gmail.com",))
+# t2.start()
 
-t1.join()
-t2.join()
+# t1.join()
+# t2.join()
