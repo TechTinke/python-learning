@@ -112,28 +112,28 @@
 # This introduces os.listdir() — figure out what it returns
 # and how to use it with os.path.isfile() and os.path.isdir().
 
-import os
+# import os
 
-directory_files = []
-directory_subdirectories = []
+# directory_files = []
+# directory_subdirectories = []
 
-directory_contents = os.listdir("PYTHON")
-# print(directory_contents)
-for directory_content in directory_contents:
-    if os.path.isfile(directory_content):
-        directory_files.append(directory_content)
-    if os.path.isdir(directory_content):
-        directory_subdirectories.append(directory_subdirectories)
+# directory_contents = os.listdir("PYTHON")
+# # print(directory_contents)
+# for directory_content in directory_contents:
+#     if os.path.isfile(directory_content):
+#         directory_files.append(directory_content)
+#     if os.path.isdir(directory_content):
+#         directory_subdirectories.append(directory_subdirectories)
 
-print("------PYTHON FILES-----")
-for i, directory_file in directory_files:
-    print(f"{i}. {directory_file}")
-    print(" ")
+# print("------PYTHON FILES-----")
+# for i, directory_file in directory_files:
+#     print(f"{i}. {directory_file}")
+#     print(" ")
 
-print(" ")
-print("-----PYTHON SUBDIRECTORIES-----")
-for i, directory_subdirectory in directory_subdirectories:
-    print(f"{i}. {directory_subdirectory}")
+# print(" ")
+# print("-----PYTHON SUBDIRECTORIES-----")
+# for i, directory_subdirectory in directory_subdirectories:
+#     print(f"{i}. {directory_subdirectory}")
 
 
 
