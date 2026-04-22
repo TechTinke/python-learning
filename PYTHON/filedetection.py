@@ -103,3 +103,39 @@
 
 # for file_name in files_missing:
 #     print(file_name)
+
+# 5. Directory Scanner
+# A file management tool scans a directory and categorizes its contents.
+# Write a program that uses os.listdir() to list everything inside a folder,
+# then separates the contents into two lists — files and subdirectories.
+# Print the count of each.
+# This introduces os.listdir() — figure out what it returns
+# and how to use it with os.path.isfile() and os.path.isdir().
+
+import os
+
+directory_files = []
+directory_subdirectories = []
+
+directory_contents = os.listdir("PYTHON")
+# print(directory_contents)
+for directory_content in directory_contents:
+    if os.path.isfile(directory_content):
+        directory_files.append(directory_content)
+    if os.path.isdir(directory_content):
+        directory_subdirectories.append(directory_subdirectories)
+
+print("------PYTHON FILES-----")
+for i, directory_file in directory_files:
+    print(f"{i}. {directory_file}")
+    print(" ")
+
+print(" ")
+print("-----PYTHON SUBDIRECTORIES-----")
+for i, directory_subdirectory in directory_subdirectories:
+    print(f"{i}. {directory_subdirectory}")
+
+
+
+
+
