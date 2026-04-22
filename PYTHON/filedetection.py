@@ -40,3 +40,21 @@
 #     if os.path.isdir(file_path):
 #         print("That is a directory")
 # print(f"That location {file_path} doesn't exist")
+
+# 2. Spot the Bug
+# The following file detection code has a bug —
+# it always prints "That is a file" even for directories.
+# Identify and fix it:
+
+import os
+
+path = "PYTHON/files"
+
+if os.path.exists(path):
+    if os.path.isfile(path):
+        print("That is a file")
+    if os.path.isdir(path):
+        print("That is a directory")
+else:
+    print("Path doesn't exist")
+    
