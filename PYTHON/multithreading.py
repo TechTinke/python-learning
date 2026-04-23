@@ -149,51 +149,51 @@ def get_mail():
 
 # time.time() - record current time so that you can calculate how long something took
 
-import threading
-import time
-import queue
+# import threading
+# import time
+# import queue
 
-def download_file(filename, size_mb):
-    files = [
-        ("report.pdf", 6),
-        ("exam.txt", 4),
-        ("video.mp4", 20),
-        ("image.jpg", 3),
-        ("data.csv", 8),
-    ]
-    for filename, size in files:
-        print(f"Starting download: {filename}")
-        t = threading.Thread(target=download_file, args=(filename, size_mb))
-        t.start()
-        time.sleep(size_mb * 0.5)  
-        print(f"Finished download: {filename}")
-        t.join()
+# def download_file(filename, size_mb):
+#     files = [
+#         ("report.pdf", 6),
+#         ("exam.txt", 4),
+#         ("video.mp4", 20),
+#         ("image.jpg", 3),
+#         ("data.csv", 8),
+#     ]
+#     for filename, size in files:
+#         print(f"Starting download: {filename}")
+#         t = threading.Thread(target=download_file, args=(filename, size_mb))
+#         t.start()
+#         time.sleep(size_mb * 0.5)  
+#         print(f"Finished download: {filename}")
+#         t.join()
 
-def download_file(filename, size_mb):
-    print(f"Starting download: {filename}")
-    time.sleep(size_mb * 0.5)
-    print(f"Finished download: {filename}")
+# def download_file(filename, size_mb):
+#     print(f"Starting download: {filename}")
+#     time.sleep(size_mb * 0.5)
+#     print(f"Finished download: {filename}")
 
-files = [
-    ("report.pdf", 6),
-    ("exam.txt", 4),
-    ("video.mp4", 20),
-    ("image.jpg", 3),
-    ("data.csv", 8)
-]
+# files = [
+#     ("report.pdf", 6),
+#     ("exam.txt", 4),
+#     ("video.mp4", 20),
+#     ("image.jpg", 3),
+#     ("data.csv", 8)
+# ]
 
-start_time = time.time()
-threads = []
-for filename, size_mb in files:
-    t = threading.Thread(target=download_file, args=(filename, size_mb))
-    t.start()
-    threads.append(t)
+# start_time = time.time()
+# threads = []
+# for filename, size_mb in files:
+#     t = threading.Thread(target=download_file, args=(filename, size_mb))
+#     t.start()
+#     threads.append(t)
 
-for t in threads:
-    t.join()
+# for t in threads:
+#     t.join()
 
-end_time = time.time()
-print(f"Total time: {end_time - start_time:.2f} seconds")
+# end_time = time.time()
+# print(f"Total time: {end_time - start_time:.2f} seconds")
 
 
     
