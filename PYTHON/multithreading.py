@@ -105,30 +105,30 @@ def get_mail():
 # and run them concurrently. This introduces threading.current_thread().
 
 
-import threading
-import time
+# import threading
+# import time
 
-def task_one():
-    print(f"Thread running: {threading.current_thread().name}")
-    time.sleep(2)
-    print(f"Thread finished: {threading.current_thread().name}")
-def task_two():
-    print(f"Thread running: {threading.current_thread().name}")
-    time.sleep(3)
-    print(f"Thread finished: {threading.current_thread().name}")
-def task_three():
-    print(f"Thread running: {threading.current_thread().name}")
-    time.sleep(4)
-    print(f"Thread finished: {threading.current_thread().name}")
+# def task_one():
+#     print(f"Thread running: {threading.current_thread().name}")
+#     time.sleep(2)
+#     print(f"Thread finished: {threading.current_thread().name}")
+# def task_two():
+#     print(f"Thread running: {threading.current_thread().name}")
+#     time.sleep(3)
+#     print(f"Thread finished: {threading.current_thread().name}")
+# def task_three():
+#     print(f"Thread running: {threading.current_thread().name}")
+#     time.sleep(4)
+#     print(f"Thread finished: {threading.current_thread().name}")
 
-t1 = threading.Thread(target=task_one)   # ✅ Custom name
-t1.start()
-t2 = threading.Thread(target=task_two)   # ✅ Custom name
-t2.start()
-t3 = threading.Thread(target=task_three)  # ✅
-t3.start()
+# t1 = threading.Thread(target=task_one)   # ✅ Custom name
+# t1.start()
+# t2 = threading.Thread(target=task_two)   # ✅ Custom name
+# t2.start()
+# t3 = threading.Thread(target=task_three)  # ✅
+# t3.start()
 
-t1.join()
-t2.join()
-t3.join()
+# t1.join()
+# t2.join()
+# t3.join()
 
