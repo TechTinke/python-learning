@@ -121,14 +121,20 @@ def get_mail():
 #     time.sleep(4)
 #     print(f"Thread finished: {threading.current_thread().name}")
 
-# t1 = threading.Thread(target=task_one)   # ✅ Custom name
+# t1 = threading.Thread(target=task_one, name="Logger-1")   # ✅ Custom name
 # t1.start()
-# t2 = threading.Thread(target=task_two)   # ✅ Custom name
+# t2 = threading.Thread(target=task_two, name="Logger-2")   # ✅ Custom name
 # t2.start()
-# t3 = threading.Thread(target=task_three)  # ✅
+# t3 = threading.Thread(target=task_three, name="Logger 3")  # ✅
 # t3.start()
 
 # t1.join()
 # t2.join()
 # t3.join()
+
+# Thread Naming matters in production systems for debugging because you'd seee thousands of these lines
+# [Logger-1] Processing payment for user 001
+# [Logger-2] Fetching data from API
+# [Logger-3] Writing to database
+
 
