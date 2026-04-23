@@ -138,3 +138,64 @@ def get_mail():
 # [Logger-3] Writing to database
 
 
+# 4. Concurrent File Downloader
+# Write a function download_file(filename, size_mb) that simulates a download
+# by sleeping for size_mb * 0.5 seconds and prints when the download starts and finishes.
+# Create a list of 5 files with different sizes and download all of them concurrently using threads.
+# Print the total time taken and compare it to sequential downloading.
+
+# queue.Queue() in Python is a thread-safe FIFO (First-In, First-Out) data structure from the queue module.
+# It’s mainly used when multiple threads need to safely share data without corrupting it.
+
+# time.time() - record current time so that you can calculate how long something took
+
+import threading
+import time
+import queue
+
+def download_file(filename, size_mb):
+    files = [
+        ("report.pdf", 6),
+        ("exam.txt", 4),
+        ("video.mp4", 20),
+        ("image.jpg", 3),
+        ("data.csv", 8),
+    ]
+    for filename, size in files:
+        print(f"Starting download: {filename}")
+        t = threading.Thread(target=download_file, args=(filename, size_mb))
+        t.start()
+        time.sleep(size_mb * 0.5)  
+        print(f"Finished download: {filename}")
+        t.join()
+
+def download_file(filename, size_mb):
+    print(f"Starting download: {filename}")
+    time.sleep(size_mb * 0.5)
+    print(f"Finished download: {filename}")
+
+files = [
+    ("report.pdf", 6),
+    ("exam.txt", 4),
+    ("video.mp4", 20),
+    ("image.jpg", 3),
+    ("data.csv", 8)
+]
+
+start_time = time.time()
+threads = []
+for filename, size_mb in files:
+    t = threading.Thread(target=download_file, args=(filename, size_mb))
+    t.start()
+    threads.append(t)
+
+for t in threads:
+    t.join()
+
+end_time = time.time()
+print(f"Total time: {end_time - start_time:.2f} seconds")
+
+
+    
+
+
