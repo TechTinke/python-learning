@@ -150,30 +150,13 @@ def get_mail():
 # time.time() - record current time so that you can calculate how long something took
 
 # import threading
-# import time
-# import queue
-
-# def download_file(filename, size_mb):
-#     files = [
-#         ("report.pdf", 6),
-#         ("exam.txt", 4),
-#         ("video.mp4", 20),
-#         ("image.jpg", 3),
-#         ("data.csv", 8),
-#     ]
-#     for filename, size in files:
-#         print(f"Starting download: {filename}")
-#         t = threading.Thread(target=download_file, args=(filename, size_mb))
-#         t.start()
-#         time.sleep(size_mb * 0.5)  
-#         print(f"Finished download: {filename}")
-#         t.join()
-
+# import time 
 # def download_file(filename, size_mb):
 #     print(f"Starting download: {filename}")
 #     time.sleep(size_mb * 0.5)
 #     print(f"Finished download: {filename}")
 
+# the values are stored as a tuple
 # files = [
 #     ("report.pdf", 6),
 #     ("exam.txt", 4),
@@ -195,6 +178,13 @@ def get_mail():
 # end_time = time.time()
 # print(f"Total time: {end_time - start_time:.2f} seconds")
 
+# 5. Thread Safety with Locks
+# A ticket booking system has a race condition.
+# Write a TicketCounter class with a class variable tickets = 10.
+# Write a function book_ticket(name) that checks if tickets are available and decrements the count.
+# Run 15 threads simultaneously all trying to book a ticket —
+# first without a lock to show the race condition, then with a threading.Lock() to fix it.
+# Explain what a race condition is and why it's dangerous.
 
     
 
