@@ -299,19 +299,19 @@ def get_mail():
 # and observe that the daemon thread stops automatically when the main program ends.
 # Explain the difference between daemon and non-daemon threads.
 
-import threading
-import time
+# import threading
+# import time
 
-def monitor_system():
-    while True:
-        print("System is running smoothly...")
-        time.sleep(2)
+# def monitor_system():
+#     while True:
+#         print("System is running smoothly...")
+#         time.sleep(2)
 
-t = threading.Thread(target=monitor_system, daemon=True)
-t.start()
+# t = threading.Thread(target=monitor_system, daemon=True)
+# t.start()
 
-time.sleep(7)
-print("Main Program finished - Daemon thread killed automatically")
+# time.sleep(7)
+# print("Main Program finished - Daemon thread killed automatically")
 
 # t = threading.Thread(target=monitor_system)
 # t.start()
