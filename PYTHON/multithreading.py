@@ -2,17 +2,17 @@
 #                   Good for I/O bound tasks like reading files or fetching data from APIs
 #                   threading.Thread(target=my_function)
 
-import threading
-import time
-def walk_dog(first,last):
-    time.sleep(4)
-    print(f"You finish walking {first} {last}")
-def take_out_trash():
-    time.sleep(2)
-    print("You take out the trash")
-def get_mail():
-    time.sleep(2)
-    print("You take out the trash")
+# import threading
+# import time
+# def walk_dog(first,last):
+#     time.sleep(4)
+#     print(f"You finish walking {first} {last}")
+# def take_out_trash():
+#     time.sleep(2)
+#     print("You take out the trash")
+# def get_mail():
+#     time.sleep(2)
+#     print("You take out the trash")
 
 # The 3 tasks are achieved one at a time and not concurrently
 # walk_dog("Scooby", "Doo")
@@ -387,6 +387,17 @@ def get_mail():
 # for account_thread in account_threads:
 #     account_thread.join()
 # print(f"Bank Program terminated - Balance:{BankAccount.balance}")
+
+# 10. Event-Based Threading
+# A traffic light system uses threading events to coordinate cars and pedestrians.
+# Use threading.Event() to create a green_light event.
+# Write a car(name) function that waits for the green light before moving,
+# and a traffic_controller() function that sets the light to red, waits 3 seconds, then sets it to green.
+# Run multiple car threads and the controller thread concurrently
+# and observe how all cars wait for the green light before proceeding.
+# This introduces threading.Event().
+
+
 
 
 
