@@ -340,6 +340,58 @@ def get_mail():
 # t.start()
 # print("Main Thread done")
 
+# 9. Threading with Shared State — Bank Account
+# A bank account is accessed by multiple threads simultaneously.
+# Write a BankAccount class with a balance attribute and deposit(amount) and withdraw(amount) methods.
+# Simulate 10 threads all doing deposits and withdrawals simultaneously.
+# First show the problem without locks — balance ends up wrong.
+# Then fix it using threading.Lock() inside the methods.
+# Print the final balance and verify it is correct.
+
+import threading
+
+class BankAccount():
+    lock = threading.Lock()
+    balance = 0
+    def deposit(self, amount):
+        with BankAccount.lock:
+            print(f"Depositing {amount}...")
+            BankAccount.balance += amount
+            print(f"New Balance: {BankAccount.balance}")
+    def withdraw(self, amount):
+        with BankAccount.lock:
+            if BankAccount.balance < amount:
+                print(f"Insufficient funds to withdraw {amount}!")
+            else:
+                print(f"Withdrawing {amount}...")
+                BankAccount.balance -= amount
+                print(f"New Balance: {BankAccount.balance}")
+
+account = BankAccount()
+
+account_deposits = [8900, 5600, 7650, 400, 650]
+account_withdrawals = [4320, 240, 5400, 1200, 250]
+account_threads = []
+
+
+for amount in account_deposits:
+    deposit_thread = threading.Thread(target=account.deposit, args=(amount, ))
+    account_threads.append(deposit_thread)
+    deposit_thread.start()
+    
+for amount in account_withdrawals:
+    withdraw_thread = threading.Thread(target=account.withdraw, args=(amount, ))
+    account_threads.append(withdraw_thread)
+    withdraw_thread.start()
+    
+for account_thread in account_threads:
+    account_thread.join()
+print(f"Bank Program terminated - Balance:{BankAccount.balance}")
+
+
+
+
+
     
 
 
