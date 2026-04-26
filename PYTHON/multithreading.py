@@ -186,6 +186,43 @@ def get_mail():
 # first without a lock to show the race condition, then with a threading.Lock() to fix it.
 # Explain what a race condition is and why it's dangerous.
 
+# RACE CONDITION - count foes below zero
+# In a Race Condition, the next thread reads stale data and still processes the thread 
+# Without a lock threads read stale data before other threads finish updating it —
+# a lock forces them to wait their turn so they always read the latest value!
+
+import threading
+import time
+
+class TicketCounter():
+    tickets = 10
+    lock = threading.Lock() #Lock forces each thread to wait its turn so that they always read the latest value
+
+def book_ticket(name):
+    with TicketCounter.lock:
+        if TicketCounter.tickets == 0:
+            print(f"Sorry {name} - Tickets sold out!")
+        else:
+            print(f"Booking ticket for {name}...")
+            time.sleep(0.1) # Small sleep exposes race condition
+            TicketCounter.tickets -= 1
+            print(f"Ticket booked for {name}successfully booked")
+
+names = ["Oscar", "Abel", "Praise", "Jerome", "Anne", "Yula", "Kivua", "Michael", "Abel", "Maingi", "Mary", "Cate", "Winnie", "Nzula", "Grace"]
+ticket_threads = []
+for name in names:
+    ticket = threading.Thread(target=book_ticket, args=(name, ))
+    ticket_threads.append(ticket)
+    ticket.start()
+
+for ticket in ticket_threads:
+    ticket.join()
+print(f"Final ticket count: {TicketCounter.tickets}")
+
+
+
+
+
     
 
 
