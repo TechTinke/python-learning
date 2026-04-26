@@ -291,6 +291,56 @@ def get_mail():
 # - resultsfuture.result() makes it easy and fast to collect thread results
 # - Thread Pool manages everything automatically
 
+# 8. Daemon Threads
+# A background monitoring system runs alongside the main program.
+# Write a function monitor_system() that prints a system status message every 2 seconds indefinitely.
+# Run it as a daemon thread — set daemon=True before starting.
+# Then run the main program for 7 seconds
+# and observe that the daemon thread stops automatically when the main program ends.
+# Explain the difference between daemon and non-daemon threads.
+
+import threading
+import time
+
+def monitor_system():
+    while True:
+        print("System is running smoothly...")
+        time.sleep(2)
+
+t = threading.Thread(target=monitor_system, daemon=True)
+t.start()
+
+time.sleep(7)
+print("Main Program finished - Daemon thread killed automatically")
+
+# t = threading.Thread(target=monitor_system)
+# t.start()
+
+# A Daemon thread is killed automatically when the main program exits
+# A Non Daemon thread keeps the program running until the thread finishes
+# - All threads are non daemon by default
+
+# import threading
+# import time
+
+# def work():
+#     time.sleep(3)
+#     print("Finished work")
+
+# Non-Daemon Thread - critical stuff that needs to complete
+
+# t = threading.Thread(target=work)
+# t.start()
+# print("Main thread done")
+
+
+# Daemon Thread - background tasks
+
+# t = threading.Thread(target=work, daemon=True)
+# t.start()
+# print("Main Thread done")
+
+    
 
 
 
