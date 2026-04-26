@@ -234,32 +234,32 @@ def get_mail():
 # In Thread Pools, threads are reused but are not recreated per task
 
 
-import time
-from concurrent.futures import ThreadPoolExecutor
-urls =[
-    "https://google.com",
-    "https://chatgpt.com",
-    "https://moringaschool.com",
-    "https://gemini.com",
-    "https://google.com",
-    "https://google.com",
-    "https://google.com",
-    "https://google.com",
-    "https://x.com",
-    "https://instagram.com"
-]
+# import time
+# from concurrent.futures import ThreadPoolExecutor
+# urls =[
+#     "https://google.com",
+#     "https://chatgpt.com",
+#     "https://moringaschool.com",
+#     "https://gemini.com",
+#     "https://google.com",
+#     "https://google.com",
+#     "https://google.com",
+#     "https://google.com",
+#     "https://x.com",
+#     "https://instagram.com"
+# ]
 
-def fetch_url(url):
-    print(f"Fetching data from {url}...")
-    time.sleep(2)
-    print(f"Successfully fetched data from {url}")
-    # executor = ThreadPoolExecutor(max_workers=3) # Creates a pool of 3 worker threads
+# def fetch_url(url):
+#     print(f"Fetching data from {url}...")
+#     time.sleep(2)
+#     print(f"Successfully fetched data from {url}")
+#     # executor = ThreadPoolExecutor(max_workers=3) # Creates a pool of 3 worker threads
 
-with ThreadPoolExecutor(max_workers=3) as executor:
-    url_futures = [executor.submit(fetch_url, url) for url in urls]
+# with ThreadPoolExecutor(max_workers=3) as executor:
+#     url_futures = [executor.submit(fetch_url, url) for url in urls]
 
-    for url_future in url_futures:
-        url_future.result()
+#     for url_future in url_futures:
+#         url_future.result()
         # print(url_future.result())
         
 
