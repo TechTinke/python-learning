@@ -219,6 +219,64 @@ def get_mail():
 #     ticket.join()
 # print(f"Final ticket count: {TicketCounter.tickets}")
 
+# 7. Thread Pool
+# A web scraper needs to fetch data from 10 URLs efficiently.
+# Use concurrent.futures.ThreadPoolExecutor to create a pool of 3 worker threads.
+# Write a function fetch_url(url) that simulates fetching data with time.sleep().
+# Submit all 10 URLs to the pool and collect results.
+# Compare this to creating 10 individual threads and explain why thread pools are better for managing large numbers of tasks.
+
+# Thread Pools - used for managing a large number of tasks as threads are automatically managed:
+# - Creating threads
+# - Starting threads
+# - Tracking threads
+# - Joining threads 
+# In Thread Pools, threads are reused but are not recreated per task
+
+
+import time
+from concurrent.futures import ThreadPoolExecutor
+urls =[
+    "https://google.com",
+    "https://chatgpt.com",
+    "https://moringaschool.com",
+    "https://gemini.com",
+    "https://google.com",
+    "https://google.com",
+    "https://google.com",
+    "https://google.com",
+    "https://x.com",
+    "https://instagram.com"
+]
+
+def fetch_url(url):
+    print(f"Fetching data from {url}...")
+    time.sleep(2)
+    print(f"Successfully fetched data from {url}")
+    # executor = ThreadPoolExecutor(max_workers=3) # Creates a pool of 3 worker threads
+
+with ThreadPoolExecutor(max_workers=3) as executor:
+    url_futures = [executor.submit(fetch_url, url) for url in urls]
+
+    for url_future in url_futures:
+        url_future.result()
+        # print(url_future.result())
+        
+
+# from concurrent.futures import ThreadPoolExecutor
+# import time
+
+# def task(n):
+#     time.sleep(1)
+#     return f"Done {n}"
+
+# with ThreadPoolExecutor(max_workers=3) as executor:
+#     futures = [executor.submit(task, i) for i in range(5)]
+
+#     for f in futures:
+#         print(f.result())
+
+
 
 
 
