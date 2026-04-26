@@ -226,12 +226,14 @@ def get_mail():
 # Submit all 10 URLs to the pool and collect results.
 # Compare this to creating 10 individual threads and explain why thread pools are better for managing large numbers of tasks.
 
+
+
 # Thread Pools - used for managing a large number of tasks as threads are automatically managed:
 # - Creating threads
 # - Starting threads
 # - Tracking threads
 # - Joining threads 
-# In Thread Pools, threads are reused but are not recreated per task
+# In Thread Pools, threads are reused but are not recreated per task that happening in the background of course
 
 
 # import time
@@ -276,7 +278,18 @@ def get_mail():
 #     for f in futures:
 #         print(f.result())
 
+# Why Thread Pools are better than individual threads
+# INDIVIDUAL THREADS
+# - Create 10 threads for 10 URLs.
+# - All 10 run at once - consumes more memory due to heavy memory usage
+# - Hard to collect thread results
+# - Manual thread management
 
+# POOL OF THREADS
+# - Only 3 threads handle all 10 URLs
+# - Only 3 threads  run at a time — controlled memory due to small memory usage
+# - resultsfuture.result() makes it easy and fast to collect thread results
+# - Thread Pool manages everything automatically
 
 
 
