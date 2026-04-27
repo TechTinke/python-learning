@@ -27,15 +27,3 @@ car2.drive()
 car1.stop()
 car1.describe()
 
-#WORK TO BE DONE
-# 1. Library Management System
-# Build a Library class that manages books and members.
-# Attributes: name (str), books (list of Book objects), members (list of Member objects)
-# Methods to implement:
-# add_book(title, author, isbn) → creates a Book and adds it
-# register_member(name, member_id) → creates a Member and adds it
-# lend_book(isbn, member_id) → marks book as checked out to that member (only if available)
-# return_book(isbn) → marks book as available again
-# list_overdue_books(current_date) → prints books that are overdue (assume each Book has due_date)
-
-# Then write example code that: creates a library, adds 3 books, registers 2 members, lends/returns some books, and shows overdue ones.
