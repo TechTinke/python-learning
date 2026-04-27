@@ -397,6 +397,75 @@
 # and observe how all cars wait for the green light before proceeding.
 # This introduces threading.Event().
 
+#threading.Event() - clean coordination between threads
+# event.wait() - blocks the thread from running until the event is set
+# event.set() - releases all waiting threads at once
+# event.clear() - resets event back to False
+# event.is_set() - returns True or False
+
+# import threading
+# event = threading.Event()
+# # event.wait()
+# event.set()
+# # event.clear()
+# print(event.is_set())
+
+import threading
+import time
+
+event = threading.Event()
+
+def worker():
+    print("Worker waiting...")
+    event.wait()
+    print("Worker started!")
+
+threading.Thread(target=worker).start()
+time.sleep(2)
+print("Main thread signals event")
+event.set()
+
+
+import threading
+import time
+
+green_light_event = threading.Event()
+
+def car(name):
+    print(f"{name} waiting for green light...")
+    green_light_event.wait()
+    print(f"Green Light: {name} Moving")
+def traffic_controller():
+    print("Red Light: Cars waiting...")
+    time.sleep(3)
+    print("Green Light - Go!")
+    green_light_event.set()
+
+controller = threading.Thread(target=traffic_controller)
+controller.start()
+car_names = ["Toyota", "Porsche", "Rolls Royce", "Lamborghini", "Ferrari"]
+threads = []
+
+for name in car_names:
+    t = threading.Thread(target=car, args=(name, ))
+    t.start()
+    threads.append(t)
+
+for t in threads:
+    t.join()
+
+controller.join()
+print("All cars have passed")
+
+
+
+
+
+
+
+
+
+
 
 
 
