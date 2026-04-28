@@ -20,7 +20,7 @@
 # get_mail()
 
 # # Executing the chores concurrently
-# chore1 = threading.Thread(target=walk_dog, args=("Scooby", "Doo"))
+# chore1 = threading.Thread(target=walk_dog, args=("Scoo by", "Doo"))
 # chore1.start()
 
 # chore2 = threading.Thread(target=take_out_trash)
