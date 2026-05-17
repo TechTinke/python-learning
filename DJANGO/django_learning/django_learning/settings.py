@@ -54,7 +54,7 @@ ROOT_URLCONF = 'django_learning.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR, 'templates'],#which directory should Django go to to look for the files
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
