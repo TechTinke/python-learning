@@ -14,6 +14,7 @@ def index(request): #whatever is done to this function is what will be assigned 
     return render(request, 'index.html')
 
 def counter(request):
-    input_text = request.GET['input_text']
+    input_text = request.POST['input_text']
+    # input_text = request.POST.get('input_text', '') #Using .get() instead of [] prevents the MultiValueDictKeyError even if the key is missing for some reason.
     amount_of_words = len(input_text.split())
     return render(request, 'counter.html', {'amount_of_words': amount_of_words})
