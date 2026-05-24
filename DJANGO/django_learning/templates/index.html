@@ -1,7 +1,10 @@
-<h1>Input your text below:</h1>
-<form method="POST" action='/counter'>
-    <!-- when the method is left blank, it is automatically GET method  -->
-    {% csrf_token %}
-    <textarea name="input_text" rows="25" cols="100"></textarea><br>
-    <input type="submit"/>
+{% load static %}
+<link rel="stylesheet" href="{% static 'styles.css' %}">
+<h1>Hey, my name is Lyne</h1>
+<!-- <h1>Input your text below:</h1> -->
+<!-- <form method="POST" action="/counter"> -->
+  <!-- when the method is left blank, it is automatically GET method  -->
+  <!-- {% csrf_token %}
+  <textarea name="input_text" rows="25" cols="100"></textarea><br />
+  <input type="submit" />
 </form>
