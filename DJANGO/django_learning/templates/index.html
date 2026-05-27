@@ -1,4 +1,13 @@
 {% load static %}
+
+<!-- USING LOOPS IN HTML -->
+<!-- {% for feature in features %}
+{% if feature.is_true == True %}
+<p>This feature is true</p>
+{{% else %}}
+<p>This feature is False</p>
+{{% endif %}}
+{{% endfor %}} -->
 <!doctype html>
 <html lang="en">
   <head>
@@ -37,6 +46,7 @@
       rel="stylesheet"
     />
     <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
     <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
   </head>
   <body id="page-top">
