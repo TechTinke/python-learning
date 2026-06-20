@@ -1,5 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect #redirect - allows us to redirect the user to another page once they have signed up  
 from django.http import HttpResponse
+from django.contrib.auth.models import User, auth # User - User model in the Django Administration Panel , auth - functions used to authenticate
+from django.contrib import messages
 from .models import Feature
 
 # Create your views here.
@@ -58,3 +60,31 @@ def index(request): #whatever is done to this function is what will be assigned 
 #     # input_text = request.POST.get('input_text', '') #Using .get() instead of [] prevents the MultiValueDictKeyError even if the key is missing for some reason.
 #     amount_of_words = len(input_text.split())
 #     return render(request, 'counter.html', {'amount_of_words': amount_of_words})
+
+def register(request):
+    if request.method == 'POST': #if this page is being rendered using the POST method, sth is being send to the 'register' view; which is the data below
+        username = request.POST['username'] #data collected from username is stored inside this variable
+        email = request.POST['email'] #email
+        password = request.POST['password'] #password
+        password2 = request.POST['password2'] #password2
+
+        if password == password2:
+            if User.objects.filter(email=email).exists(): #checking if there exists an email from the Django User Administration Panel from the one that the user created using the Sign Up form
+                messages.info(request, "Email already used") #message send to the user if the email already exists
+                return redirect('register') #User is redirected back to register because the email already exists
+            elif User.objects.filter(username=username).exists(): #checking if there exists an username from the Django User Administration Panel from the one that the user created using the Sign Up form
+                messages.info(request, "That username already exists") #message send to the user if the username already exists
+                return redirect('register') #User is redirected back to register because the username already exists
+            else:
+                user = User.objects.create_user(username=username, email=email, password=password) #creating the user with the credentials used 
+                user.save(); #Saving the user that was created
+                return redirect('login')
+        else:
+            messages.info(request, "Passwords do not match")
+            return redirect('register')
+    else:
+        return render(request, 'register.html')
+
+
+
+
