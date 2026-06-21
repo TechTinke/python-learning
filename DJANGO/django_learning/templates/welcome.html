@@ -1,0 +1,13 @@
+<style>
+  h2 {
+    color: brown;
+  }
+  h1 {
+    color: aquamarine;
+  }
+</style>
+{% if user.is_authenticated %}
+<h1>Hey, {{user.username}}</h1>
+<br />
+<a href="/logout">Log out</a>
+{% endif %}

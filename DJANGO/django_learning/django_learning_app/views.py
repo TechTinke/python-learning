@@ -85,6 +85,26 @@ def register(request):
     else:
         return render(request, 'register.html')
 
+def login(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
 
+        user = auth.authenticate(username=username, password=password) #authenticating user details from credentials on Django Panel(username, password)
+        if user is not None: #user is registered
+            auth.login(request, user)
+            return redirect('welcome')
+        else:
+            messages.info(request, 'Oops, your login credentials could not be found!')
+            return redirect('login')
+    else:
+        return render(request, 'login.html')
+
+def welcome(request):
+    return render(request, 'welcome.html')
+
+def logout(request):
+    auth.logout(request)
+    return redirect('/')
 
 
