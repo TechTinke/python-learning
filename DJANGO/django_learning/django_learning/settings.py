@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_learning_app',
+    'lost_and_found'
 ]
 
 MIDDLEWARE = [

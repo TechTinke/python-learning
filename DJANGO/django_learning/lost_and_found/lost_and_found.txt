@@ -1,0 +1,14 @@
+1. Campus Lost & Found Board
+Real-world hook: KU students lose stuff constantly — 
+ID cards, USB drives, hostel keys.
+
+Problem: Build an app where logged-in users can post
+a "lost item" or "found item" with a title
+and description. Each post gets a dynamic URL (/item/<int:pk>)
+showing full details.
+Only the user who created a post can see a "Delete" button on it 
+— everyone else just sees "Contact poster."
+
+Forces you to: dynamic routing with pk, request.user checks
+inside templates ({% if post.owner == user %}), foreign key
+from Post to User, login-required views.

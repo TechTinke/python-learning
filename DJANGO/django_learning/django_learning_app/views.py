@@ -105,9 +105,13 @@ def welcome(request):
 
 def logout(request):
     auth.logout(request)
-    return redirect('/')
+    return redirect('/django_learning_app/')
 
 def post(request, pk):
     return render(request, 'post.html', {'pk': pk})
+
+def counter(request):
+    posts = [1, 2, 3, 4, 5, 'tim', 'tom', 'john']
+    return render(request, 'counter.html', {'posts': posts})
 
 
