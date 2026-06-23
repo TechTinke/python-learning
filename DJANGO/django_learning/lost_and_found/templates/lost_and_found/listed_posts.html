@@ -1,0 +1,7 @@
+<h1>Lost & Found</h1>
+<a href="{% url 'create_post' %}">Create New Post</a>
+{% for listed_post in listed_posts %}
+<p>
+  <a href="{% url 'post_detail' listed_post.pk %}">{{listed_post.title}}</a>
+</p>
+{% endfor %}
