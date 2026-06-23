@@ -1,0 +1,9 @@
+<h1>Posted Item Details</h1>
+<h2>{{listed_post.title}}</h2>
+<p>{{listed_post.description}}</p>
+<p>Item listed by {{listed_post.owner.username}}</p>
+
+<form action="{% url 'delete_post' listed_post.pk%}" method="POST">
+  {% csrf_token %}
+  <input type="submit" value="Delete" />
+</form>
