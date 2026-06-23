@@ -22,3 +22,4 @@ def delete_post(request, pk):
     post = Post.objects.get(pk=pk)
     post.delete()
     return redirect('listed_posts')
+
