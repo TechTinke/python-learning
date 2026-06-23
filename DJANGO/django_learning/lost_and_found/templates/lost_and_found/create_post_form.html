@@ -1,0 +1,9 @@
+<h1>New Post</h1>
+<form action="create_post" method="POST">
+  {% csrf_token %}
+  <p>Title</p>
+  <input type="text" name="title" />
+  <p>Description</p>
+  <input type="text" name="description" /><br />
+  <input type="submit" value="Create Post" />
+</form>
