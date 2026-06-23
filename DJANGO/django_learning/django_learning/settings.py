@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_learning_app',
-    'lost_and_found'
+    'lost_and_found', #registering your app  so that Django is able to pick up the models created from the app
 ]
 
 MIDDLEWARE = [
