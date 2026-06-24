@@ -1,7 +1,7 @@
 <h1>Posted Item Details</h1>
 <h2>{{post_details.title}}</h2>
 <p>{{post_details.description}}</p>
-<p>Item listed by {{listed_post.owner.username}}</p>
+<p>Item listed by {{post_details.owner.username}}</p>
 
 <form action="{% url 'delete_post' post_details.pk %}" method="POST">
   {% csrf_token %}
