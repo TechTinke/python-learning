@@ -3,7 +3,9 @@
 <p>{{post_details.description}}</p>
 <p>Item listed by {{post_details.owner.username}}</p>
 
+{% if post_details.owner == user%}
 <form action="{% url 'delete_post' post_details.pk %}" method="POST">
   {% csrf_token %}
   <input type="submit" value="Delete" />
 </form>
+{% endif %}
