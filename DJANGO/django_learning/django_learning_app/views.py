@@ -61,6 +61,10 @@ def index(request): #whatever is done to this function is what will be assigned 
 #     amount_of_words = len(input_text.split())
 #     return render(request, 'counter.html', {'amount_of_words': amount_of_words})
 
+# NB:
+# - request.user is never empty(None) when no one is logged in.
+# - A special placeholder(AnonymousUser) is used when no one is authenticated
+# - Anonymous user returns False when user.is_authenticated is run so that there is no crash
 def register(request):
     if request.method == 'POST': #if this page is being rendered using the POST method, sth is being send to the 'register' view; which is the data below
         username = request.POST['username'] #data collected from username is stored inside this variable
