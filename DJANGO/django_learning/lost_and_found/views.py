@@ -1,9 +1,10 @@
 from django.shortcuts import render, redirect
 from .models import Post
+from django.contrib.auth.models import User
 
 # Create your views here.
 def listed_posts(request):
-    listed_posts = Post.objects.all() # getting all the posts that have been listed
+    listed_posts = Post.objects.all() # getting all the posts that have been listed using the model Post
     return render(request, 'lost_and_found/listed_posts.html', {'listed_posts': listed_posts})
 
 def post_detail(request, pk):
@@ -14,12 +15,13 @@ def create_post(request):
     if request.method == 'POST':
         title = request.POST['title']
         description = request.POST['description']
-        Post.objects.create(title=title, description=description)
+        Post.objects.create(owner=request.user, title=title, description=description)
         return redirect('listed_posts')
     return render(request, 'lost_and_found/create_post_form.html')
 
 def delete_post(request, pk):
     post = Post.objects.get(pk=pk)
-    post.delete()
+    if post.owner == request.user:
+        post.delete()
     return redirect('listed_posts')
 
