@@ -12,6 +12,21 @@ def post_detail(request, pk):
     return render(request, 'lost_and_found/post_detail.html', {'post_details': post_details})
 
 def create_post(request):
+    if not request.user.is_authenticated:
+        return redirect('login')
+    
+    #SHORTCUT VERSION
+    # from django.contrib.auth.decorators import login_required
+
+    # @login_required
+    # def create_post(request):
+    #     if request.method == 'POST':
+    #         title = request.POST['title']
+    #         description = request.POST['description']
+    #         Post.objects.create(owner=request.user, title=title, description=description)
+    #         return redirect('listed_posts')
+    #     return render(request, 'lost_and_found/post_form.html')
+    
     if request.method == 'POST':
         title = request.POST['title']
         description = request.POST['description']
