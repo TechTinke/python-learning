@@ -1,0 +1,9 @@
+Raindrop for saving links you want to read later.
+
+Solution definition:
+After login, users add a URL + a short note.
+Each saved link shows on a dashboard only visible to that logged-in user
+(redirect to login if not authenticated — @login_required).
+Add a dynamic URL per bookmark to view/edit it, but block editing if the bookmark doesn't belong to the logged-in user, even if they guess the URL.
+
+Forces you to: the @login_required decorator instead of manual if/else checks, ownership-based authorization (security beyond just "can I see the page" — "do I own this object").
