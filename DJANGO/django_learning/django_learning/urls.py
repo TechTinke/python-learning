@@ -20,5 +20,5 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('django_learning_app/', include('django_learning_app.urls')),
-    path('lost_and_found/', include('lost_and_found.urls'))
+    path('lost_and_found/', include('lost_and_found.urls')),
 ]
