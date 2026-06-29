@@ -40,7 +40,7 @@ def index(request): #whatever is done to this function is what will be assigned 
     # features = [feature1, feature2, feature3, feature4] # Dynamic way of doing it instead each at a time
 
     features = Feature.objects.all() #gets all the objects created from Feature and stores them in the variable features
-    return render(request, 'index.html', {'features':features})
+    return render(request, 'django_learning_app/index.html', {'features':features})
 #this is then passed in the template files e.g
 #<h4 class='title'><a href=''>{{feature1.name}}</a></h4>
 #<p class='description'>{{feature1.details}}</p>
@@ -87,7 +87,7 @@ def register(request):
             messages.info(request, "Passwords do not match")
             return redirect('register')
     else:
-        return render(request, 'register.html')
+        return render(request, 'django_learning_app/register.html')
 
 def login(request):
     if request.method == 'POST':
@@ -102,20 +102,20 @@ def login(request):
             messages.info(request, 'Oops, your login credentials could not be found!')
             return redirect('login')
     else:
-        return render(request, 'login.html')
+        return render(request, 'django_learning_app/login.html')
 
 def welcome(request):
-    return render(request, 'welcome.html')
+    return render(request, 'django_learning_app/welcome.html')
 
 def logout(request):
     auth.logout(request)
     return redirect('/django_learning_app/')
 
 def post(request, pk):
-    return render(request, 'post.html', {'pk': pk})
+    return render(request, 'django_learning_app/post.html', {'pk': pk})
 
 def counter(request):
     posts = [1, 2, 3, 4, 5, 'tim', 'tom', 'john']
-    return render(request, 'counter.html', {'posts': posts})
+    return render(request, 'django_learning_app/counter.html', {'posts': posts})
 
 

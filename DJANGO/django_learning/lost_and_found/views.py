@@ -7,7 +7,6 @@ def listed_posts(request):
     listed_posts = Post.objects.all() # getting all the posts that have been listed using the model Post
     return render(request, 'lost_and_found/listed_posts.html', {'listed_posts': listed_posts})
 
-
 def post_detail(request, pk):
     post_details = Post.objects.get(pk=pk)
     return render(request, 'lost_and_found/post_detail.html', {'post_details': post_details})
