@@ -12,7 +12,7 @@ def login(request):
         user = auth.authenticate(username=username, password=password)
         if user is not None:
             auth.login(request, user)
-            return redirect('bookmarks/saved_links')
+            return redirect('saved_links')
         else:
             messages.info(request, 'OOPS! Your login credentials could not be found')
             return redirect('/')
