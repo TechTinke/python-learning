@@ -16,7 +16,7 @@ def login(request):
         else:
             messages.info(request, 'OOPS! Your login credentials could not be found')
             return redirect('/')
-    return render(request, 'django_learning_app/login.html')
+    return render(request, 'bookmarks/login.html')
 def saved_links(request):
     saved_links = Link.objects.all()
     return render(request, 'bookmarks/saved_links.html', {'saved_links': saved_links})
