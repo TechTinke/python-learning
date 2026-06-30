@@ -15,14 +15,26 @@ def login(request):
             return redirect('saved_links')
         else:
             messages.info(request, 'OOPS! Your login credentials could not be found')
-            return redirect('/')
+            return redirect('/bookmarks')
     return render(request, 'bookmarks/login.html')
 def saved_links(request):
     saved_links = Link.objects.all()
     return render(request, 'bookmarks/saved_links.html', {'saved_links': saved_links})
 def create_link(request):
+    if request.method == 'POST':
+        url = request.POST['url']
+        details = request.POST['details']
+        Link.objects.create(url=url, details=details)
+        return redirect('/saved_links')
     return render(request, 'bookmarks/create_link.html')
 def link_update(request, pk):
-    return render(request, 'bookmarks/update_link.html', {'pk': pk})
+    link_details = Link.objects.get(pk=pk)
+    if request.method == 'PATCH':
+        url = request.PATCH['title']
+        details = request.PATCH['description']
+        Link.objects.update(url=url, details=details)
+        return redirect('/saved_links')
+    return render(request, 'bookmarks/update_link.html', {'link_details': link_details})
 def link_detail(request, pk):
-    return render(request, 'bookmarks/link_detail.html', {'pk': pk})
+    link_details = Link.objects.get(pk=pk)
+    return render(request, 'bookmarks/link_detail.html', {'link_details': link_details})

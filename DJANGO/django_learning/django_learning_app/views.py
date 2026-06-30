@@ -109,7 +109,7 @@ def welcome(request):
 
 def logout(request):
     auth.logout(request)
-    return redirect('/django_learning_app/')
+    return redirect('/bookmarks')
 
 def post(request, pk):
     return render(request, 'django_learning_app/post.html', {'pk': pk})

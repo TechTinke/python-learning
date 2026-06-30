@@ -30,9 +30,9 @@ def create_post(request):
     if request.method == 'POST':
         title = request.POST['title']
         description = request.POST['description']
-        Post.objects.create(title=title, description=description)
+        Post.objects.create(owner=request.user, title=title, description=description)
         return redirect('listed_posts')
-    return render(request, 'lost_and_found/create_post.html')
+    return render(request, 'lost_and_found/create_post_form.html')
 
 
 def delete_post(request, pk):
