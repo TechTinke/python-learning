@@ -1,4 +1,4 @@
-<h1>Saved Links</h1>
+{% if user.is_authenticated %}
 <style>
   h2 {
     color: brown;
@@ -7,14 +7,17 @@
     color: aquamarine;
   }
 </style>
-{% if user.is_authenticated %}
 <h1>Hey, {{user.username}}</h1>
 <br />
 <h1>The following are your saved links</h1>
 {% for saved_link in saved_links %}
 <p>
-  <a href="{% url 'link_detail saved_link.pk'%}">{{saved_link.url}}</a>
+  <a href="{% url 'link_detail' saved_link.pk%}">{{saved_link.url}}</a>
 </p>
 {% endfor %}
+<br />
+<p>
+  <a href="{% url 'create_link' %}">Create a New Link</a>
+</p>
 <a href="{% url 'logout' %}">Log out</a>
 {% endif %}
