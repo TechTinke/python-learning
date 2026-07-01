@@ -18,9 +18,18 @@ def login(request):
             return redirect('/bookmarks')
     return render(request, 'bookmarks/login.html')
 def saved_links(request):
+    # NB:
+    # - Since everything else is implicitly behind the login,
+    # every view except login needs the same gate 
+    if not request.user.is_authenticated:
+        messages.info(request, "You need to log in first")
+        return redirect('/bookmarks')
     saved_links = Link.objects.all()
     return render(request, 'bookmarks/saved_links.html', {'saved_links': saved_links})
 def create_link(request):
+    if not request.user.is_authenticated:
+        messages.info(request, "You need to log in first")
+        return redirect('/bookmarks')
     if request.method == 'POST':
         url = request.POST['url']
         details = request.POST['details']
@@ -28,6 +37,9 @@ def create_link(request):
         return redirect('/saved_links')
     return render(request, 'bookmarks/create_link.html')
 def link_update(request, pk):
+    if not request.user.is_authenticated:
+        messages.info(request, "You need to login first")
+        return redirect('/bookmarks')
     link_details = Link.objects.get(pk=pk)
     if request.method == 'PATCH':
         url = request.PATCH['title']
@@ -36,5 +48,8 @@ def link_update(request, pk):
         return redirect('/saved_links')
     return render(request, 'bookmarks/update_link.html', {'link_details': link_details})
 def link_detail(request, pk):
+    if not request.user.is_authenticated:
+        messages.info(request, "You need to login first")
+        return redirect('/bookmarks')
     link_details = Link.objects.get(pk=pk)
     return render(request, 'bookmarks/link_detail.html', {'link_details': link_details})
