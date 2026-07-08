@@ -1,7 +1,10 @@
 <h1>Update Link</h1>
-<form action="update_link"></form>
-<p>Title</p>
-<input type="text" name="title" />
-<p>Description</p>
-<input type="text" name="title" /><br />
-<input type="submit" name="Update Link" />
+<form action="{% url 'update_link' link_details.pk %}" method="POST">
+  {% csrf_token %}
+  <p>Url</p>
+  <input type="text" name="url" value="{{link_details.url}}" />
+  <!-- pre-filling the form with current details to allow for editing -->
+  <p>Details</p>
+  <input type="text" name="details" value="{{link_details.details}}" /><br />
+  <input type="submit" value="Save Changes" />
+</form>
