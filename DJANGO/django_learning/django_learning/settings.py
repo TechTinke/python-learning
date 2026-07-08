@@ -124,3 +124,8 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'), )
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+LOGIN_URL = '/bookmarks/'
+# Hosts the project's one shared login for redirection(when @login_required is used) because 
+# there is only one authentication system per project and not per app
