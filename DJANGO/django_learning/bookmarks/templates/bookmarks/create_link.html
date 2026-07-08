@@ -1,5 +1,5 @@
 <h1>Create a New Link</h1>
-<form action="create_link" method="POST">
+<form action="{% url 'create_link' %}" method="POST">
   {% csrf_token %}
   <p>URL</p>
   <input type="text" name="url" />
