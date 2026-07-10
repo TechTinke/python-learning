@@ -1,0 +1,15 @@
+Private Diary/Journal App
+
+A simple private journal — write entries, only you can read them.
+After login, users write dated journal entries.
+The list view should only ever show the logged-in user's own entries — never anyone else's,
+even via URL guessing. If someone tries to access /entry/<pk> for an entry they don't own, 
+redirect them with a message like "Not authorized."
+
+Forces you to: real authorization (not just authentication) — checking entry.owner != request.user
+inside the view and using messages.error() + redirect,
+which is a notch beyond what you've done with registration messages
+
+NB:
+- Authentication - verifies who you are 
+- Authorization - determines what you are allowed to access or do
