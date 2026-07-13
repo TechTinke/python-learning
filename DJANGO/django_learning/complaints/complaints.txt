@@ -1,0 +1,8 @@
+KU hostel residents reporting maintenance issues (broken tap, no power, etc.) to the warden.
+
+Logged-in students submit a complaint (room number, category, description).
+Each complaint has a status field (Pending/Resolved) that only staff (is_staff users) can change.
+Students should NOT be able to see other students' complaints, only their own — list view must filter by request.user.
+
+Filtering querysets by the logged-in user (Complaint.objects.filter(owner=request.user)),
+role-based permission checks (request.user.is_staff), model with ForeignKey to User.
