@@ -1,0 +1,7 @@
+<h1>Create a new entry</h1>
+<form action="{% url 'create_entry' %}" method="POST">
+  {% csrf_token %}
+  <p>Write your Journal below</p>
+  <input type="text" name="entry_info" />
+  <input type="submit" value="Save Journal" />
+</form>

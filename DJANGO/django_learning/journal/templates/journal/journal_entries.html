@@ -1,0 +1,20 @@
+<h1>Welcome back, {{user.username}}</h1>
+<style>
+  h5 {
+    color: darkslategrey;
+  }
+</style>
+<h2>Your Journals</h2>
+{% for message in messages %}
+<h5>{{message}}</h5>
+{% endfor %}
+<p><a href="{% url 'create_entry' %}">Create a New Journal</a></p>
+<br />
+{% for journal_entry in journal_entries %}
+<p>
+  <a href="{% url 'entry_detail' journal_entry.pk %}"
+    >{{journal_entry.created_at}}</a
+  >
+</p>
+{% endfor %}
+<p><a href="{% url 'logout' %}">Log Out</a></p>
