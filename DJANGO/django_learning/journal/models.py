@@ -5,4 +5,4 @@ from django.contrib.auth.models import User
 class Entry(models.Model):
     entry_owner = models.ForeignKey(User, on_delete=models.CASCADE)
     entry_info = models.CharField(max_length=500)
-    created_At = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(auto_now_add=True)
