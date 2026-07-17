@@ -1,0 +1,20 @@
+// File needed so that typescript knows how to compile the code to Javascript
+{
+  "compilerOptions": {
+    "target": "ES2022", // which Javascript version Typescript is going to compile
+    // ES2022 is the modern version
+    "module": "NodeNext", // which model system we are going to use in the compiled files
+    // NodeNext - how NodeJS handles your ES module and package.json
+    "moduleResolution": "NodeNext",
+    "lib": ["ES2022", "DOM"],
+    "outDir": "./dist", // folder in which compiled Javascript is going to be kept
+    "rootDir": "./src", // folder which Typescript is going to check for your source code
+    "strict": true,
+    "esModuleInterop": true, // make default imports from your common JS package and it will be easier to use
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "sourceMap": true
+  },
+  "include": ["src/**/*"], // what files will be included during compilation
+  "exclude": ["node_modules", "dist", "**/*.spec.ts"] // what files will be excluded(external packages, node modules etc) during compilation
+}
