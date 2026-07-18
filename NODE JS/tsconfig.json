@@ -1,4 +1,4 @@
-// File needed so that typescript knows how to compile the code to Javascript
+// File used to set the configurations needed so that typescript knows how to compile the code to Javascript
 {
   "compilerOptions": {
     "target": "ES2022", // which Javascript version Typescript is going to compile
@@ -13,7 +13,8 @@
     "esModuleInterop": true, // make default imports from your common JS package and it will be easier to use
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "sourceMap": true
+    "sourceMap": true,
+    "types": ["node"]
   },
   "include": ["src/**/*"], // what files will be included during compilation
   "exclude": ["node_modules", "dist", "**/*.spec.ts"] // what files will be excluded(external packages, node modules etc) during compilation
