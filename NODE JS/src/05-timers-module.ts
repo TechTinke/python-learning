@@ -63,10 +63,10 @@ async function runPromiseTimer(): Promise<void> {
   console.log("Promise based timer finishes after 5.5 seconds");
 }
 function runTimerDemo(): void {
-  // runSetTimeout();
-  // runClearTimeout();
-  // runSetInterval();
-  // runSetImmediate();
+  runSetTimeout();
+  runClearTimeout();
+  runSetInterval();
+  runSetImmediate();
 }
 runTimerDemo();
 runPromiseTimer().catch((error: unknown) => {
