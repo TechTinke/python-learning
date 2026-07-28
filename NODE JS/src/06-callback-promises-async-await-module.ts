@@ -187,3 +187,64 @@ function findUserByIdCallback1(
 //   if (err) console.log("Error:", err.message);
 //   else console.log("Task 1.1 Success:", user);
 // });
+
+// Task 1.2: Nested Callback Chain (Callback Hell)
+// Requirement: Find a user by ID using findUserByIdCallback. 
+// If found, filter through the orders array to gather their orders after an additional 200ms delay using a second callback function.
+
+function findUserByIdCallback2(id: number,
+  callback:((user_error: Error | null, user?: User)=> void)
+): void{
+  const user = users.find((currentUser) => currentUser.id === id)
+  if (!user){
+    return callback(new Error(`User with id ${id} not found`))
+  }
+  else{
+    callback(null, user)
+    callback:((order_error: Error | null, order?: Order)=> void)
+      setTimeout(() =>{
+        const order = orders.find((currentOrder) => currentOrder.userId === id)
+        if (!order){
+          return callback(new Error(`User with id ${id} does not have any order`))
+        }
+        else{
+          return callback(null, order)
+        }
+      }, 300)
+    }
+  }
+
+findUserByIdCallback2(2, (user_error, user) =>{
+  if (user_error){
+    console.log(user_error.message); 
+  }
+  else console.log(user, order);
+  
+})
+
+
+function findUserByIdCallback2(
+  id: number,
+  callback: (error: Error | null, user?: User, order?: Order) => void
+): void {
+  const user = users.find((currentUser) => currentUser.id === id);
+  if (!user) {
+    return callback(new Error(`User with id ${id} not found`));
+  }
+
+  setTimeout(() => {
+    const order = orders.find((currentOrder) => currentOrder.userId === id);
+    if (!order) {
+      return callback(new Error(`User with id ${id} does not have any order`));
+    }
+    callback(null, user, order);
+  }, 300);
+}
+
+findUserByIdCallback2(2, (error, user, order) => {
+  if (error) {
+    console.log(error.message);
+  } else {
+    console.log(user, order);
+  }
+});
