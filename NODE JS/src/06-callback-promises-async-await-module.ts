@@ -161,7 +161,7 @@ function findUserByIdCallback(
       return;
     }
     callback(null, user);
-  });
+  }, 300);
 }
 // findUserByIdCallback(6, (error, user) => {
 //   if (error) {
@@ -226,6 +226,7 @@ function getUserOrdersCallback(
   callback: (orderErr: Error | null, userOrders?: Order[]) => void,
 ): void {
   setTimeout(() => {
+    // const userOrders = orders.find((u) => u.userId === userId) // returns a single order
     const userOrders = orders.filter((o) => o.userId === userId);
     if (!userOrders) {
       return callback(
