@@ -33,8 +33,6 @@ const FOLDER_PATH = path.join(process.cwd(), "file-system", "fs-demo");
 const SYNC_FILE_PATH = path.join(FOLDER_PATH, "sync-note.txt");
 const CALLBACK_FILE_PATH = path.join(FOLDER_PATH, "callback-note.txt");
 const PROMISE_FILE_PATH = path.join(FOLDER_PATH, "promise-note.txt");
-const PROMISE_FILE_PATH1 = path.join(FOLDER_PATH, "promise-note.txt");
-const PROMISE_FILE_PATH2 = path.join(FOLDER_PATH, "callback-note.txt");
 
 type FileResult = {
   style: string;
@@ -45,14 +43,15 @@ type FileResult = {
 };
 function ensureDemoFolderExists(): void {
   if (!fs.existsSync(FOLDER_PATH)) {
-    fs.mkdirSync(FOLDER_PATH, { recursive: true }); // recursive - create the folder path if some parts are missing esp parent folder
+    fs.mkdirSync(FOLDER_PATH, { recursive: true });
+    // { recursive: true} - ensures that all nested parent directories missing from target path are generated
+    // along with the target folder without throwing errors
   }
 }
 function runSyncExample(): FileResult {
   // Write content to a file
   fs.writeFileSync(SYNC_FILE_PATH, "Created using sync fs", "utf-8"); // utf-8 means normal text
-  // writeFileSync automatically creates the file if it doesn't exist. If it exists then Node replaces the content of the file
-
+  // writeFileSync automatically creates the file if it doesn't exist. If it exists then the original file contents are completely overwritten and teplaced by the new string contents
   // Apend content
   fs.appendFileSync(SYNC_FILE_PATH, "Appended using sync fs", "utf-8");
 
@@ -216,7 +215,8 @@ async function atomicWriteAndRead(
 // Node.js legacy code bases use callback-based fs functions.
 // Write a utility function customReadFilePromise(filePath) that wraps the traditional fs.readFile callback function inside a native JavaScript Promise manually without using node:util.
 
-// Utility function - reusable helper function designed to perform a specific, common task across an application
+// Utility function - reusable helper function designed to perform specific, common tasks across an application
+// The first argument passed into the callback handler following the error-first standard pattern(err, data)=>{} represents the operational error state
 
 function customReaddFilePromise(filePath: string): Promise<string> {
   return new Promise((resolve, reject) => {
@@ -288,3 +288,15 @@ async function safelyDeleteDemoFiles(filePaths: string[]): Promise<void> {
     }
   }
 }
+
+// CONCEPTUAL NOTES
+
+// Using synchronous file methods like fs.readFileSync and fs.writeFileSync is strictly discouraged inside
+// highly concurrent Node.js production HTTP request handlers because they block the single-threaded Event loop entirely,
+// preventing any other concurrent requests from being handled until the file operations complete
+
+// If you call fs.writeFileSync("/path/to/missing-folder/file.txt", "data") when the directory missing-folder does not exist,
+// Node.js throws an ENOINT error because the target file system directory path component cannot be found
+
+// path.join() - combines path fragments using the platform-specific delimiter
+// path.resolve() - computes an absolute path relative to the current working directory
