@@ -36,6 +36,8 @@ import { resolve } from "dns";
 //     role: "user",
 //   },
 // ];
+
+// 1. CALLBACK
 // callback - function that you are going to pass into another function
 // callback(error, result) - classic callback pattern
 
@@ -59,12 +61,13 @@ function findUserWithCallback(
 //     console.log("Callback result", user?.id, user?.name, user?.role);
 //   }
 // });
+
+// 2. PROMISES
 function findUserWithPromise(userId: number): Promise<User> {
   return new Promise((resolve, reject) => {
     const user = users.find((currentUser) => currentUser.id === userId);
     if (!user) {
-      reject(new Error(`User with id ${userId} does not exist`));
-      return;
+      return reject(new Error(`User with id ${userId} does not exist`));
     }
     resolve(user);
   });
@@ -76,16 +79,18 @@ function findUserWithPromise(userId: number): Promise<User> {
 //   .catch((error: Error) => {
 //     console.log("Promise error", error.message);
 //   });
+
+// 3.  ASYNC AWAIT
 async function findUserWithAsyncAwait(userId: number): Promise<void> {
   try {
     const user = await findUserWithPromise(userId);
-    console.log("async/await", user.name);
+    console.log("Async await result ", user);
   } catch (error) {
     const message = error instanceof Error ? error.message : "unknown error";
-    console.log("async/await", message);
+    console.log("Async await error -", message);
   }
 }
-// findUserWithAsyncAwait(10);
+findUserWithAsyncAwait(1);
 
 type User = {
   id: number;
@@ -237,15 +242,15 @@ function getUserOrdersCallback(
   }, 200);
 }
 
-findUserByIdCallback(1, (err, user) => {
-  if (err) return console.error(err.message);
-  else {
-    console.log(user);
-    getUserOrdersCallback(user!.id, (orderErr, userOrders) => {
-      if (orderErr) return console.error(orderErr.message);
-      else {
-        console.log(userOrders);
-      }
-    });
-  }
-});
+// findUserByIdCallback(1, (err, user) => {
+//   if (err) return console.error(err.message);
+//   else {
+//     console.log(user);
+//     getUserOrdersCallback(user!.id, (orderErr, userOrders) => {
+//       if (orderErr) return console.error(orderErr.message);
+//       else {
+//         console.log(userOrders);
+//       }
+//     });
+//   }
+// });
