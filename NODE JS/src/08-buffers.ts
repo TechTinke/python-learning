@@ -30,7 +30,7 @@ const fixedBuffer = Buffer.alloc(5); // empty fixed buffer of length 5 bytes
 fixedBuffer.write("API");
 // console.log("fixed buffer as text", fixedBuffer.toString("utf-8"));
 
-// .concat - combine diff data chunks into one
+// .concat - combine diff data chunks in buffers into one buffer
 const chunks = [Buffer.from("Hello"), Buffer.from("Node"), Buffer.from("JS")];
 const combinedBuffer = Buffer.concat(chunks);
 console.log(combinedBuffer);
