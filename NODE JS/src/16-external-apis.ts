@@ -1,4 +1,4 @@
-// Web Scrappingr
+// Web Scraping
 
 import { time } from "node:console";
 
@@ -35,6 +35,10 @@ function transformUser(rawData: PlaceholderUser): PublicUser {
 
 async function fetchExternalUser(): Promise<void> {
   // AbortController - cancel an ongoing request in a case scenario like when there is no data that is returned which in the case of a fetch it would not be possible
+  //CASE SCENARIOS THAT WOULDC AUSE AN EXTERNAL API TO FAIL
+  // 1.Network Instability
+  // 2.Unannounced breaking schema
+  // 3.Rate Limiter
   const controller = new AbortController();
   const timeOut = setTimeout(() => {
     controller.abort();
@@ -60,8 +64,8 @@ async function fetchExternalUser(): Promise<void> {
       console.error("Request failed - Response time was too long");
       return;
     }
-    const message = error instanceof Error ? error.message : "unknown error";
-    console.error("External API failed", message);
+    const messagee = error instanceof Error ? error.message : "unknown error";
+    console.error("External API failed", messagee);
   } finally {
     clearTimeout(timeOut);
   }
