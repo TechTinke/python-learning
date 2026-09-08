@@ -17,11 +17,11 @@ import { pipeline } from "node:stream/promises";
 // CHUNKS - small data pieces
 
 //  STREAM TYPES
-// 1. READBLE STREAMS
+// 1. READABLE STREAMS
 // - Used to sequantially read a source of data e.g http request body, files, standard inputs e.t.c
 
 // 2. WRITABLE STREAMS
-// - Useful for creating files, uploading data or any task that invloves sequantilly outputting data
+// - Useful for creating files, uploading data or any task that invloves sequantially outputting data
 // - They act as the destination for your data
 // - Transform streams - read the data, change it e.g convert it to uppercase, lowercase and pass it forward
 
