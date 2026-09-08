@@ -260,4 +260,4 @@ const server5 = http.createServer(
 server5.listen(PORT5, () => {});
 
 // NB: Frameworks like Express provide routing wrappers instead of using native http.createServer blocks inside high-scale production systems
-// because Native modules lack abstract built-in middleware cascading engines, making complex route parameter extraction and ayload pre-parsing code repetitive
+// because Native modules lack abstract built-in middleware cascading engines, making complex route parameter extraction and payload pre-parsing code repetitive
