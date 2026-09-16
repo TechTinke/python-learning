@@ -37,7 +37,7 @@ address: {street:"1212 Main Street", city:"Anytown"},
 phone_number: "1-800-555-0101",
 industry: ["food_processing", "appliances"],
 type:"private",
-number_of_employees: 987
+number_of_employees: 9874
 }
 
 3. **Graph databases**
