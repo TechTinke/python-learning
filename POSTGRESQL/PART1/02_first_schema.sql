@@ -12,11 +12,26 @@
 -- PARAMETERS
 -- -> 1. schema_name - name of the schema to be created.
 -- If omitted,the user_name is used as the schema_name.
--- The name cannot begin with pg_ asthosenames are reserved for system schemas
+-- The name cannot begin with pg_ as those names are reserved for system schemas
 
 -- -> 2. user_name - role name of the user who will own the new schema
 -- If omitted, it defaults to the user executing the command of creating the schema. 
 -- To create a schema owned by another role, you must be able to set SET ROLE to that role
+ 
+-- -> 3. schema_element - an sql statement defining the object to be created within the schema
+-- Currently,only CREATE TABLE,CREATE VIEW,CREATE INDEX,CREATE SEQUENCE,CREATE TRIGGER and GRANT are accepted asclauses within CREATE SCHEMA
+-- Other kinds of objects might be created in separate commands after the schema is created
 
--- -> schema_element
--- -> IF NOT EXISTS 
+-- -> 4. IF NOT EXISTS - do nothing(except issue a notice)if a schema with the same name already exists 
+
+-- To create a schema, the invoking user must have the CREATE privilege for the current database
+
+
+CREATE SCHEMA IF NOT EXISTS basics;
+
+CREATE EXTENSION IF NOT EXISTS pgcrypto;
+
+
+SELECT schema_name
+FROM information_schema.schemata
+ORDER BY schema_name;
