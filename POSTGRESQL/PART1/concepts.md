@@ -50,3 +50,5 @@ number_of_employees: 9874
 
 **sudo -u postgres psql** - accessing PostgreSQL terminal
 -> \du - checking all the users created in the system
+**\dt** - list all the tables in the database
+**\dt basics.** - list all the tables in a particular schema
