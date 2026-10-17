@@ -2,7 +2,7 @@
 -- The name of the schema must be distinct from the name of any existing schema in the existing database
 
 -- -> Schema - A schema is essentially a namespace
--- A schema contains named objects(tables, data types, functions and operators)whose names can duplicate those of other objects existing in other schemas
+-- A schema contains named objects(tables, views, indexes, sequences, clusters and operators)whose names can duplicate those of other objects existing in other schemas
 -- These objects can be accessed either by "qualifying" their names with the schema name as a prefix or by setting a search path that includes the desired schema(s)
 
 -- Optionally, CREATE SCHEMA can include sub commands to create objects within the new schema.
@@ -31,7 +31,8 @@ CREATE SCHEMA IF NOT EXISTS basics;
 
 CREATE EXTENSION IF NOT EXISTS pgcrypto;
 
-
+-- query
+-- the queries can be run directly from psqlinstead of file
 SELECT schema_name
 FROM information_schema.schemata
 ORDER BY schema_name;

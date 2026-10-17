@@ -13,7 +13,7 @@
 
 -- To create a role use the CREATE ROLE commmand
 -- CREATE ROLE analytics_team_role 
-
+ 
 -- In practise, you usually want to add additional options, such as LOGIN, to the CREATE ROLE command.
 
 -- To remove an existing role, you use the analogous DROP ROLE command  
@@ -97,21 +97,70 @@
 
 -- An object can be assigned to a new onwer with an ALTER command of the appropriate kid for the object. 
 -- Superusers can always fo this; ordinary roles can only do it if they are both the current owner of the object(or a member of the owning role) and a member of the new owning role. 
+
+-- ROLE MEMBERSHIP
+-- It is frequently convinient to group users together to ease management of privileges; that way, privileges can be granted to, revoked from, a grou as a whole. 
+-- This is done by creating a role that representa the group, and then granting membership in the group role to individual user roles
+-- Once the group role exists, you can add or remove members using GRANT and REVOKE commands
+
+-- GRANT group_role TO role1
+-- REVOKE group_role FROM role1
+
+-- You can grant membership to other group roles, too(since there isn't really any distinction between group roles and non-group roles). 
+-- The database will not let you set up circular membership roles. 
+-- Also, it is not permitted to grant membership in a role to PUBLIC
+
+-- The members of a role can use the privileges of the group role in two ways. 
+-- FIRST, every member of a group can explicitly do SET ROLE to "temporarily" become the group role. 
+-- In this state, the database session has access to the privileges  of the group role rather than the original login role, and any database objects created are considered owned by the group role and not the login role. 
+-- Second, member roles that have the INHERIT attribute automatically have use of privileges of roles they are members of. 
+
+-- CREATE ROLE joe LOGIN INHERIT;
+-- CREATE ROLE admin NONINHERIT;    
+-- CREATE ROLE wheel NONINHERIT;
+-- GRANT admin TO joe;
+-- GRANT wheel TO admin;
+
+-- Immediately after connecting as role joe, a database session will have use of privileges granted directly to joe plus any privilges granted to admin, because joe "inherits" admin's privileges. 
+-- However, privileges granted to wheel are not available, because even though joe is indirectly a member of wheel, the membership is via admin which has NONINHERIT attribute. 
+
+-- After SET ROLE admin; the database session would have use of only those privileges granted to admin, and not those granted to joe. 
+
+-- After SET ROLE wheel; the database session would have use of only those privileges granted to wheel, and not those granted to either joe or admin. 
+
+-- The original privilege state can be restored with any of
+-- SET ROLE joe;
+-- SET ROLE NONE;
+-- RESET ROLE;
+
+-- FUNCTIONS AND TRIGGERS
+-- Functions and triggers allow users to insert code into the backend server that other users may execute uintentionally. 
+-- Hence, both mechanisms permit users to "Trojan horse" others with relative ease. 
+-- The only real protection is tight control over who can define functions
+
+-- Functions run inside the backend server process with the operating system permissions of the database server daemon. 
+-- If the programming language used for the function allows unchecked memory accesses, it is possible to change the server's internal data structures. 
+-- Hence, among many other things, such functions can circumvent any system access controls. 
+-- Function languages that allow such access are considered "untrusted", and PostgreSQL allows only superusers to create functions written in those languages. 
+
 -- database engine roles creation
-CREATE ROLE analytics_team_role WITH NOLOGIN;
+CREATE ROLE analytics_team WITH NOLOGIN; 
 CREATE ROLE zone_north_team WITH NOLOGIN;
 CREATE ROLE zone_south_team WITH NOLOGIN;
 
 -- isolated namespace boundaries
 CREATE SCHEMA zone_north AUTHORIZATION zone_north_team;
 CREATE SCHEMA zone_south AUTHORIZATION zone_south_team;
-CREATE SCHEMA operational_reporting AUTHORIZATION analytics_team_role;
+CREATE SCHEMA operational_reporting AUTHORIZATION analytics_team;
+
 
 CREATE TABLE operational_reporting.environmental_readings (
     reading_id BIGINT NOT NULL,
     zone_id VARCHAR(16) NOT NULL,
     sensor_id UUID NOT NULL,
     captured_at TIMESTAMPTZ NOT NULL,
+    -- TIMESTAMPZ(Timestamp with time zone) - converts your timestamps to UTC for internal storage and automatically translates them back to your local session time zone when queried
+    -- TIMESTAMP(without time zone) - completely ignores time offsets which frequently causes timezone mismatch bugs down the road
     metric_type VARCHAR(32) NOT NULL,
     metric_value DOUBLE PRECISION NOT NULL
 ) PARTITION BY LIST (zone_id);
