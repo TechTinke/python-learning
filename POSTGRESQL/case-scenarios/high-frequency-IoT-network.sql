@@ -163,6 +163,7 @@ CREATE TABLE operational_reporting.environmental_readings (
     -- TIMESTAMP(without time zone) - completely ignores time offsets which frequently causes timezone mismatch bugs down the road
     metric_type VARCHAR(32) NOT NULL,
     metric_value DOUBLE PRECISION NOT NULL
+    -- DOUBLE PRECISION - variable precision; 15 decimal digits precision
 ) PARTITION BY LIST (zone_id);
 
 CREATE TABLE zone_north.readings_north 
