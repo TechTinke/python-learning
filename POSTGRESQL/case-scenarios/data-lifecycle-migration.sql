@@ -1,0 +1,5 @@
+-- A digital archive ingests daily media manifests.
+-- The current data directory is filling up rapidly.
+-- Business rules dictate that data older than 90 days is rarely queried but must be kept for legal compliance, while data from the current quarter must be accessed with sub-millisecond latency.
+-- You have been provisioned a new, slower, cold-storage volume.
+-- Design the storage layout solution using PostgreSQL infrastructure concepts.
