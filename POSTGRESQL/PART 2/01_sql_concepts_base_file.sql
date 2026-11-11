@@ -36,4 +36,4 @@ VALUES
 
 SELECT name, category, price, stock, sku
 FROM basics.products
-WHERE sku IN ('STAT-PEN-001', 'ELEC-CAB-001','ELEC-MON-OLD');
+WHERE sku IN ('STAT-PEN-001', 'ELEC-CAB-001','ELEC-MON-OLD');   

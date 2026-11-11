@@ -143,12 +143,12 @@
 -- Hence, among many other things, such functions can circumvent any system access controls. 
 -- Function languages that allow such access are considered "untrusted", and PostgreSQL allows only superusers to create functions written in those languages. 
 
--- database engine roles creation
+-- database engine roles
 CREATE ROLE analytics_team WITH NOLOGIN; 
 CREATE ROLE zone_north_team WITH NOLOGIN;
 CREATE ROLE zone_south_team WITH NOLOGIN;
 
--- isolated namespace boundaries
+-- namespace boundaries(schemas)
 CREATE SCHEMA zone_north AUTHORIZATION zone_north_team;
 CREATE SCHEMA zone_south AUTHORIZATION zone_south_team;
 CREATE SCHEMA operational_reporting AUTHORIZATION analytics_team;

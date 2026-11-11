@@ -1,5 +1,10 @@
+-- ONE-TO-ONE RELATIONSHIP
+-- A one-to-one relationship between two tables exists when a particular record exists in one table, and it has ONLY ONE ASSOCIATED record in another table.
+-- A one-to-many relationship between two tables exists when a particular record in one table is related to multiple records in another table. 
+
 -- one parent row can have multiple child rows
 -- In our example, one user can write many posts but a post will always belong to one user
+
 
 -- users - parent table
 -- posts - child table
